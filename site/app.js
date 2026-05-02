@@ -4,9 +4,11 @@ const TABS_EL = document.getElementById('tabs');
 const BUILD_EL = document.getElementById('build');
 
 const state = {
-  index: null,        // {builds: [...]}
+  index: null,         // {builds: [...]}
   currentId: null,
-  cache: new Map(),   // id -> parsed yaml
+  cache: new Map(),    // id -> parsed yaml
+  view: 'level',       // 'level' | 'reference'
+  level: 1,            // currently-shown level (1..N)
 };
 
 // ---------- bootstrap ----------
@@ -23,13 +25,40 @@ async function init() {
 
   renderTabs();
 
-  const initial = (location.hash || '').replace(/^#/, '') || state.index.builds[0]?.id;
-  if (initial) await selectBuild(initial);
+  parseHash();
+  const initialId = state.currentId || state.index.builds[0]?.id;
+  if (initialId) await selectBuild(initialId, { fromHash: true });
 
   window.addEventListener('hashchange', () => {
-    const id = (location.hash || '').replace(/^#/, '');
-    if (id && id !== state.currentId) selectBuild(id);
+    const before = { id: state.currentId, view: state.view, level: state.level };
+    parseHash();
+    if (state.currentId !== before.id) {
+      selectBuild(state.currentId, { fromHash: true });
+    } else if (state.view !== before.view || state.level !== before.level) {
+      renderCurrent();
+    }
   });
+
+  document.addEventListener('keydown', onKey);
+}
+
+function parseHash() {
+  // hash format: #<buildId>[/<view>[/L<n>]]
+  // examples: #wood-elf-bardadin
+  //           #wood-elf-bardadin/level/L7
+  //           #wood-elf-bardadin/reference
+  const raw = (location.hash || '').replace(/^#/, '');
+  if (!raw) return;
+  const [id, view, lvl] = raw.split('/');
+  if (id) state.currentId = id;
+  if (view === 'reference' || view === 'level') state.view = view;
+  if (lvl && /^L\d+$/.test(lvl)) state.level = parseInt(lvl.slice(1), 10);
+}
+
+function syncHash() {
+  const parts = [state.currentId, state.view];
+  if (state.view === 'level') parts.push(`L${state.level}`);
+  history.replaceState(null, '', `#${parts.filter(Boolean).join('/')}`);
 }
 
 // ---------- tabs ----------
@@ -52,9 +81,13 @@ function setActiveTab(id) {
   }
 }
 
-async function selectBuild(id) {
+async function selectBuild(id, { fromHash = false } = {}) {
   state.currentId = id;
-  history.replaceState(null, '', `#${id}`);
+  if (!fromHash) {
+    // jumping to a fresh build resets level/view to defaults
+    state.level = 1;
+    state.view = 'level';
+  }
   setActiveTab(id);
   BUILD_EL.innerHTML = `<div class="loading">Loading build…</div>`;
 
@@ -77,29 +110,72 @@ async function selectBuild(id) {
     }
   }
 
+  // clamp level to actual range
+  const levels = (data.leveling || []).map(l => Number(l.level)).filter(Number.isFinite);
+  const maxL = Math.max(1, ...levels);
+  if (state.level < 1) state.level = 1;
+  if (state.level > maxL) state.level = maxL;
+
+  renderCurrent();
+  syncHash();
+}
+
+function renderCurrent() {
+  const data = state.cache.get(state.currentId);
+  if (!data) return;
   renderBuild(data);
+  syncHash();
 }
 
 function showError(msg) {
   BUILD_EL.innerHTML = `<div class="error">${escapeHtml(msg)}</div>`;
 }
 
-// ---------- render ----------
+// ---------- keyboard nav ----------
+
+function onKey(ev) {
+  if (state.view !== 'level') return;
+  if (ev.target.tagName === 'INPUT' || ev.target.tagName === 'TEXTAREA') return;
+  const data = state.cache.get(state.currentId);
+  if (!data) return;
+  const levels = (data.leveling || []).map(l => Number(l.level));
+  const max = Math.max(...levels);
+  if (ev.key === 'ArrowRight' || ev.key === 'ArrowDown') {
+    state.level = Math.min(max, state.level + 1);
+    renderCurrent();
+    ev.preventDefault();
+  } else if (ev.key === 'ArrowLeft' || ev.key === 'ArrowUp') {
+    state.level = Math.max(1, state.level - 1);
+    renderCurrent();
+    ev.preventDefault();
+  }
+}
+
+// ---------- top-level render ----------
 
 function renderBuild(data) {
   const parts = [];
   parts.push(renderHero(data));
-  if (data.overview) parts.push(renderSection('Overview', `<div class="prose">${renderMarkdownish(data.overview)}</div>`));
-  if (data.character_creation) parts.push(renderSection('Character Creation', renderCreation(data.character_creation)));
-  if (data.skills) parts.push(renderSection('Skills', renderSkills(data.skills)));
-  if (data.stats_progression) parts.push(renderSection('Stat Progression', renderStatsProgression(data.stats_progression, data.character_creation)));
-  if (data.leveling) parts.push(renderSection('Level-by-level', renderTimeline(data.leveling)));
-  if (data.spells) parts.push(renderSection('Spell Loadout', renderSpells(data.spells)));
-  if (data.gear) parts.push(renderSection('Gear by Act', renderGear(data.gear)));
-  if (data.playstyle) parts.push(renderSection('Playstyle', renderPlaystyle(data.playstyle)));
-  if (data.abilities_situational) parts.push(renderSection('Ability Usage — Situational', renderAbilities(data.abilities_situational)));
-  if (data.mistakes_and_tips) parts.push(renderSection('Mistakes & Tips', renderTips(data.mistakes_and_tips)));
+  parts.push(renderViewToggle());
+  if (state.view === 'level') {
+    parts.push(renderLevelView(data));
+  } else {
+    parts.push(renderReferenceView(data));
+  }
   BUILD_EL.innerHTML = parts.join('\n');
+  // wire up listeners (event delegation would be cleaner, but simple direct binding for now)
+  for (const btn of BUILD_EL.querySelectorAll('[data-set-view]')) {
+    btn.addEventListener('click', () => {
+      state.view = btn.dataset.setView;
+      renderCurrent();
+    });
+  }
+  for (const btn of BUILD_EL.querySelectorAll('[data-go-level]')) {
+    btn.addEventListener('click', () => {
+      state.level = parseInt(btn.dataset.goLevel, 10);
+      renderCurrent();
+    });
+  }
 }
 
 function renderHero(data) {
@@ -125,12 +201,218 @@ function renderHero(data) {
   `;
 }
 
+function renderViewToggle() {
+  const v = state.view;
+  return `
+    <div class="view-toggle" role="tablist" aria-label="View mode">
+      <button class="view-btn ${v === 'level' ? 'active' : ''}"
+              data-set-view="level" role="tab" aria-selected="${v === 'level'}">
+        Level by level
+      </button>
+      <button class="view-btn ${v === 'reference' ? 'active' : ''}"
+              data-set-view="reference" role="tab" aria-selected="${v === 'reference'}">
+        Reference
+      </button>
+    </div>
+  `;
+}
+
 function badge(key, val) {
   return `<span class="badge"><span class="key">${escapeHtml(key)}</span><span class="val">${escapeHtml(String(val))}</span></span>`;
 }
 
 function renderSection(title, body) {
   return `<section class="section"><h2>${escapeHtml(title)}</h2>${body}</section>`;
+}
+
+// ---------- level view ----------
+
+function renderLevelView(data) {
+  const levels = data.leveling || [];
+  if (!levels.length) return `<div class="muted">No leveling plan defined.</div>`;
+  const max = Math.max(...levels.map(l => Number(l.level)));
+  const cur = clamp(state.level, 1, max);
+  state.level = cur;
+
+  const lvlData = levels.find(l => Number(l.level) === cur) || levels[0];
+
+  return `
+    ${renderLevelPicker(levels, cur)}
+    ${renderLevelPanel(lvlData, data, cur, max)}
+  `;
+}
+
+function renderLevelPicker(levels, cur) {
+  // Group by class taken so we can split visually (e.g., Bard 1-6 | Paladin 1-6).
+  const cells = levels.map(l => {
+    const n = Number(l.level);
+    const take = (l.take || '').trim();
+    const short = takeShort(take);
+    return `<button class="lvl-cell ${n === cur ? 'active' : ''}"
+                    data-go-level="${n}"
+                    aria-current="${n === cur}"
+                    title="Level ${n} — ${escapeHtml(take)}">
+              <span class="lvl-num">${n}</span>
+              <span class="lvl-take">${escapeHtml(short)}</span>
+            </button>`;
+  }).join('');
+
+  return `
+    <nav class="level-picker" aria-label="Level selector">
+      <div class="level-picker-hint">Pick a level — or use ← / → keys</div>
+      <div class="level-grid">${cells}</div>
+    </nav>
+  `;
+}
+
+function takeShort(take) {
+  // "Bard 6" -> "B6", "Paladin 3" -> "P3"
+  const m = (take || '').match(/^(\w+)\s+(\d+)/);
+  if (!m) return take || '';
+  return m[1].charAt(0).toUpperCase() + m[2];
+}
+
+function renderLevelPanel(lvl, data, cur, max) {
+  const picks = (lvl.pick || []).map(p => `<li>${renderInlineMd(p)}</li>`).join('');
+  const notes = lvl.notes ? `<div class="lvl-notes">${renderMarkdownish(lvl.notes)}</div>` : '';
+
+  // contextual mini-sections
+  const phase = phaseFor(cur, data);
+  const playstyleBlock = renderLevelPlaystyle(phase, data);
+  const gearBlock = renderLevelGear(cur, data);
+  const spellBlock = renderLevelSpells(cur, data);
+
+  // prev/next
+  const prevDisabled = cur <= 1 ? 'disabled' : '';
+  const nextDisabled = cur >= max ? 'disabled' : '';
+  const prevLabel = cur > 1 ? `← Level ${cur - 1}` : '←';
+  const nextLabel = cur < max ? `Level ${cur + 1} →` : '→';
+
+  return `
+    <article class="lvl-panel">
+      <header class="lvl-panel-head">
+        <div class="lvl-panel-num">
+          <span class="lvl-panel-n">${cur}</span>
+          <span class="lvl-panel-take">${escapeHtml(lvl.take || '')}</span>
+        </div>
+        ${phase ? `<span class="lvl-panel-phase">${escapeHtml(phaseLabel(phase))}</span>` : ''}
+      </header>
+
+      <div class="lvl-panel-body">
+        <section class="lvl-block">
+          <h3>What to pick at this level</h3>
+          <ul class="picks">${picks}</ul>
+          ${notes}
+        </section>
+
+        ${spellBlock}
+        ${gearBlock}
+        ${playstyleBlock}
+      </div>
+
+      <footer class="lvl-panel-nav">
+        <button class="lvl-nav-btn" data-go-level="${cur - 1}" ${prevDisabled}>${prevLabel}</button>
+        <span class="lvl-nav-pos">${cur} / ${max}</span>
+        <button class="lvl-nav-btn" data-go-level="${cur + 1}" ${nextDisabled}>${nextLabel}</button>
+      </footer>
+    </article>
+  `;
+}
+
+function phaseFor(level, data) {
+  const ps = data.playstyle || {};
+  if (ps.early && includesLevel(ps.early.levels, level)) return 'early';
+  if (ps.mid   && includesLevel(ps.mid.levels, level))   return 'mid';
+  if (ps.late  && includesLevel(ps.late.levels, level))  return 'late';
+  // fallback heuristics
+  if (level <= 6) return ps.early ? 'early' : null;
+  if (level <= 9) return ps.mid ? 'mid' : null;
+  return ps.late ? 'late' : null;
+}
+
+function phaseLabel(phase) {
+  return ({ early: 'Early game', mid: 'Mid game', late: 'Late game' })[phase] || phase;
+}
+
+function includesLevel(rangeStr, lvl) {
+  if (!rangeStr) return false;
+  // e.g. "1 – 6 (pure Bard)" or "7-9" or "10 to 12"
+  const m = String(rangeStr).match(/(\d+)\s*[–\-to]+\s*(\d+)/);
+  if (!m) return false;
+  const a = +m[1], b = +m[2];
+  return lvl >= Math.min(a, b) && lvl <= Math.max(a, b);
+}
+
+function renderLevelPlaystyle(phase, data) {
+  if (!phase) return '';
+  const p = (data.playstyle || {})[phase];
+  if (!p) return '';
+  const blocks = [];
+  if (p.summary) blocks.push(`<div class="prose">${renderMarkdownish(p.summary)}</div>`);
+  if (p.standard_turn) blocks.push(`<h4>Standard turn</h4><div class="prose">${renderMarkdownish(p.standard_turn)}</div>`);
+  if (p.nova_turn) blocks.push(`<h4>Nova turn</h4><div class="prose">${renderMarkdownish(p.nova_turn)}</div>`);
+  return `<section class="lvl-block">
+    <h3>How to play this phase ${p.levels ? `<span class="muted">(${escapeHtml(p.levels)})</span>` : ''}</h3>
+    ${blocks.join('')}
+  </section>`;
+}
+
+function actForLevel(level) {
+  if (level <= 4) return 'act_1';
+  if (level <= 8) return 'act_2';
+  return 'act_3';
+}
+
+function renderLevelGear(level, data) {
+  const gear = data.gear || {};
+  const act = actForLevel(level);
+  const items = gear[act] || [];
+  if (!items.length) return '';
+  const rows = items.slice(0, 6).map(r => `
+    <li>
+      <span class="gear-slot">${escapeHtml(r.slot || '')}</span>
+      <span class="gear-item">${escapeHtml(r.item || '')}</span>
+      <span class="gear-where">${escapeHtml(r.where || '')}</span>
+    </li>
+  `).join('');
+  const actLabel = ({ act_1: 'Act 1', act_2: 'Act 2', act_3: 'Act 3' })[act];
+  return `<section class="lvl-block">
+    <h3>Gear to chase right now <span class="muted">(${actLabel})</span></h3>
+    <ul class="gear-mini">${rows}</ul>
+    <div class="muted">See the full gear list and BiS in the <a href="#" data-set-view="reference" class="inline-link">Reference view</a>.</div>
+  </section>`;
+}
+
+function renderLevelSpells(level, data) {
+  // Show what spells become available at this level.
+  // Bard slot levels in BG3: L1 = L1 spells, L3 = L2 spells, L5 = L3 spells.
+  const events = [];
+  if (level === 1) events.push({ kind: 'unlock', text: 'Bard L1 spell slots; you start with 4 known spells.' });
+  if (level === 3) events.push({ kind: 'unlock', text: 'L2 spell slots — pick Hold Person and Heat Metal here.' });
+  if (level === 5) events.push({ kind: 'unlock', text: 'L3 spell slots — pick Hypnotic Pattern.' });
+  if (level === 8) events.push({ kind: 'unlock', text: 'Divine Smite — burn any spell slot for +2d8 radiant on a melee hit.' });
+  if (level === 11) events.push({ kind: 'unlock', text: 'L4 spell slots from multiclass casting (Bard 6 + Pal 5 = caster 8).' });
+  if (!events.length) return '';
+  return `<section class="lvl-block">
+    <h3>What unlocks here</h3>
+    <ul class="unlocks">${events.map(e => `<li>${escapeHtml(e.text)}</li>`).join('')}</ul>
+  </section>`;
+}
+
+// ---------- reference view ----------
+
+function renderReferenceView(data) {
+  const parts = [];
+  if (data.overview) parts.push(renderSection('Overview', `<div class="prose">${renderMarkdownish(data.overview)}</div>`));
+  if (data.character_creation) parts.push(renderSection('Character Creation', renderCreation(data.character_creation)));
+  if (data.skills) parts.push(renderSection('Skills', renderSkills(data.skills)));
+  if (data.stats_progression) parts.push(renderSection('Stat Progression', renderStatsProgression(data.stats_progression, data.character_creation)));
+  if (data.spells) parts.push(renderSection('Spell Loadout', renderSpells(data.spells)));
+  if (data.gear) parts.push(renderSection('Gear by Act', renderGear(data.gear)));
+  if (data.playstyle) parts.push(renderSection('Playstyle', renderPlaystyle(data.playstyle)));
+  if (data.abilities_situational) parts.push(renderSection('Ability Usage — Situational', renderAbilities(data.abilities_situational)));
+  if (data.mistakes_and_tips) parts.push(renderSection('Mistakes & Tips', renderTips(data.mistakes_and_tips)));
+  return parts.join('\n');
 }
 
 function renderCreation(c) {
@@ -142,7 +424,6 @@ function renderCreation(c) {
   if (c.cantrips_at_l1) dl.push(['Cantrips (L1)', (c.cantrips_at_l1).join(', ')]);
   if (c.spells_known_at_l1) dl.push(['Spells (L1)', (c.spells_known_at_l1).join(', ')]);
   if (c.skill_proficiencies) dl.push(['Skill proficiencies', (c.skill_proficiencies).join(', ')]);
-  if (c.skills_note) dl.push(['Skills', c.skills_note]);
   if (dl.length) {
     out.push('<dl class="kv">');
     for (const [k, v] of dl) out.push(`<dt>${escapeHtml(k)}</dt><dd>${escapeHtml(v)}</dd>`);
@@ -214,7 +495,7 @@ function renderStatRow(stats, klass = '') {
     .join('')}</div>`;
 }
 
-function renderStatsProgression(p, cc) {
+function renderStatsProgression(p) {
   const out = [`<div class="card">`];
   if (p.priorities) out.push(`<div><span class="muted">Priorities:</span> <strong>${(p.priorities).join(' &gt; ')}</strong></div>`);
   if (p.cap_at_12) {
@@ -222,32 +503,18 @@ function renderStatsProgression(p, cc) {
     out.push(renderStatRow(p.cap_at_12, 'final'));
   }
   if (p.asi_plan) {
-    out.push(`<h4 style="margin-top:1rem">ASI / Feat plan</h4>`);
-    out.push(`<ul class="tips">`);
+    out.push(`<h4 style="margin-top:1rem">ASI / Feat plan</h4><ul class="tips">`);
     for (const a of p.asi_plan) {
       out.push(`<li><strong>L${escapeHtml(String(a.level))}:</strong> ${escapeHtml(a.pick)} — <span class="muted">${escapeHtml(a.reason || '')}</span></li>`);
     }
     out.push(`</ul>`);
   }
-  out.push(`</div>`);
-  return out.join('');
-}
-
-function renderTimeline(levels) {
-  const out = [`<div class="timeline">`];
-  for (const l of levels) {
-    const picks = (l.pick || []).map(p => `<li>${escapeHtml(p)}</li>`).join('');
-    const notes = l.notes ? `<div class="notes">${renderMarkdownish(l.notes)}</div>` : '';
-    out.push(`
-      <div class="lvl">
-        <div class="num">${escapeHtml(String(l.level))}<small>${escapeHtml(l.take || '')}</small></div>
-        <div class="body">
-          <h3>${escapeHtml(l.take || `Level ${l.level}`)}</h3>
-          <ul>${picks}</ul>
-          ${notes}
-        </div>
-      </div>
-    `);
+  if (p.alternates) {
+    out.push(`<h4 style="margin-top:1rem">Alternate feats</h4><ul class="tips">`);
+    for (const alt of p.alternates) {
+      out.push(`<li><strong>${escapeHtml(alt.feat)}.</strong> ${escapeHtml(alt.when || '')} <span class="muted">${escapeHtml(alt.tradeoff || '')}</span></li>`);
+    }
+    out.push(`</ul>`);
   }
   out.push(`</div>`);
   return out.join('');
@@ -302,7 +569,7 @@ function renderGear(g) {
   if (g.notes) out.push(`<div class="prose" style="margin-bottom:1rem">${renderMarkdownish(g.notes)}</div>`);
   for (const act of ['act_1', 'act_2', 'act_3']) {
     if (!g[act]) continue;
-    const label = act.replace('_', ' ').replace('act', 'Act').toUpperCase();
+    const label = ({ act_1: 'Act 1', act_2: 'Act 2', act_3: 'Act 3' })[act];
     out.push(`<div class="card"><h3>${escapeHtml(label)}</h3>`);
     out.push(gearTable(g[act]));
     out.push(`</div>`);
@@ -365,13 +632,20 @@ function renderTips(rows) {
 
 // ---------- helpers ----------
 
+function clamp(n, lo, hi) { return Math.max(lo, Math.min(hi, n)); }
+
 function escapeHtml(s) {
   return String(s ?? '').replace(/[&<>"']/g, c => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
   }[c]));
 }
 
-// Very lightweight markdown-ish: paragraphs + **bold** + line breaks.
+// inline-md: just escape + **bold**
+function renderInlineMd(text) {
+  return escapeHtml(String(text ?? '')).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+}
+
+// paragraphs + **bold** + line breaks
 function renderMarkdownish(text) {
   if (text == null) return '';
   const escaped = escapeHtml(String(text));
