@@ -364,6 +364,11 @@ table.gear .why { color: var(--ink-soft); }
 /* spells lists */
 .spells-block { margin-bottom: 1rem; }
 .spells-block h3 { margin-bottom: 0.3rem; }
+.skills-group { margin-bottom: 0.9rem; }
+.skills-group:last-child { margin-bottom: 0; }
+.skills-group strong { color: var(--gold); }
+.skills-group .ab-notes { color: var(--ink-soft); margin-top: 0.3rem; font-size: 0.92rem; }
+
 .spells-block .label-row {
   font-family: var(--ff-display);
   font-size: 0.72rem;

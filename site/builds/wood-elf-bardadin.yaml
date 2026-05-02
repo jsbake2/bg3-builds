@@ -35,7 +35,6 @@ character_creation:
   background_suggested: Entertainer (gives Acrobatics + Performance proficiency)
   cantrips_at_l1: [Vicious Mockery, Friends]
   spells_known_at_l1: [Dissonant Whispers, Longstrider, Faerie Fire, Healing Word]
-  skill_proficiencies: [Deception, Persuasion, Performance]
   ability_scores:
     note: "Buy these point-buy values. Wood Elf adds +2 DEX, +1 WIS automatically."
     str: 8
@@ -51,6 +50,50 @@ character_creation:
     int: 8
     wis: 11
     cha: 15
+
+skills:
+  summary: |
+    Skill picks are almost all decided at character creation. The only later
+    decision is Expertise at Bard 3. After that, no new skill proficiencies
+    appear — Bard 4–6 and Paladin 1–6 don't grant skills, and multiclassing
+    into Paladin gives armor/weapon proficiencies but not skills.
+  at_creation:
+    from_race:
+      pick: [Perception]
+      note: Wood Elf grants Perception automatically. You don't choose it.
+    from_background:
+      pick: [Acrobatics, Performance]
+      background: Entertainer
+      note: |
+        These come free with the Entertainer background. The game treats them as
+        already-proficient, which is why the class skill screen will gray
+        Performance out — you can't double-pick. That's fine, you already have it.
+        If you'd rather pick Performance manually as a class skill, take a
+        background that doesn't include it (e.g. Charlatan, Sage, Acolyte).
+    from_class:
+      pick: [Persuasion, Deception, Insight]
+      note: |
+        Bard picks 3 skill proficiencies from ANY skill in the game (most classes
+        have a restricted list — Bard is special). Skip the two your background
+        already covers. Persuasion + Deception are your CHA face skills;
+        Insight (WIS) is for reading NPCs and lie detection.
+        If your background is NOT Entertainer, swap Performance back in for one
+        of these (Persuasion + Deception + Performance is the alternate set).
+  at_level_3_expertise:
+    pick: [Persuasion, Deception]
+    note: |
+      At Bard 3 you choose 2 skills to gain Expertise — your proficiency bonus is
+      doubled on those skills. Pick the two CHA-based face skills you'll lean on
+      every conversation. Performance is fine if you'd rather, but Persuasion +
+      Deception cover almost every dialogue check in the game.
+  later_levels: |
+    Bard 4 → 6 grants no new skill proficiencies in BG3. Paladin 1 → 6 grants no
+    skill proficiencies when multiclassing in (you only get skills from a class
+    if you START in it). So your final list at L12 is:
+      • Race: Perception
+      • Background (Entertainer): Acrobatics, Performance
+      • Class (Bard 1): Persuasion, Deception, Insight
+      • Expertise (Bard 3): Persuasion, Deception (doubled)
 
 stats_progression:
   priorities: [CHA, DEX, CON]
@@ -93,7 +136,7 @@ leveling:
     pick:
       - Subclass — College of Swords
       - Fighting Style — Two-Weapon Fighting
-      - "Expertise (×2) — Persuasion, Performance"
+      - "Expertise (×2) — Persuasion + Deception (doubles your proficiency bonus on those two)"
       - "Spell — Hold Person (the one you keep forever)"
       - "Spell — Heat Metal (great L2 damage spell, easy to forget)"
       - Slashing / Defensive / Mobile Flourish unlock

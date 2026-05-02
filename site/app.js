@@ -91,6 +91,7 @@ function renderBuild(data) {
   parts.push(renderHero(data));
   if (data.overview) parts.push(renderSection('Overview', `<div class="prose">${renderMarkdownish(data.overview)}</div>`));
   if (data.character_creation) parts.push(renderSection('Character Creation', renderCreation(data.character_creation)));
+  if (data.skills) parts.push(renderSection('Skills', renderSkills(data.skills)));
   if (data.stats_progression) parts.push(renderSection('Stat Progression', renderStatsProgression(data.stats_progression, data.character_creation)));
   if (data.leveling) parts.push(renderSection('Level-by-level', renderTimeline(data.leveling)));
   if (data.spells) parts.push(renderSection('Spell Loadout', renderSpells(data.spells)));
@@ -141,6 +142,7 @@ function renderCreation(c) {
   if (c.cantrips_at_l1) dl.push(['Cantrips (L1)', (c.cantrips_at_l1).join(', ')]);
   if (c.spells_known_at_l1) dl.push(['Spells (L1)', (c.spells_known_at_l1).join(', ')]);
   if (c.skill_proficiencies) dl.push(['Skill proficiencies', (c.skill_proficiencies).join(', ')]);
+  if (c.skills_note) dl.push(['Skills', c.skills_note]);
   if (dl.length) {
     out.push('<dl class="kv">');
     for (const [k, v] of dl) out.push(`<dt>${escapeHtml(k)}</dt><dd>${escapeHtml(v)}</dd>`);
@@ -159,6 +161,47 @@ function renderCreation(c) {
       out.push(renderStatRow(c.final_starting, 'final'));
     }
     out.push(`</div>`);
+  }
+  return out.join('');
+}
+
+function renderSkills(s) {
+  const out = [];
+  if (s.summary) out.push(`<div class="prose" style="margin-bottom:1rem">${renderMarkdownish(s.summary)}</div>`);
+
+  if (s.at_creation) {
+    const c = s.at_creation;
+    out.push(`<div class="card"><h3>At character creation</h3>`);
+    const groups = [
+      ['From race', c.from_race],
+      ['From background', c.from_background],
+      ['From class (Bard L1)', c.from_class],
+    ];
+    for (const [label, g] of groups) {
+      if (!g) continue;
+      const picks = (g.pick || []).map(escapeHtml).join(', ');
+      const subhead = g.background ? ` <span class="muted">(${escapeHtml(g.background)})</span>` : '';
+      out.push(`<div class="skills-group">
+        <div class="label-row">${escapeHtml(label)}${subhead}</div>
+        <div><strong>${picks}</strong></div>
+        ${g.note ? `<div class="ab-notes">${renderMarkdownish(g.note)}</div>` : ''}
+      </div>`);
+    }
+    out.push(`</div>`);
+  }
+
+  if (s.at_level_3_expertise) {
+    const e = s.at_level_3_expertise;
+    out.push(`<div class="card"><h3>Bard 3 — Expertise</h3>
+      <div><strong>${(e.pick || []).map(escapeHtml).join(', ')}</strong></div>
+      ${e.note ? `<div class="ab-notes">${renderMarkdownish(e.note)}</div>` : ''}
+    </div>`);
+  }
+
+  if (s.later_levels) {
+    out.push(`<div class="card"><h3>Levels 4 → 12</h3>
+      <div class="prose">${renderMarkdownish(s.later_levels)}</div>
+    </div>`);
   }
   return out.join('');
 }
