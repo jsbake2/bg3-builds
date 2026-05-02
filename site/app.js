@@ -409,6 +409,8 @@ function renderReferenceView(data) {
   if (data.stats_progression) parts.push(renderSection('Stat Progression', renderStatsProgression(data.stats_progression, data.character_creation)));
   if (data.spells) parts.push(renderSection('Spell Loadout', renderSpells(data.spells)));
   if (data.gear) parts.push(renderSection('Gear by Act', renderGear(data.gear)));
+  if (data.alternative_splits) parts.push(renderSection('Alternative Splits', renderAlternatives(data.alternative_splits)));
+  if (data.race_choice) parts.push(renderSection('Race Choice', renderRaceChoice(data.race_choice)));
   if (data.playstyle) parts.push(renderSection('Playstyle', renderPlaystyle(data.playstyle)));
   if (data.abilities_situational) parts.push(renderSection('Ability Usage — Situational', renderAbilities(data.abilities_situational)));
   if (data.mistakes_and_tips) parts.push(renderSection('Mistakes & Tips', renderTips(data.mistakes_and_tips)));
@@ -516,7 +518,55 @@ function renderStatsProgression(p) {
     }
     out.push(`</ul>`);
   }
+  if (p.permanent_boosts) {
+    out.push(`<h4 style="margin-top:1rem">Permanent stat boosts</h4>`);
+    if (p.permanent_boosts.note) out.push(`<div class="muted" style="margin-bottom:.5rem">${escapeHtml(p.permanent_boosts.note)}</div>`);
+    out.push(`<ul class="tips">`);
+    for (const b of (p.permanent_boosts.items || [])) {
+      out.push(`<li><strong>${escapeHtml(b.name)}</strong> — ${escapeHtml(b.grants || '')}. <span class="muted">${escapeHtml(b.where || '')}</span> ${b.recommend ? '— ' + escapeHtml(b.recommend) : ''}</li>`);
+    }
+    out.push(`</ul>`);
+  }
   out.push(`</div>`);
+  return out.join('');
+}
+
+function renderAlternatives(a) {
+  const out = [];
+  if (a.intro) out.push(`<div class="prose" style="margin-bottom:1rem">${renderMarkdownish(a.intro)}</div>`);
+  for (const opt of (a.options || [])) {
+    out.push(`<div class="card"><h3>${escapeHtml(opt.name)}</h3>`);
+    if (opt.gives) {
+      out.push(`<h4>Gives you</h4><ul class="tips">`);
+      for (const g of opt.gives) out.push(`<li>${escapeHtml(g)}</li>`);
+      out.push(`</ul>`);
+    }
+    if (opt.gives_up) {
+      out.push(`<h4>Gives up</h4><ul class="tips">`);
+      for (const g of opt.gives_up) out.push(`<li>${escapeHtml(g)}</li>`);
+      out.push(`</ul>`);
+    }
+    if (opt.best_for) {
+      out.push(`<div class="muted" style="margin-top:.6rem"><strong>Best for:</strong> ${escapeHtml(opt.best_for)}</div>`);
+    }
+    out.push(`</div>`);
+  }
+  return out.join('');
+}
+
+function renderRaceChoice(r) {
+  const out = [`<div class="card">`];
+  if (r.locked_for_you) out.push(`<div class="muted">Locked race for this guide: <strong>${escapeHtml(r.locked_for_you)}</strong></div>`);
+  if (r.why_its_fine) out.push(`<div class="prose" style="margin-top:.6rem">${renderMarkdownish(r.why_its_fine)}</div>`);
+  out.push(`</div>`);
+  if (r.community_meta_picks && r.community_meta_picks.length) {
+    out.push(`<div class="card"><h3>Community meta race picks</h3><ul class="tips">`);
+    for (const p of r.community_meta_picks) {
+      out.push(`<li><strong>${escapeHtml(p.race)}.</strong> ${escapeHtml(p.upside || '')}</li>`);
+    }
+    out.push(`</ul></div>`);
+  }
+  if (r.takeaway) out.push(`<div class="card"><div class="prose">${renderMarkdownish(r.takeaway)}</div></div>`);
   return out.join('');
 }
 

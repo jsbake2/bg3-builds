@@ -23,9 +23,13 @@ overview: |
   of the Mystic Scoundrel** in Act 3 (cast Hold Person as a bonus action after a
   weapon hit) and the loop becomes one-sided.
 
-  Wood Elf is a fine race for this — +2 DEX maps cleanly to dual-wielding finesse
-  weapons, and Fleet of Foot adds movement for repositioning. You give up Half-Orc
-  Savage Attacks (extra crit die), but you compensate with gear scaling.
+  **A note on the 6/6 split.** The community-meta Bardadin is Bard 10 / Paladin 2
+  — that split unlocks Magical Secrets at Bard 10 (Banishing Smite, Counterspell)
+  and gives more spell slots and Bardic Inspirations. This guide takes the 6/6
+  Vengeance variant instead, which trades nova ceiling for **Aura of Protection**
+  at Paladin 6 (+CHA modifier to all party saves within 9m) and Vow of Enmity /
+  Inquisitor's Might from Vengeance 3. See the Reference → Alternative splits
+  section for when you'd pick 10/2 instead.
 
 character_creation:
   note: |
@@ -108,10 +112,19 @@ stats_progression:
     - feat: Alert
       when: "If you find yourself surprised in ambushes or going late in initiative."
       tradeoff: "Pure utility. CHA stays at 15 for the rest of the run."
+  permanent_boosts:
+    note: |
+      Two in-game items grant permanent stat upgrades. Spend both on CHA to push
+      your final cap to 20 (or save Hag's Hair for elsewhere if you've already
+      promised it to someone else).
+    items:
+      - { name: "Hag's Hair", grants: "+1 to one ability score (permanent)", where: "Auntie Ethel — earned by accepting her offer in the Sunlit Wetlands (Act 1).", recommend: "Spend on CHA — pushes 17 → 18." }
+      - { name: "Mirror of Loss (boon)", grants: "+2 to one ability score (permanent), but −1 to all others until you Restore at the same shrine", where: "Gauntlet of Shar (Act 2). Pass the WIS check to gain the boon.", recommend: "Spend on CHA — pushes 18 → 20 if you took Hag's Hair on CHA." }
   cap_at_12:
-    cha: 17
+    cha: 20
     dex: 17
     con: 14
+    note: "Final cap assumes both Hag's Hair (+1 CHA) and Mirror of Loss (+2 CHA) are spent on Charisma plus the +2 CHA ASI at level 10."
 
 leveling:
   - level: 1
@@ -234,7 +247,7 @@ leveling:
 spells:
   cantrips:
     - { name: Vicious Mockery, source: Bard 1, why: "Psychic damage + WIS save; on fail, target has disadvantage on its next attack. Free backup ranged." }
-    - { name: Friends, source: Bard 1, why: "Out-of-combat advantage on CHA checks against non-hostiles. Use before key Persuasion rolls." }
+    - { name: Friends, source: Bard 1, why: "Out-of-combat advantage on CHA checks against non-hostiles. WARNING: when it expires the target turns hostile — only use before encounters where you can leave or fight cleanly afterward, never in town." }
     - { name: Blade Ward, source: Bard 4, why: "Half damage from weapon attacks for 1 turn. Niche emergency button." }
   level_1:
     keepers:
@@ -255,9 +268,11 @@ spells:
   level_3:
     keepers:
       - { name: Hypnotic Pattern, why: "Best AoE control in the game. Use when Hold Person can't cover the room." }
-      - { name: Slow, why: "Big-encounter alternative to Hypnotic Pattern (hits constructs/undead)." }
+      - { name: Slow, why: "Big-encounter alternative to Hypnotic Pattern (hits constructs/undead, who are immune to Hypnotic Pattern's charm save)." }
+      - { name: Glyph of Warding, why: "Pre-cast a damage glyph (1d8 elemental upcasted to 4d8 at L3) on a chokepoint or doorway before a fight starts. Concentration-free once placed." }
     skip:
-      - { name: Counterspell, why: "NOT on the Bard list. Don't search for it." }
+      - { name: Counterspell, why: "Not on the Bard spell list — it's a Wizard/Sorcerer spell. Skip on Bard 6; only obtainable via Bard 10 Magical Secrets." }
+      - { name: Hold Monster, why: "Level 5 spell — only available at Bard 9+ via Magical Secrets, which Swords Bard 6 cannot reach. Stick with Hold Person." }
   paladin_prepared:
     note: "Paladin spells are prepared at long rest from the full Paladin list. They share the multiclassed slot table with your Bard spells."
     recommended_at_12: [Bless, Command, Searing Smite, Thunderous Smite, Misty Step, Branding Smite]
@@ -283,22 +298,27 @@ gear:
     - { slot: "Armor", item: "Adamantine Scale Mail", where: "Grymforge — craft at the Adamantine Forge with mithral ore + scale mail mould", why: "Medium armor (no spellcast penalty), immune to crits, reflects crits as Stun." }
     - { slot: "Cantrip-backup weapon", item: "Phalar Aluve", where: "Selunite Outpost in the Underdark — pull from the rock", why: "Carry it in inventory for the Sing aura (+1d4 radiant party-wide) before fights. Toggle, then swap back." }
   act_2:
-    - { slot: "Helm", item: "Helmet of Arcane Acuity", where: "Moonrise Towers — sold by Lann Tarv (pickpocket if you can)", why: "Weapon hits stack +1 spell save DC, up to +5. Build-defining for Hold Person reliability." }
-    - { slot: "Armor", item: "Luminous Armour", where: "Grymforge prison cells — hidden chest behind rubble", why: "Medium armor. Radiant damage you deal applies Radiating Orb to nearby enemies (–1 attack stacking)." }
-    - { slot: "Ring", item: "Coruscation Ring", where: "Moonrise Towers — Lann Tarv", why: "Spells with saves apply Radiating Orb on hit. Stacks with Luminous Armour." }
-    - { slot: "Ring", item: "Callous Glow Ring", where: "Moonrise Towers area", why: "+2 radiant damage to illuminated targets. Easy passive boost." }
-    - { slot: "Ring", item: "Risky Ring", where: "Moonrise Towers — Araj Oblodra", why: "Advantage on all attacks (disadvantage on saves). Bardic Inspiration offsets the saves penalty in clutch moments." }
+    - { slot: "Helm", item: "Helmet of Arcane Acuity", where: "Moonrise Towers — sold by Lann Tarv (pickpocket if you can)", why: "Weapon hits each grant 1 stack of Arcane Acuity (max 10 in Patch 7+). Each stack = +1 to your spell save DC and spell attack rolls. Stacks decay 1 per turn at start of turn and lose 2 stacks when you take damage. Combine with Band of the Mystic Scoundrel: hit twice → +2 DC → bonus-action Hold Person at boosted DC. Build-defining." }
+    - { slot: "Gloves", item: "Wondrous Gloves", where: "Last Light Inn — sold by Mattis (or pickpocket)", why: "+1 Bardic Inspiration / Flourish charge per short rest, +1 AC. Effectively a 5th Inspiration slot." }
+    - { slot: "Off-hand option", item: "Drakethroat Glaive", where: "Risen Road / Mountain Pass area; loot from a Knight of Drakethroat", why: "Adds +1d4 elemental + +1 attack/damage to ANY weapon (one-time cast). Use on Phalar Aluve to make it +1 longsword + Sing aura, or on your dagger off-hand to give it elemental damage." }
+    - { slot: "Armor", item: "Luminous Armour", where: "Grymforge prison cells — hidden chest behind rubble", why: "Medium armor. Radiant damage you deal applies Radiating Orb to nearby enemies (–1 to attack rolls, stacking)." }
+    - { slot: "Ring", item: "Risky Ring", where: "Moonrise Towers — Araj Oblodra", why: "Advantage on all attack rolls (and disadvantage on saving throws). Bardic Inspiration offsets the saves penalty in clutch moments." }
     - { slot: "Ranged weapon", item: "Ne'er Misser", where: "Zhentarim Hideout (Act 1) or Roah Moonglow (Moonrise)", why: "Hand crossbow, +1d8 force on hit, Magic Missile 1/short rest. Carry as a ranged option." }
+    - { slot: "Ring (situational)", item: "Coruscation Ring", where: "Moonrise Towers area", why: "Spells with saves apply Radiating Orb on hit. Strong only if you commit to a full radiant-stack theme (Luminous Armour + Holy Lance Helm + Callous Glow). Vengeance Bardadin gets some value, but Risky Ring is the better generic pick." }
+    - { slot: "Ring (situational)", item: "Callous Glow Ring", where: "Moonrise Towers area", why: "+2 radiant damage to illuminated targets. Same caveat as Coruscation: best inside a full radiant-orb stack." }
   act_3:
     - { slot: "Main hand", item: "Bloodthirst", where: "Bhaalist Temple, Murder Tribunal reward", why: "+3 dagger, +1 to ALL attacks while wielded, +1d4 piercing vs damaged targets." }
     - { slot: "Off-hand", item: "Rhapsody", where: "Cazador's vault after killing Cazador", why: "+1 dagger, stacking +1/+2/+3 attack/damage/spell-save-DC after kills." }
     - { slot: "Armor", item: "Bhaalist Armour", where: "Bhaalist Temple — Sarevok's room", why: "Aura of Murder — nearby enemies take piercing as if vulnerable. Doubles dagger damage in melee. Light armor (Bards qualify)." }
-    - { slot: "Helm", item: "Helmet of Arcane Acuity (kept) OR Birthright", where: "Birthright — pickpocket Lord Gortash before/during the coronation", why: "Acuity if you lean spells; Birthright (+2 CHA, caps 22) if you lean weapon." }
-    - { slot: "Gloves", item: "Helldusk Gloves", where: "House of Hope — Hope's chest after the Raphael fight", why: "+1 attack, Lightning Bolt 1/long rest, Fly. Best-in-slot." }
-    - { slot: "Amulet", item: "Amulet of Greater Health", where: "Devil's Fee in the Lower City — Helsik (~2400 gp)", why: "CON becomes 23. Frees your stat array AND gives +6 to Concentration saves. Mandatory for Hold Person." }
-    - { slot: "Ring", item: "Band of the Mystic Scoundrel", where: "Lower City — Sharess' Caress vendor / Stone Lord's guildhall in the sewers", why: "After a successful weapon attack, cast an Enchantment/Illusion as a BONUS ACTION. Hold Person → bonus action. The keystone of the build." }
-    - { slot: "Boots", item: "Disintegrating Night Walkers", where: "Mountain Pass / Gauntlet of Shar reward", why: "Misty Step 1/short rest, immunity to difficult terrain, never slip on ice." }
-    - { slot: "Cloak", item: "Cloak of Protection", where: "Sold by multiple Act 2/3 vendors (Last Light Inn / Sorcerous Sundries)", why: "+1 AC and saves. Always good." }
+    - { slot: "Helm", item: "Helmet of Arcane Acuity (kept) OR Birthright", where: "Birthright — pickpocket Lord Gortash before/during the coronation", why: "Acuity if you want guaranteed Hold Person lands; Birthright (+2 CHA, caps 22) if your CHA is already 18+ and you'd rather scale weapon damage." }
+    - { slot: "Gloves", item: "Helldusk Gloves", where: "House of Hope — Hope's chest after the Raphael fight", why: "+1 attack rolls, Lightning Bolt 1/long rest, Fly. Best-in-slot." }
+    - { slot: "Circlet", item: "Diadem of Arcane Synergy", where: "Ramazith's Tower (Sorcerous Sundries) — Lorroakan's chamber chest", why: "When you inflict ANY condition (Hold Person, Faerie Fire, Frighten, Daze, Reverberation) you gain +CHA mod to weapon damage for 2 turns. Stacks brutally with Hold Person → next swing has +4 / +5 damage on top of everything else. Alternative head slot if you want both Acuity AND a CHA-scaling damage rider." }
+    - { slot: "Amulet", item: "Amulet of Greater Health", where: "Devil's Fee in the Lower City — Helsik (~2400 gp)", why: "Sets CON to 23 (mod +6). Frees your stat array AND gives +6 to Concentration saves. Mandatory for keeping Hold Person up." }
+    - { slot: "Ring", item: "Band of the Mystic Scoundrel", where: "Lower City — Sharess' Caress vendor / Stone Lord's guildhall in the sewers", why: "After a successful weapon attack, cast an Enchantment OR Illusion spell as a BONUS ACTION. Hold Person → bonus action. The keystone of the build." }
+    - { slot: "Boots", item: "Disintegrating Night Walkers", where: "Gauntlet of Shar — defeat Yurgir or complete Shar's trials", why: "Misty Step 1/short rest, immunity to difficult terrain, never slip on ice." }
+    - { slot: "Cloak", item: "Cloak of Protection", where: "Sold by multiple Act 2/3 vendors (Last Light Inn / Sorcerous Sundries)", why: "+1 AC and +1 to all saves. Always good." }
+    - { slot: "Amulet (alternate)", item: "Spellcrux Amulet", where: "Iron Throne or Steel Watch Foundry chest (Lower City sea level)", why: "Once per long rest, regain a spell slot of any level. Effectively a free big Smite per day. Swap in instead of Greater Health if your Concentration is already solid (Aura of Protection at L12 covers it)." }
+    - { slot: "Cloak (alternate)", item: "Cloak of Displacement", where: "Sold by Dammon at the Last Light Inn", why: "Disadvantage on attack rolls against you while at full HP. Defensive alternative when you don't need the Cloak of Protection saves." }
   bis_at_12:
     main_hand: Bloodthirst
     off_hand: Rhapsody
@@ -310,6 +330,64 @@ gear:
     amulet: Amulet of Greater Health
     ring_1: Band of the Mystic Scoundrel
     ring_2: Risky Ring (or Callous Glow Ring for the radiant theme)
+
+alternative_splits:
+  intro: |
+    The Bardadin community is split on the right level distribution. Most published
+    guides recommend Bard 10 / Paladin 2 — this guide takes the Bard 6 / Paladin 6
+    minority view, deliberately. Here are the realistic alternatives so you can
+    decide whether to follow this guide or pivot.
+  options:
+    - name: Bard 6 / Paladin 6 (this guide)
+      gives:
+        - "Aura of Protection at Pal 6 — +CHA mod (+4 with 19 CHA, +5 with 20) to ALL party saves within 9m. The single biggest party-defense buff in the game."
+        - "Vengeance oath features at Pal 3-6: Vow of Enmity, Inquisitor's Might, Relentless Avenger (Pal 7 — not reached here)."
+        - "Stronger Concentration baseline thanks to Aura of Protection covering CON saves."
+      gives_up:
+        - "Magical Secrets at Bard 10 — no Banishing Smite, Counterspell, Spirit Guardians, or Conjure Elemental."
+        - "Bard L4 spells (Confusion, Greater Invisibility) and L5 spells (Hold Monster). Hold Person only works on humanoids."
+        - "1 fewer Bardic Inspiration use per short rest."
+      best_for: Party leaders, support-leaning players, parties without another Charisma face/saver.
+    - name: Bard 10 / Paladin 2
+      gives:
+        - "Magical Secrets at Bard 10 — pick Banishing Smite (5d10 force on next hit) and one of Counterspell / Spirit Guardians / Conjure Elemental."
+        - "Bard L5 spell slots — fuel bigger Smites and Hold Monster."
+        - "Higher single-target nova ceiling and more Bardic Inspiration uses."
+      gives_up:
+        - "Aura of Protection — your Concentration relies on Resilient (CON), War Caster, or the Amulet of Greater Health alone."
+        - "Pal 3+ oath features. You only have base Smite and 1 fighting style."
+      best_for: Solo-DPS-leaning players, optimization purists, Honor Mode runners.
+    - name: Paladin 7 / Bard 5
+      gives:
+        - "Aura of Protection (Pal 6) AND Pal 7 Oath features — Vengeance gets Relentless Avenger (free movement on attack of opportunity)."
+        - "Two extra attack opportunities at character L5 onward (Pal 5 Extra Attack)."
+      gives_up:
+        - "Bard 6 Counter Charm and the 4th Bardic Inspiration use."
+        - "Hypnotic Pattern at Bard 5 still works, but you reach it later."
+      best_for: Players who want a full paladin feel with bardic support on the side.
+    - name: Shadow Blade Bardadin (Bard 6 / Sorcerer 4 / Paladin 2)
+      gives:
+        - "Shadow Blade — a 4d8 psychic finesse weapon summoned via L5 sorcerer slot. Pairs with Resonance Stone (psychic doubler) for absurd damage."
+        - "Sorcerer L1 = CON saves proficiency for free. Solves Concentration problem without a feat."
+      gives_up:
+        - "Aura of Protection. Inquisitor's Might. Most party-support tools."
+        - "More complex multiclass juggle and respec timing."
+      best_for: Players who already finished one Bardadin run and want a higher-ceiling variant.
+
+race_choice:
+  locked_for_you: Wood Elf
+  why_its_fine: |
+    Wood Elf is competitive, not optimal. +2 DEX maps cleanly to dual-wield finesse,
+    Fleet of Foot adds 1.5m movement (great for melee positioning), Mask of the
+    Wild gives stealth advantage in natural terrain, and Darkvision saves a
+    cantrip slot. You give up Half-Orc Savage Attacks (extra crit die) but the
+    build's gear progression more than compensates.
+  community_meta_picks:
+    - { race: "Half-Orc", upside: "Savage Attacks adds an extra crit die — directly multiplies Hold Person and Reverberation crit-fishing damage." }
+    - { race: "Half-Elf (Wood or High)", upside: "Charisma-themed race with three skill picks. High Half-Elf gets Booming Blade as a free cantrip (extra ranged option)." }
+    - { race: "Seldarine Drow", upside: "Free Faerie Fire and Darkness 1/long rest each. Faerie Fire is your reliable advantage source pre-Hold-Person." }
+    - { race: "Zariel Tiefling", upside: "Free Searing Smite (L1 spell) and Branding Smite (L3 spell). Pure smite economy." }
+  takeaway: "If you're locked into Wood Elf you lose roughly one crit die's worth of damage on nova rounds. You make it back via Bhaalist Armour, Acuity, and the Hag's Hair / Mirror of Loss CHA stacking."
 
 playstyle:
   early:
@@ -381,11 +459,12 @@ abilities_situational:
   - name: Dissonant Whispers
     when: "Single dangerous caster — the WIS save fail eats their reaction (Counterspell, Shield, Reaction-AoO). Or to push a target through Spike Growth."
   - name: Vow of Enmity
-    when: "Round 1 of any boss fight. Lasts 10 turns — basically the whole fight."
-    notes: "Bonus-action advantage on attacks vs the target. The advantage is redundant once Hold Person lands (auto-crits already), so save Vow primarily for fights where Hold Person is illegal: undead, constructs, fiends, beasts."
+    when: "Round 1 of any boss fight where Hold Person is illegal (undead, constructs, fiends, beasts) — bonus-action advantage on all attacks vs the target for 10 turns."
+    notes: "Channel Oath, 1 charge per short rest. Shares the charge with Inquisitor's Might — pick one per fight. The advantage is redundant once Hold Person lands (Held = auto-crit already), so against humanoids, lead with Hold Person and save Vow for the next fight."
   - name: Inquisitor's Might
-    when: "Long, multi-turn fights (Steel Watch, Cazador, House of Hope). Bonus-action self-buff lasting 10 turns: +1d4 radiant on weapon attacks and a chance to Daze on hit."
-    notes: "Shares its Channel Oath charge with Vow of Enmity — pick one per fight. Don't burn it on 2-round trash fights."
+    when: "Long, multi-turn fights against Hold-Person-immune enemies (Steel Watchers, undead bosses). Bonus-action self-buff for 10 turns: +1d4 radiant on weapon attacks and a chance to Daze on hit."
+    not: "Concentration. Casting it BREAKS Hold Person, Faerie Fire, or any other concentration spell you already had up. Treat it as an alternative to Hold Person, never an addition."
+    notes: "Shares its Channel Oath charge with Vow of Enmity — 1 use per short rest, pick one. Don't burn it on 2-round trash fights."
   - name: Divine Smite
     when: "After a confirmed hit. Always on crits. Always on killing blows. Hold the slot if <2 left and the fight has multiple bosses remaining."
     notes: "BG3 lets you choose post-hit. Never pre-declare."
@@ -393,14 +472,17 @@ abilities_situational:
     when: "Out of combat or emergency in-combat heal. 5 HP/long rest pool — small but free of slots."
 
 mistakes_and_tips:
+  - "DO NOT start as Paladin if going for the 6/6 split. Bard's first level locks in Bard saving throw proficiencies (DEX + CHA) which Paladin doesn't grant. Paladin-first also delays Extra Attack to character level 7 instead of 5."
   - "DO NOT respec to Paladin too early. Stay pure Bard until 6. Going Paladin at 5 delays Extra Attack and L3 spells."
   - "DO NOT equip heavy armor — it disables Bard spellcasting. Stay in light or medium even after Paladin 1."
-  - "Two-Weapon Fighting style adds your ability mod to off-hand damage. Confirm you took it as your Bard 2 Fighting Style."
+  - "Inquisitor's Might IS Concentration. Casting it breaks Hold Person, Faerie Fire, or any other concentration you had up. Treat it as an alternative to Hold Person, never an addition."
+  - "The Friends cantrip turns the target hostile when it expires. Never use it on shopkeepers, in town, or before a dialogue you might need to revisit. Bonus dialogue advantage is not worth a free fight."
+  - "Two-Weapon Fighting style adds your ability mod to off-hand damage. Confirm you took it as your Bard 3 Fighting Style — at Bard 3 you choose Subclass + Style at the same level-up screen."
   - "Smite is decided AFTER the d20 rolls. Never pre-declare. Always smite on crits (dice double) and killing blows."
-  - "Hold Person doesn't work on undead, constructs, elementals, fiends, beasts. Most Act 2 (shadow undead) and Act 3 (Steel Watchers) bosses are immune. Use Faerie Fire + Vow of Enmity for those fights."
-  - "Concentration: Hold Person breaks if you take a hit and fail a CON save. Aura of Protection (L12) + Amulet of Greater Health (CON 23) makes this nearly impossible."
-  - "Pickpocket Lann Tarv early in Act 2 to get Helmet of Arcane Acuity, Coruscation Ring, Callous Glow Ring without paying. Quicksave first."
-  - "The Band of the Mystic Scoundrel only triggers if your weapon attack HITS. Open the round with a high-hit-chance attack (Vow of Enmity, Bless, or against a low-AC trash mob) before going for the boss spell."
+  - "Hold Person doesn't work on undead, constructs, elementals, fiends, beasts. Most Act 2 (shadow undead) and Act 3 (Steel Watchers, demons) bosses are immune. Use Faerie Fire + Vow of Enmity for those fights — and consider swapping in Inquisitor's Might (concentration alternative)."
+  - "Concentration: Hold Person breaks if you take a hit and fail a CON save (DC = half the damage taken, minimum 10). Aura of Protection (L12) + Amulet of Greater Health (CON 23) makes this nearly impossible."
+  - "Pickpocket Lann Tarv early in Act 2 to grab the Helmet of Arcane Acuity without paying. Quicksave first; if caught, reload."
+  - "The Band of the Mystic Scoundrel only triggers if your weapon attack HITS. Lead the round with a high-hit-chance attack (Vow of Enmity advantage, Bless, or against a low-AC mob) so you have a guaranteed trigger before going for the boss spell."
   - "Bard 6 = 4 Inspirations per short rest. Take 2 short rests between long rests. Don't hoard them across fights — use it or lose it on long rest."
   - "Vendor inventories restock on level up. After leveling in camp, revisit Lann Tarv, Dammon, A'jak'nir Jeera, and Roah for fresh stock."
   - "Wood Elf Fleet adds 1.5m movement. Use it for melee positioning instead of burning Misty Step."
