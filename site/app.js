@@ -243,7 +243,6 @@ function renderLevelView(data) {
 }
 
 function renderLevelPicker(levels, cur) {
-  // Group by class taken so we can split visually (e.g., Bard 1-6 | Paladin 1-6).
   const cells = levels.map(l => {
     const n = Number(l.level);
     const take = (l.take || '').trim();
@@ -252,6 +251,7 @@ function renderLevelPicker(levels, cur) {
                     data-go-level="${n}"
                     aria-current="${n === cur}"
                     title="Level ${n} — ${escapeHtml(take)}">
+              ${d20Svg()}
               <span class="lvl-num">${n}</span>
               <span class="lvl-take">${escapeHtml(short)}</span>
             </button>`;
@@ -262,6 +262,23 @@ function renderLevelPicker(levels, cur) {
       <div class="level-picker-hint">Pick a level — or use ← / → keys</div>
       <div class="level-grid">${cells}</div>
     </nav>
+  `;
+}
+
+// Stylized d20 "face" — outer hexagon + inner triangle + corner spokes.
+// Same SVG for every cell; the level number sits on top via positioned span.
+function d20Svg() {
+  return `
+    <svg class="d20" viewBox="0 0 100 100" aria-hidden="true">
+      <polygon class="d20-outer" points="50,8 88,28 88,72 50,92 12,72 12,28"/>
+      <polygon class="d20-inner" points="50,30 72,68 28,68"/>
+      <line class="d20-line" x1="50" y1="8" x2="50" y2="30"/>
+      <line class="d20-line" x1="88" y1="28" x2="72" y2="68"/>
+      <line class="d20-line" x1="12" y1="28" x2="28" y2="68"/>
+      <line class="d20-line" x1="50" y1="92" x2="50" y2="68"/>
+      <line class="d20-line" x1="88" y1="72" x2="72" y2="68"/>
+      <line class="d20-line" x1="12" y1="72" x2="28" y2="68"/>
+    </svg>
   `;
 }
 
