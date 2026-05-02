@@ -1,0 +1,10 @@
+{
+  "builds": [
+    {
+      "id": "wood-elf-bardadin",
+      "file": "wood-elf-bardadin.yaml",
+      "name": "Wood Elf Bardadin",
+      "tagline": "Swords Bard 6 / Vengeance Paladin 6"
+    }
+  ]
+}

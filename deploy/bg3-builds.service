@@ -1,0 +1,14 @@
+[Unit]
+Description=BG3 Builds — static guide site
+After=network.target
+
+[Service]
+Type=simple
+User=jbaker
+WorkingDirectory=/home/jbaker/bg3-builds-site
+ExecStart=/usr/bin/python3 -m http.server 8891 --bind 0.0.0.0 --directory /home/jbaker/bg3-builds-site
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
