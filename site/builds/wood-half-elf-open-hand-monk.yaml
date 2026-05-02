@@ -1,0 +1,560 @@
+meta:
+  id: wood-half-elf-open-hand-monk
+  name: Wood Half-Elf Open Hand Monk
+  tagline: Open Hand Monk 9 / Thief Rogue 3 — elixir-cycling Tavern Brawler
+  race: Wood Half-Elf
+  classes: [Monk, Rogue]
+  level_range: "1 → 12"
+  difficulty: Intermediate
+  final_split: Monk 9 (Open Hand) / Rogue 3 (Thief)
+  win_condition: >
+    Tavern Brawler doubles your STR modifier on every unarmed strike. Hill
+    Giant elixirs (STR 21) → Cloud Giant elixirs (STR 27 in Act 3) cycle daily
+    so your "real" STR is always 21+. Thief 3 grants a SECOND bonus action,
+    so each turn you take 2 main-hand attacks + Flurry of Blows (2 unarmed)
+    + a free Martial Arts unarmed via the second bonus action = 5 unarmed
+    strikes per turn. Each strike carries Tavern Brawler +STR mod twice +
+    Boots of Uninhibited Kushigo +WIS mod + Gloves of Soul Catching +1d10
+    force. One of those strikes is a Stunning Strike attempt — chain-stun a
+    boss for 3 turns while your party deletes them.
+
+overview: |
+  This is the strongest single-target martial in BG3 alongside the Throwzerker
+  Barbarian and the Gloomstalker Assassin. Open Hand Monk gives you a stun
+  engine (Stunning Strike at Monk 5) and the Patch 6+ rework toys: Manifestations
+  (radiant/cold/thunder unarmed riders), Wholeness of Body (self-heal), and Ki
+  Resonation: Punch → Blast (a 9m AoE finisher you set up over 2 turns).
+
+  The 3-level Thief Rogue dip is a pure action-economy upgrade. Fast Hands at
+  Rogue 3 grants a second bonus action every turn — on a Monk that becomes
+  another unarmed strike, another Flurry of Blows, or a Step of the Wind for
+  free mobility. Sneak Attack adds 2d6 once per turn when you have advantage
+  or an ally adjacent.
+
+  The build is elixir-cycling. Pick STR 8 base; chug a Hill Giant elixir
+  (STR 21) every long rest. Tavern Brawler adds your STR modifier TWICE to
+  every unarmed strike (once to the attack roll, once to damage). With STR 21
+  that's +5/+5 per swing. In Act 3 you upgrade to Cloud Giant elixirs (STR 27
+  → +8/+8). Pure DEX-based monks underperform this math because Tavern Brawler
+  only adds one ability mod when DEX is your attack stat.
+
+  Pure Monk 12 isn't recommended. The Thief 3 dip's bonus action is too
+  valuable to skip. Tabletop Builds' optimized Honor variant goes further
+  (Monk 6 / Rogue 4 / Cleric 1 / Fighter 1 for Bless + heavy armor + 4 feats),
+  but loses Stillness of Mind and Manifestations + delays Ki Resonation. The
+  Monk 9 / Thief 3 split is the sweet spot.
+
+character_creation:
+  note: |
+    Start as Monk at character creation. Take 5 Monk levels first (for Extra
+    Attack and Stunning Strike), then dip 3 Rogue (Thief), then return to
+    Monk 6-9. See "Leveling" for the exact order.
+  class: Monk
+  background_suggested: Urchin (Sleight of Hand + Stealth) or Outlander (Athletics + Survival)
+  cantrips_at_l1:
+    note: "Monks do not get cantrips natively."
+  spells_known_at_l1:
+    note: "Monks do not learn spells until subclass features."
+  ability_scores:
+    note: "Buy these point-buy values. Half-Elf adds +2 to one stat and +1 to another (Customizable Origin) — put the +2 on WIS and the +1 on DEX."
+    str: 8
+    dex: 15
+    con: 15
+    int: 8
+    wis: 15
+    cha: 8
+  final_starting:
+    str: 8
+    dex: 16
+    con: 15
+    int: 8
+    wis: 17
+    cha: 8
+
+skills:
+  summary: |
+    Skill picks are mostly set at character creation. Monk grants 2 class
+    skill proficiencies (from Acrobatics, Athletics, History, Insight,
+    Religion, Stealth). Half-Elf adds 2 more skill proficiencies of your
+    choice. Background adds 2. At Rogue 1 you gain 4 Rogue skill picks AND
+    Expertise (2 skills doubled) — a big skill spike.
+  at_creation:
+    from_race:
+      pick: [Stealth, Perception]
+      note: |
+        Half-Elf grants 2 skill proficiencies of your choice. Stealth (DEX) is
+        non-negotiable — Pass Without Trace + ambush opens are core to the
+        build. Perception (WIS) finds traps and hidden things.
+    from_background:
+      pick: [Sleight of Hand, Stealth]
+      background: Urchin
+      note: |
+        Urchin grants Sleight of Hand and Stealth. Stealth doubles up with the
+        race pick — but proficiency doesn't stack, so think of this as
+        "freeing" the race slot for a different pick (move Perception up). If
+        Urchin gives you Stealth, the race pick becomes Perception + Insight
+        (the third skill) — coordinate before locking in.
+    from_class:
+      pick: [Acrobatics, Insight]
+      note: |
+        Monk picks 2 from a fixed list (Acrobatics, Athletics, History, Insight,
+        Religion, Stealth). Acrobatics (DEX) for jumping/climbing/balance;
+        Insight (WIS) for reading NPCs.
+  at_level_3_expertise:
+    pick: [Stealth, Sleight of Hand]
+    note: |
+      At Rogue 1 (character L6 in this build) you choose 2 skills to gain
+      Expertise — your proficiency bonus is doubled on those skills. Pick
+      Stealth (your bread-and-butter approach) and Sleight of Hand (lockpicks,
+      pickpocketing, item-tricks).
+  later_levels: |
+    Bonus skill proficiencies at Rogue 1 (4 from the Rogue list — Acrobatics,
+    Athletics, Deception, Insight, Intimidation, Investigation, Perception,
+    Performance, Persuasion, Sleight of Hand, Stealth). Pick 4 you don't
+    already have. Final list at L12:
+      • Race (Half-Elf): Stealth (or Perception), Perception (or Insight)
+      • Background (Urchin): Sleight of Hand, Stealth
+      • Class (Monk 1): Acrobatics, Insight
+      • Class (Rogue 1): 4 more Rogue skills (Investigation, Perception,
+        Persuasion, Deception are typical picks)
+      • Expertise (Rogue 1): Stealth, Sleight of Hand (doubled)
+
+stats_progression:
+  priorities: [WIS, DEX, CON]
+  note: |
+    STR is intentionally dumped to 8 — you override your STR with Hill Giant /
+    Cloud Giant elixirs every long rest. Keep one elixir on you at all times.
+    Pure DEX-based monks underperform because Tavern Brawler doubles only the
+    STR modifier on unarmed strikes; a DEX-attack unarmed gets only one mod
+    bonus. Elixir cycling is the meta math.
+  asi_plan:
+    - level: 4
+      pick: "Tavern Brawler"
+      reason: |
+        The build's defining feat. Adds your STR modifier TWICE to unarmed
+        strike and improvised/thrown weapon attack rolls AND damage. With
+        Hill Giant elixir (STR 21, mod +5) every swing gets +5/+5 = +10
+        per attack. With Cloud Giant elixirs in Act 3 (STR 27, mod +8) it's
+        +8/+8 = +16 per attack. Multiplied across 5 strikes per turn = absurd.
+    - level: 8
+      pick: "Resilient (Wisdom)"
+      reason: |
+        Half-feat: +1 WIS (17 → 18) AND Wisdom save proficiency. WIS scales
+        Stunning Strike DC, Unarmored Defense AC, Boots of Uninhibited Kushigo
+        damage rider, and now WIS save prof shrugs Hold Person / Dominate /
+        most enchantment / illusion saves. The build's defensive cornerstone.
+  alternates:
+    - feat: "Alert (at L8 instead of Resilient)"
+      when: "If you'd rather act first every turn than have WIS saves."
+      tradeoff: "+5 initiative, no surprise. Loses WIS save prof — but Stillness of Mind at Monk 7 ends Charmed/Frightened on you anyway."
+    - feat: "ASI +2 DEX"
+      when: "If you don't trust elixir-cycling and want to lean DEX-attacks instead."
+      tradeoff: "Slightly worse damage math (only one Tavern Brawler bonus on DEX-attacks) but never need to manage elixir inventory. Final DEX: 18 → 20 with permanent boosts."
+    - feat: "Mobile"
+      when: "Replace Resilient if your party already has WIS-save coverage from a paladin's aura."
+      tradeoff: "+3m movement, ignore difficult terrain, no opportunity attacks from anyone you've hit this turn. Niche but strong on a kiting Monk."
+  permanent_boosts:
+    note: |
+      Spend Hag's Hair on WIS (18 → 19). Mirror of Loss on WIS bypasses the
+      cap (19 → 21). Higher WIS = higher Stunning Strike DC, more Kushigo
+      damage, better AC. STR is irrelevant since you elixir-cycle.
+    items:
+      - { name: "Hag's Hair", grants: "+1 to one ability score (permanent)", where: "Auntie Ethel — Sunlit Wetlands (Act 1).", recommend: "Spend on WIS — pushes 18 → 19." }
+      - { name: "Mirror of Loss (boon)", grants: "+2 to one ability score, bypasses the 20 cap; -1 to all others until you Restore", where: "Gauntlet of Shar (Act 2). Pass the WIS check to gain the boon.", recommend: "Spend on WIS — pushes 19 → 21." }
+  cap_at_12:
+    str: "8 (overridden by Hill/Cloud Giant elixir to 21/27)"
+    dex: 16
+    con: 17
+    int: 8
+    wis: 21
+    cha: 8
+    note: "Final cap assumes Hag's Hair (+1 WIS) + Mirror of Loss (+2 WIS) on Wisdom; Resilient (WIS) at L8 bumps WIS by 1; Gloves of Soul Catching push CON to 17 (cap 20). Elixir-cycle STR every long rest."
+
+leveling:
+  - level: 1
+    take: Monk 1
+    pick:
+      - "Skill proficiencies (2) — Acrobatics, Insight"
+      - "Martial Arts — unarmed strikes use DEX (or STR if higher), 1d4 base damage, count as proficient. Bonus-action unarmed strike after taking the Attack action."
+      - "Unarmored Defense — AC = 10 + DEX mod + WIS mod (no armor or shield)."
+    notes: |
+      No subclass yet. Punch things. Martial Arts gives you a bonus-action
+      unarmed strike after every Attack action — that's free damage on top of
+      your weapon swings. AC at L1: 10 + 3 (DEX 16) + 3 (WIS 17) = 16, no armor.
+  - level: 2
+    take: Monk 2
+    pick:
+      - "Ki points = 2 (refresh on short rest)."
+      - "Flurry of Blows — bonus action, 1 Ki, 2 unarmed strikes after the Attack action. Replaces the free Martial Arts unarmed."
+      - "Patient Defense — bonus action, 1 Ki, take Dodge action (advantage on DEX saves, attacks against you have disadvantage)."
+      - "Step of the Wind — bonus action, 1 Ki, take Disengage AND Dash."
+      - "Unarmored Movement — +3m base movement (Wood Elf / Half-Elf adds +1.5m, total +4.5m at L2)."
+    notes: |
+      Ki is the build's resource. 2 short rests per long rest, so plan for
+      ~3 Ki per fight cycle. Flurry of Blows is the default Ki spend; save
+      Patient Defense and Step of the Wind for emergencies.
+  - level: 3
+    take: Monk 3
+    pick:
+      - "Subclass — Way of the Open Hand"
+      - "Open Hand Technique — Flurry of Blows now applies one of: Topple (target falls Prone on STR save fail), Stagger (no reactions on CON save fail), or Push (5ft push on STR save fail)."
+      - "Deflect Missiles — reaction; reduce ranged-attack damage by 1d10 + DEX + Monk level. Can catch and throw back."
+    notes: |
+      Open Hand Technique is the reason you picked the subclass. Topple makes
+      every Flurry a soft stun — Prone enemies have disadvantage on attacks
+      AND your party gets advantage to attack them. Use Topple unless you
+      need Stagger (vs reaction-heavy enemies) or Push (off-cliff plays).
+  - level: 4
+    take: Monk 4
+    pick:
+      - "Feat / ASI — Tavern Brawler"
+      - "Slow Fall — reaction; reduce fall damage by 5 × Monk level."
+    notes: |
+      Tavern Brawler is the build's foundation. Adds STR mod TWICE to unarmed
+      attack rolls AND damage. With Hill Giant elixir (STR 21) you swing at
+      +5/+5 per strike — ~+10 damage per swing on top of base.
+  - level: 5
+    take: Monk 5
+    pick:
+      - "Extra Attack — 2 attacks per Action."
+      - "Stunning Strike — bonus rider on a melee attack; on hit, target makes a CON save (DC 8 + WIS mod + prof) or is Stunned for 1 turn. Costs 1 Ki per attempt — you can apply it to ANY of your attacks."
+      - "Martial Arts dice scale to 1d6."
+    notes: |
+      Big power spike. Stunning Strike is the build's win condition against
+      humanoid bosses — Stun = automatic crits for melee allies AND no actions
+      next turn. Use it on the first hit each turn; if it lands, all your
+      remaining attacks crit on a Stunned target.
+  - level: 6
+    take: Rogue 1
+    pick:
+      - "Sneak Attack — once per turn, deal +1d6 damage when you have advantage OR an ally is within 1.5m of the target."
+      - "Skill proficiencies (4) from the Rogue list — pick Investigation, Perception, Persuasion, Deception (or whatever you don't already have)."
+      - "Expertise — pick 2 skills to gain doubled proficiency. Stealth + Sleight of Hand."
+      - "Thieves' Cant — secret rogue language."
+    notes: |
+      First Rogue level. Sneak Attack adds 1d6 to ONE attack per turn (not per
+      attack — once per turn total). Trigger via advantage (Stunned target,
+      Prone target, hidden, etc) or by having a melee ally adjacent to the
+      target. Expertise on Stealth doubles your stealth-approach value.
+  - level: 7
+    take: Rogue 2
+    pick:
+      - "Cunning Action — Hide, Disengage, or Dash as a bonus action."
+    notes: |
+      Adds another bonus-action option to your already-busy bonus action list.
+      Hide as bonus action is the big one — break line of sight, hide, attack
+      with advantage next turn.
+  - level: 8
+    take: Rogue 3
+    pick:
+      - "Subclass — Thief"
+      - "Fast Hands — gain a SECOND bonus action each turn. Can be used for any bonus action: Flurry of Blows, Step of the Wind, Hide, Cunning Action options, item interactions."
+      - "Second-Story Work — climb at full speed, jump farther."
+      - "Sneak Attack scales to 2d6."
+    notes: |
+      The build's identity emerges. With 2 bonus actions per turn, you can do
+      Action (2 attacks) + Bonus 1 (Flurry of Blows = 2 strikes) + Bonus 2
+      (Martial Arts free unarmed = 1 strike) = 5 unarmed strikes per turn for
+      1 Ki. Or burn 2 Ki for 2 Flurries = 6 strikes per turn (one of which
+      can be Stunning Strike). Action economy is now elite.
+  - level: 9
+    take: Monk 6
+    pick:
+      - "Subclass features (Open Hand, Patch 6+):"
+      - "Manifestation of Body — toggle; unarmed strikes deal an additional 1d4 fire damage. Costs 1 Ki to toggle on (lasts until short/long rest)."
+      - "Manifestation of Mind — toggle; unarmed strikes deal an additional 1d4 psychic damage."
+      - "Manifestation of Soul — toggle; unarmed strikes deal an additional 1d4 thunder damage."
+      - "Wholeness of Body — action, 2 Ki, heal 3d8 + WIS mod HP. 1 use per long rest."
+      - "Ki Resonation: Punch — unarmed-attack rider; place a resonance mark on the target for 5 turns."
+      - "Ki-Empowered Strikes — unarmed strikes count as magical (bypass non-magical resistance)."
+    notes: |
+      Toggle ONE Manifestation per fight (typically Mind for psychic — paired
+      with Resonance Stone in Act 2 it doubles). The Ki Resonation: Punch is
+      the setup for the big AoE detonation at Monk 11 (Ki Resonation: Blast).
+  - level: 10
+    take: Monk 7
+    pick:
+      - "Evasion — when you make a DEX save vs an effect that does half damage on success, you take ZERO damage on success and HALF damage on failure."
+      - "Stillness of Mind — action; end one Charmed or Frightened condition on yourself."
+    notes: |
+      Evasion is one of the best defensive features in the game — you halve
+      Fireball / Lightning Bolt / Cone of Cold damage on failed saves and take
+      ZERO on success. Combined with high DEX and Resilient (WIS) you ignore
+      most AoE.
+  - level: 11
+    take: Monk 8
+    pick:
+      - "Feat / ASI — Resilient (Wisdom): +1 WIS (17 → 18) AND WIS save proficiency."
+    notes: |
+      Resilient (WIS) is mandatory. WIS saves = Hold Person, Dominate Person,
+      Banishment, most enchantment / illusion saves. Without WIS save prof,
+      a single failed save bricks your fight. With it (and your high WIS mod),
+      you almost always pass.
+  - level: 12
+    take: Monk 9
+    pick:
+      - "Unarmored Movement Improvement — walk on walls and across liquid surfaces (BG3 implementation: spider-climb-like effect on slopes and water/lava)."
+      - "Martial Arts dice scale to 1d8."
+      - "Ki Resonation: Blast (in BG3 this unlocks at Open Hand Monk 6, but the AoE damage scales with character level)."
+    notes: |
+      Build complete. Unarmored Movement now lets you ignore vertical and
+      water hazards entirely. Martial Arts dice at 1d8 means each unarmed
+      strike does 1d8 + STR/DEX mod base, before Tavern Brawler / Kushigo /
+      Soul Catching ride along.
+
+spells:
+  cantrips:
+    note: "Monks do not get cantrips."
+  level_1:
+    note: "Monks do not get spells. Their resource is Ki points."
+  must_pick_now:
+    - at_level: 4
+      spell: "Tavern Brawler feat"
+      why: "The single most important pick in the build. Without it you're a worse Monk."
+    - at_level: 5
+      spell: "Stunning Strike unlocks (no choice — automatic)"
+      why: "Note that the DC scales with WIS — keep WIS as your 2nd-priority stat."
+    - at_level: 8
+      spell: "Resilient (Wisdom) feat"
+      why: "WIS save proficiency saves you from Hold Person / Dominate / Banishment fails."
+
+gear:
+  notes: >
+    NEVER wear armor. Monk's Unarmored Defense, Unarmored Movement, and Martial
+    Arts dice all require not wearing armor and not wielding a shield. Stick
+    to clothing/robes (The Graceful Cloth, Vest of Soul Rejuvenation). Carry
+    Hill Giant Strength elixirs (Act 1-2) and Cloud Giant Strength elixirs
+    (Act 3) — drink one every long rest.
+  act_1:
+    - { slot: "Armor (clothing)", item: "The Graceful Cloth", where: "Rosymorn Monastery Trail — sold by Lady Esther near the Trielta Crags waypoint", why: "Cat's Grace: +2 DEX (max 20), advantage on DEX checks, half falling damage. Nimble As a Cat: +1 DEX saves, +1.5m jump. AC 10 + DEX. The Monk's Act 1 BiS chest piece — pushes DEX to 18 instantly (or 20 with race / Hag's Hair / Mirror of Loss math)." }
+    - { slot: "Gloves", item: "Bracers of Defence", where: "Blighted Village — gilded chest in the secret cellar area of the Apothecary", why: "+2 AC while unarmored AND no shield. Stacks with Unarmored Defense for absurd AC. The Monk's Act 1-3 BiS gloves until Gloves of Soul Catching." }
+    - { slot: "Amulet", item: "Sentient Amulet (Very Rare)", where: "Open Hand Temple Cellar — reward for completing the 'Help the Cursed Monk' quest", why: "Casts Shatter (4d8 thunder, L3 slot, 1/long rest) AND Ki Restoration: restores Ki points equal to your Martial Arts die (1/long rest). One extra Ki is one extra Flurry — solid utility." }
+    - { slot: "Amulet (alt)", item: "Amulet of Misty Step", where: "Crèche Y'llek — sold by A'jak'nir Jeera", why: "Free Misty Step 1/short rest. Bonus-action 18m teleport with no AOO. Pairs with Step of the Wind for double mobility." }
+    - { slot: "Boots", item: "Disintegrating Night Walkers", where: "Grymforge — looted from Nere's body after the Duergar fight (Act 1 endgame)", why: "Misty Step 1/short rest, immunity to Web/Ensnared. Wear from the moment you find them through the rest of the run." }
+    - { slot: "Ring", item: "Caustic Band", where: "Underdark — sold by Derryth Bonecloak at the Myconid Colony", why: "+2 acid damage on every weapon hit. With 5 unarmed strikes per turn that's +10 acid damage per turn passive. Strong early." }
+    - { slot: "Boots (alt)", item: "Boots of Stormy Clamour", where: "Underdark — sold by Omeluum at the Myconid Colony, after completing 'Help Omeluum Investigate the Parasite'", why: "Inflicting any condition stacks 2 Reverberation. Open Hand Technique applies Topple/Stagger/Push on every Flurry — each proc stacks Reverb. Five stacks = target falls Prone + 1d4 thunder damage." }
+  act_2:
+    - { slot: "Helm", item: "Hat of Uninhibited Kushigo", where: "Last Light Inn — sold by Quartermaster Talli near the waypoint", why: "After dealing damage with an unarmed attack, gain +1 spell save DC until end of turn. Marginal for a pure Monk (your save DCs are fine), but situationally useful when you Stunning Strike a target with a fresh Acuity / Diadem stack going." }
+    - { slot: "Amulet", item: "Amulet of the Harpers", where: "Last Light Inn — sold by Quartermaster Talli near the waypoint", why: "Advantage on Wisdom saving throws AND Shield (reaction +5 AC) 1/long rest. Both are massive defensive layers for a Monk who fronts melee fights." }
+    - { slot: "Ring", item: "Risky Ring", where: "Moonrise Towers — sold by Araj Oblodra (relocates to Crimson Draughts in the Lower City for Act 3 if missed)", why: "Advantage on all attack rolls (and disadvantage on saving throws). With Resilient (WIS) and Amulet of the Harpers covering your saves, the disadvantage is mitigated. Advantage on every unarmed strike = guaranteed Sneak Attack trigger AND massively higher hit rate." }
+    - { slot: "Ring", item: "Killer's Sweetheart", where: "Gauntlet of Shar — on the ground where the shadow copy is defeated next to the Brazier in the Self-Same Trial", why: "Executioner: when you kill a creature, your NEXT attack roll is a guaranteed Critical Hit. Refreshes per long rest. Kill a goblin → next swing crits → Stunning Strike that crit at boosted DC for guaranteed Stun. Outrageous on a 5-strikes-per-turn Monk." }
+    - { slot: "Off-hand carry", item: "Resonance Stone", where: "Mind Flayer Colony — small area south-west of the Necrotic Laboratory near the Mind-Archive Interface", why: "All creatures within 9m gain Steeped in Bliss: vulnerability to PSYCHIC damage. Toggle Manifestation of Mind (+1d4 psychic per unarmed strike) to double its damage. With 5 strikes per turn that's +10 psychic per turn from the rider alone — pre-multiply." }
+    - { slot: "Amulet (alt)", item: "Fey Semblance Amulet", where: "Old Garlow's Place — reward from Mayrina for completing 'Avenge the Hag Survivors'", why: "Advantage on Intelligence, Wisdom, AND Charisma saving throws. The save-bypassing amulet — strictly better than Amulet of the Harpers if you can pass on the Shield reaction. Mid-Act 2 acquisition." }
+  act_3:
+    - { slot: "Gloves", item: "Gloves of Soul Catching", where: "House of Hope — given by Hope as a reward for completing 'Save Hope' (free Hope from Raphael's prison)", why: "+2 CON to a max of 20. Soul Fist: unarmed attacks deal an additional +1d10 force damage (per strike). Soul Catching: once per turn, on an unarmed hit, regain 10 HP OR forego the heal for +5 to your next attack roll or saving throw. Build-defining — replaces Bracers of Defence in Act 3." }
+    - { slot: "Boots", item: "Boots of Uninhibited Kushigo", where: "Astral Plane — looted from Prelate Lir'i'c upon entering Act 3 (the Astral Prism scene)", why: "Unarmed strikes deal additional damage equal to your WIS modifier (+5 with WIS 20, +6 with 21). Per strike, before Tavern Brawler. With 5 strikes per turn that's +25-30 raw damage per turn from this item alone." }
+    - { slot: "Armor (clothing)", item: "Vest of Soul Rejuvenation", where: "Sorcerous Sundries — sold by Lorroakan's projection or Rolan (depending on who's running the shop)", why: "+2 AC. Defier's Rejuvenation: when you succeed on a save vs a spell, regain 1d4 HP. Greater Kushigo Counter: reaction unarmed strike against any attacker who MISSES you. The Open Hand Monk's canonical endgame chest — replaces The Graceful Cloth." }
+    - { slot: "Cloak", item: "Cloak of Displacement", where: "Wyrm's Crossing — sold by Entharl Danthelon at Danthelon's Dancing Axe", why: "Attack rolls against you have disadvantage while at full HP. With your high AC + Risky Ring's advantage on attacks, you take few hits — staying at full HP is realistic. Cancels Risky Ring's disadvantage-on-saves with Amulet of the Harpers / Fey Semblance / Resilient (WIS) layers." }
+    - { slot: "Amulet (alt)", item: "Amulet of Greater Health", where: "House of Hope — left-most pedestal in the Archive room", why: "Sets CON to 23 (mod +6). Frees your Resilient slot if you'd rather take Alert at L8. Wear if you keep losing Concentration on... wait, Monks don't have Concentration spells. Wear for the +6 HP per level (Monk d8 hit dice + CON 23 = ~96 HP, vs ~78 HP without)." }
+    - { slot: "Cloak (alt)", item: "Cloak of Protection", where: "Last Light Inn — sold by Quartermaster Talli (carry from Act 2)", why: "+1 AC and +1 to all saves. Generic alternate to Cloak of Displacement when you're in protracted fights and not at full HP." }
+    - { slot: "Ring (alt)", item: "Spurred Band", where: "Sorcerous Sundries — Rolan's stock", why: "+2 to attack rolls against creatures that haven't taken a turn yet. Pairs with Alert feat / high initiative — first round of every fight you crit-fish at +2." }
+  bis_at_12:
+    main_hand: "(none — unarmed strikes)"
+    off_hand: "(none — Monks don't dual-wield weapons; even unarmed strikes count as 'monk weapons' for the bonus action)"
+    armor: Vest of Soul Rejuvenation
+    helm: "(none — pure Monk doesn't have a strong head slot; Hat of Uninhibited Kushigo is marginal, leave empty or wear Diadem of Arcane Synergy if your party has a caster who triggers conditions)"
+    gloves: Gloves of Soul Catching
+    boots: Boots of Uninhibited Kushigo
+    cloak: Cloak of Displacement
+    amulet: Amulet of the Harpers (or Fey Semblance Amulet for the triple-save advantage)
+    ring_1: Risky Ring
+    ring_2: Killer's Sweetheart
+    note: |
+      Drink a Cloud Giant Strength elixir at the start of every long rest in
+      Act 3. Each elixir lasts until your NEXT long rest. Stockpile from
+      Sorcerous Sundries (Tolna Tome-Monger / Rolan / Lorroakan).
+
+alternative_splits:
+  intro: |
+    The community is divided on Monk splits. Pure Monk 12 keeps Stillness of
+    Mind, Diamond Soul, and Empty Body but loses the Thief bonus action.
+    Multiclass variants chase even more action economy at the cost of Monk
+    capstones.
+  options:
+    - name: Open Hand Monk 9 / Thief Rogue 3 (this guide)
+      gives:
+        - "Two bonus actions per turn (Fast Hands at Thief 3) — 5+ unarmed strikes per turn."
+        - "Sneak Attack +2d6 once per turn when you have advantage."
+        - "Cunning Action (Hide / Disengage / Dash as bonus action)."
+        - "Manifestations + Wholeness of Body + Ki Resonation: Punch + Ki-Empowered Strikes (Open Hand at Monk 6)."
+        - "Stillness of Mind at Monk 7 (end Charmed/Frightened on self)."
+        - "Two ASIs (Tavern Brawler at L4, Resilient WIS at L8)."
+      gives_up:
+        - "Monk 10 (Diamond Soul — proficient in ALL saves, can spend Ki to reroll a save)."
+        - "Monk 11 (Open Hand: Quivering Palm — long-rest 1d10 force AOE)."
+        - "Monk 12 (3rd ASI / 4 Ki / Martial Arts d10)."
+      best_for: Most players. The action-economy upgrade from Thief 3 outweighs the Monk capstones at the L12 cap.
+    - name: Open Hand Monk 12 (pure)
+      gives:
+        - "Diamond Soul at Monk 14 (NOT reachable at L12 cap — disregard if seen mentioned)."
+        - "Wait — at character L12 = Monk 12, you stop one level short of every Monk capstone. The features you DO get past Monk 9: Improved Unarmored Movement at Monk 9 (already in the multiclass build), Empty Body / Quivering Palm at Monk 17/18 (NOT reachable)."
+        - "3rd ASI at Monk 12 (Alert is the natural pick)."
+        - "More Ki points (12 vs 9)."
+      gives_up:
+        - "Sneak Attack +2d6 / turn."
+        - "Fast Hands second bonus action."
+        - "Cunning Action."
+      best_for: Players who want pure single-class progression. Genuinely weaker than the multiclass.
+    - name: Open Hand Monk 6 / Rogue 4 (Thief) / Cleric 1 (Light) / Fighter 1 (Tabletop Builds Honor variant)
+      gives:
+        - "FOUR feats (Monk 4, Rogue 4, plus respec gymnastics)."
+        - "Heavy armor proficiency from Fighter 1 (note: this defeats the build's Unarmored Defense — use only if you've found gear that compensates)."
+        - "Bless / Shield of Faith / Sacred Flame from Cleric 1."
+        - "Light Domain Warding Flare reaction (impose disadvantage on an attack against you)."
+        - "CON save proficiency from Fighter 1."
+      gives_up:
+        - "Stillness of Mind, Manifestations, Wholeness of Body, Ki-Empowered Strikes, Ki Resonation (all Monk 6+ features)."
+        - "Ki Resonation: Blast (Monk 11 — but you're at Monk 6)."
+      best_for: Hardcore optimizers. Mathematically the strongest Honor Mode variant per Tabletop Builds, but loses the iconic Open Hand toolkit.
+    - name: Way of Shadow Monk 12 (alternate subclass, pure)
+      gives:
+        - "Shadow Step (Monk 6) — bonus-action 18m teleport in dim light or darkness, with advantage on next attack."
+        - "Pass Without Trace (Monk 3) — +10 to Stealth for the party. Ridiculous for ambush opens."
+        - "Cloak of Shadows (Monk 11) — turn invisible for 1 minute as a bonus action."
+        - "Strong narrative / stealth play."
+      gives_up:
+        - "Open Hand Technique (Topple/Stagger/Push)."
+        - "Ki Resonation: Blast (the Monk's only AoE)."
+        - "Manifestations."
+      best_for: Stealth-flavored playthroughs and Dark Urge runs.
+
+race_choice:
+  locked_for_you: Wood Half-Elf (chosen for this guide; meta-optimal for Monks)
+  why_its_fine: |
+    Wood Half-Elf is the consensus best Monk race. Half-Elf base gives +2 to
+    one stat + +1 to two others (Customizable Origin) — put +2 on WIS, +1 on
+    DEX, +1 on CON. Wood Elf flavor adds +1.5m base movement (10.5m total at
+    L1, vs 9m for most races; combined with Monk's Unarmored Movement +3m at
+    L2 you reach 13.5m by character L2, scaling further). Stealth proficiency
+    is a free skill that pairs with Pass Without Trace party stacking. Fey
+    Ancestry grants advantage on saves vs Charm. Darkvision for free.
+  community_meta_picks:
+    - { race: "Wood Half-Elf", upside: "+2/+1/+1 stat distribution, +1.5m movement, Stealth proficiency, Fey Ancestry, Darkvision. Best overall." }
+    - { race: "Wood Elf", upside: "Same +1.5m movement and Stealth, but no extra skill picks. +2 DEX / +1 WIS via Customizable Origin. Strict optimization runs lean Half-Elf for the extra skills." }
+    - { race: "Githyanki", upside: "+2 INT / +1 floating native, but Customizable Origin lets you put it on any stat. Free Misty Step at character L5 (no Ki cost), Astral Knowledge skill toggle, medium armor proficiency (irrelevant for Monk)." }
+    - { race: "Lightfoot Halfling", upside: "Halfling Luck (reroll natural 1s on attack rolls and saving throws). Pairs especially well with Tavern Brawler — never miss a TB-toggled attack to a 1." }
+    - { race: "Duergar Dwarf", upside: "Innate Enlarge (1/long rest) AND Invisibility (1/long rest). Enlarge adds a damage die per attack and increases reach — synergizes with Tavern Brawler's STR scaling." }
+    - { race: "Half-Orc", upside: "Savage Attacks (extra crit die on melee weapon crits — INCLUDES unarmed). Triples your crit damage on a Killer's Sweetheart proc." }
+  takeaway: "Wood Half-Elf is the optimization pick. Wood Elf is the flavor alternative. If you're locked into Lightfoot Halfling or Half-Orc, the build still works fine — adjust feat order to compensate (Tavern Brawler is non-negotiable; Resilient WIS is the only swap candidate)."
+
+playstyle:
+  early:
+    levels: "1 – 5 (Monk 1-5 — pure Monk, before Rogue dip)"
+    summary: |
+      Stand in melee. Punch things. Bonus-action unarmed strike after every
+      Attack action via Martial Arts. Ki points are precious until L5; spend
+      them on Flurry of Blows when 2 enemies are clumped, Patient Defense
+      when surrounded. At L4 toggle Tavern Brawler — your STR jumps to 21
+      via Hill Giant elixir and your damage doubles overnight.
+    standard_turn: |
+      Action — 1 attack at L3, 2 attacks at L5+ (Extra Attack). Bonus action —
+      Martial Arts free unarmed strike OR Flurry of Blows (1 Ki, 2 strikes
+      with Open Hand Technique to apply Topple). Reaction — Deflect Missiles
+      on incoming ranged attacks.
+    nova_turn: |
+      Round 1 — drink a Hill Giant elixir (out of combat, free). Action: 2
+      attacks. Bonus: Flurry with Topple (target now Prone). Round 2 — Action:
+      2 attacks at advantage on the Prone target (auto-crit if Stunning Strike
+      lands too). Bonus: Flurry of Blows again for 4 hits on the boss.
+  mid:
+    levels: "6 – 9 (Rogue 1-3, Monk 6 — Thief dip + Manifestations)"
+    summary: |
+      Big spike at character L8 (Rogue 3 = Thief subclass = Fast Hands second
+      bonus action). At Monk 6 (character L9) Manifestations come online —
+      toggle Manifestation of Mind for +1d4 psychic per strike. With Resonance
+      Stone (Act 2) that doubles. Sneak Attack +1d6/turn from Rogue 1.
+    standard_turn: |
+      Action — 2 attacks (apply Stunning Strike on the first hit). Bonus 1 —
+      Flurry of Blows (Topple). Bonus 2 — Martial Arts free unarmed strike OR
+      Cunning Action: Hide for next-turn advantage. Reaction — Deflect
+      Missiles. With 5 strikes per turn at +2-+5 each (TB +5/+5, Manifestation
+      +1d4, Sneak Attack on the first hit), you push 60-90 damage per turn.
+    nova_turn: |
+      Pre-fight — Hill Giant elixir, toggle Manifestation of Mind, position
+      near Resonance Stone for psychic vulnerability aura. Round 1 — Action:
+      Stunning Strike on boss + 2nd attack at advantage if Stun lands.
+      Bonus 1 — Flurry of Blows on boss. Bonus 2 — Step of the Wind to chase
+      a fleeing target OR another Flurry. Drop ~120-150 damage on the boss
+      in one turn if Stun procs.
+  late:
+    levels: "10 – 12 (Monk 7-9 — Evasion + Stillness of Mind + endgame gear)"
+    summary: |
+      Endgame. Cloud Giant elixirs (STR 27 = +8 mod = +16 from Tavern Brawler
+      per strike). Gloves of Soul Catching (+1d10 force per strike + on-hit
+      heal). Boots of Uninhibited Kushigo (+WIS mod per strike = +5-+6 per
+      strike). Killer's Sweetheart guarantees a crit per long rest. Risky
+      Ring grants advantage on every attack. With 5 strikes per turn at this
+      power level, you out-damage every other martial in the party.
+    standard_turn: |
+      Action — 2 attacks (Stunning Strike on the first; the rest crit-fish
+      with Risky Ring advantage). Bonus 1 — Flurry of Blows (Topple — adds
+      Reverberation via Boots of Stormy Clamour if equipped). Bonus 2 —
+      Martial Arts free unarmed OR Hide for the next round's Sneak Attack.
+      Reaction — Vest of Soul Rejuvenation's Greater Kushigo Counter:
+      reaction unarmed strike on any attacker that misses you.
+    nova_turn: |
+      Pre-fight — Cloud Giant elixir, toggle Manifestation of Mind, Hold
+      Person from a party caster on the boss (if humanoid). Round 1 — Killer's
+      Sweetheart proc: kill a goblin or use the held proc. Round 2 — Action:
+      2 attacks on the held boss (auto-crit) with the queued Killer's
+      Sweetheart guarantee on one of them. Bonus 1 — Flurry of Blows (auto-
+      crits on Held target). Bonus 2 — Martial Arts unarmed (also auto-crit).
+      5 unarmed strikes, all crits, each with TB +16, Kushigo +5, Soul
+      Catching +1d10, Manifestation +1d4 doubled by Resonance Stone. Damage
+      easily exceeds 200 in one turn.
+
+abilities_situational:
+  - name: Stunning Strike
+    when: "First hit of every important fight against a CON save target. Boss-killer."
+    cost: 1 Ki, no action / bonus action — applied as a rider on a melee attack
+    notes: "DC = 8 + WIS mod + proficiency. Stuns for 1 turn — Stunned = auto-crit on attacks against AND no actions next turn. Honor Mode bosses have Legendary Resistance, so the stun may not land on the first try; budget for 2-3 Stunning Strike attempts per boss fight."
+  - name: Flurry of Blows
+    when: "Every turn after taking the Attack action. Default Ki spend."
+    cost: 1 Ki, bonus action
+    notes: "Open Hand Technique applies Topple (Prone — best default), Stagger (no reactions), or Push (5ft). Topple grants advantage to your next attacks AND your party's. Use Topple unless the situation specifically calls for the others."
+  - name: Patient Defense
+    when: "Surrounded by 3+ enemies and you can't reposition out. Take Dodge as a bonus action."
+    cost: 1 Ki, bonus action
+    notes: "Advantage on DEX saves AND attacks against you have disadvantage. Combined with Risky Ring's advantage-on-attack-vs-you mechanism, the disadvantage cancels Risky Ring's downside."
+  - name: Step of the Wind
+    when: "Need to reach an isolated target or escape an AoE. Bonus-action Disengage AND Dash."
+    cost: 1 Ki, bonus action
+    notes: "Doubles your already-high movement (13.5m+ with Wood Elf + Unarmored Movement at Monk 9 = 16.5m → 33m with Step of the Wind Dash). Out-mobiles every other martial."
+  - name: Wholeness of Body (Open Hand 6+)
+    when: "Below 30% HP. Self-heal 3d8 + WIS mod (1/long rest)."
+    cost: 2 Ki, action
+    notes: "Action cost is expensive — only use when you literally need the heal to survive the round."
+  - name: Manifestation of Mind (Open Hand 6+)
+    when: "Toggle on at the start of any psychic-vulnerable fight (Resonance Stone aura, anti-mage fights)."
+    cost: 1 Ki to toggle, lasts until short / long rest
+    notes: "+1d4 psychic per unarmed strike. With Resonance Stone (Act 2) that doubles to 2d4. Per strike. Per turn, with 5 strikes, that's 10d4 (or 20d4 with Resonance Stone) — game-changing add-on damage."
+  - name: Ki Resonation Punch → Blast (Open Hand 6+)
+    when: "Multi-enemy fights where you can mark 3+ enemies in 1-2 turns and detonate the next."
+    cost: Punch riders are free on unarmed hits; Blast costs 3 Ki and an action
+    notes: "Mark up to 5 enemies with Punch (rider on unarmed hits, no Ki cost). On a later turn, action: Blast detonates ALL marks for force damage in a 9m radius. The Monk's only AoE. Setup-heavy but devastating in cluster fights."
+  - name: Sneak Attack (Rogue 1+)
+    when: "Once per turn on an attack where you have advantage OR an ally is within 1.5m of the target."
+    cost: free (once per turn)
+    notes: "+1d6 at Rogue 1, +2d6 at Rogue 3. Trigger via Risky Ring advantage / Stunning Strike / Killer's Sweetheart crit. Apply to your highest-damage attack each turn (typically the Killer's Sweetheart crit or the Stunning Strike attempt)."
+  - name: Cunning Action (Rogue 2+)
+    when: "Every turn — Hide / Disengage / Dash as a bonus action option."
+    cost: bonus action
+    notes: "Hide is the big one — break line of sight, hide as a bonus action, attack with advantage next turn (Sneak Attack triggers). Use Cunning Action: Hide on turns where you don't need both bonus actions for Flurry."
+  - name: Fast Hands (Thief 3+)
+    when: "EVERY turn — gain a SECOND bonus action. Use it for Flurry / Step of the Wind / Cunning Action / item interaction."
+    cost: free (passive)
+    notes: "Build-defining. With 2 bonus actions you can stack Flurry of Blows AND Cunning Action: Hide in the same turn — Flurry to deal damage, then Hide to set up next round's Sneak Attack."
+
+mistakes_and_tips:
+  - "NEVER wear armor. Monk's Unarmored Defense, Unarmored Movement, and Martial Arts dice all REQUIRE no armor and no shield. Robes / cloth like The Graceful Cloth and Vest of Soul Rejuvenation are fine — they're 'clothing,' not armor."
+  - "Drink a Hill Giant elixir at the start of every long rest in Acts 1-2; switch to Cloud Giant elixir in Act 3. Stockpile from Sorcerous Sundries vendors. Without elixir-cycling, your STR is 8 and Tavern Brawler does almost nothing. WITH elixirs, your STR is 21-27 and Tavern Brawler doubles to +10/+10 to +16/+16 per strike."
+  - "Tavern Brawler at L4 is the build. Without it, you're a worse Monk. Don't take +2 STR or anything else at L4 — Tavern Brawler is the math."
+  - "Monk 9 / Thief 3 means you DO NOT get a 3rd feat at L12. Plan accordingly: Tavern Brawler at L4, Resilient (WIS) at L8, no L12 feat. The 3rd-feat alternative is Monk 8 / Thief 4 (gives Alert at Rogue 4), but you lose Stillness of Mind from Monk 9."
+  - "Open Hand Technique (Flurry rider): default to Topple unless the fight specifically rewards Stagger (vs reaction-heavy enemies like Yurgir's reaction strike) or Push (cliff edges)."
+  - "Stunning Strike can be retried each turn — if it doesn't land on the first attack, try again on the second. Most Honor Mode bosses fail their CON save eventually, especially after you've stacked your WIS to 20+ for max DC."
+  - "Resonance Stone in Act 2 toggles psychic vulnerability for everyone in 9m. Toggle Manifestation of Mind (+1d4 psychic per strike) BEFORE the fight starts, then position so the stone covers the boss area. Doubles damage."
+  - "Killer's Sweetheart (Act 2) gives a guaranteed crit on your next attack after a kill. Plan boss fights so you kill a goblin or weak ally first, then the boss fight starts and your first hit on the boss auto-crits — fold that crit into a Stunning Strike for higher Stun reliability + a Sneak Attack proc on the same hit."
+  - "Honor Mode caveat: Stunning Strike was NOT changed in Patch 7+, but Honor Mode bosses have Legendary Resistance — they auto-pass 1-2 saves per long rest. Your first Stunning Strike attempt on a Legendary boss will likely be auto-resisted; bring 3+ Ki to retry."
+  - "Risky Ring + Resilient (WIS) is the standard combo: Risky Ring's advantage-on-attacks is huge, the disadvantage-on-saves is mostly cancelled by your high WIS save prof + Aura of Protection (if a paladin is nearby) + Amulet of the Harpers / Fey Semblance Amulet."
+  - "Bonus actions are the bottleneck. Track them: Action-action gives the free Martial Arts unarmed; Flurry of Blows takes a bonus action (Ki); Fast Hands (Thief) gives a SECOND bonus action. Many players forget Fast Hands and lose 1-2 unarmed strikes per turn."
+  - "Stockpile elixirs of Hill Giant Strength (Auntie Ethel's lair Act 1, Last Light Inn vendors Act 2) — you'll go through 30-50 by the end of the run. Cloud Giant Strength elixirs are rarer; loot from giants and buy from Tolna Tome-Monger / Rolan in Sorcerous Sundries."

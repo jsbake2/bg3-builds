@@ -17,6 +17,18 @@
       "file": "half-elf-ancients-paladin.yaml",
       "name": "Half-Elf Ancients Paladin",
       "tagline": "Pure Oath of Ancients Paladin 12 — party aura tank"
+    },
+    {
+      "id": "wood-elf-gat-rogue",
+      "file": "wood-elf-gat-rogue.yaml",
+      "name": "Wood Elf GAT Rogue",
+      "tagline": "Gloom Stalker 5 / Assassin 4 / Battle Master 3"
+    },
+    {
+      "id": "wood-half-elf-open-hand-monk",
+      "file": "wood-half-elf-open-hand-monk.yaml",
+      "name": "Wood Half-Elf Open Hand Monk",
+      "tagline": "Open Hand Monk 9 / Thief Rogue 3"
     }
   ]
 }

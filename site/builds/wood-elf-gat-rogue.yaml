@@ -1,0 +1,594 @@
+meta:
+  id: wood-elf-gat-rogue
+  name: Wood Elf GAT Rogue
+  tagline: Gloom Stalker 5 / Assassin 4 / Battle Master 3 — dual hand crossbows
+  race: Wood Elf
+  classes: [Ranger, Rogue, Fighter]
+  level_range: "1 → 12"
+  difficulty: Intermediate
+  final_split: Gloom Stalker Ranger 5 / Assassin Rogue 4 / Battle Master Fighter 3
+  win_condition: >
+    Round 1 of every fight: Hide → Surprise → Dread Ambusher (Gloom Stalker's
+    +3 initiative + extra attack on the first round) → 2 main attacks + 1
+    off-hand bonus + 2 more from Action Surge = 5–6 attacks. Every one of
+    them is a guaranteed Critical Hit because Assassinate auto-crits any
+    Surprised target. Sharpshooter +10 per hit, Bhaalist Armour piercing
+    vulnerability doubling, Sneak Attack +2d6 stacked on. Most fights end
+    before the enemies act.
+
+overview: |
+  This is the highest-DPS martial in BG3 alongside Throwzerker Barbarian and
+  Tavern Brawler Monk. The community calls it the "GAT" — Gloom Stalker
+  Assassin Thief — though for the level-12 cap most sources replace Thief
+  with Battle Master Fighter for Action Surge + maneuvers.
+
+  The build is a stealth-first ambush hunter. You lead with Hide → Surprise
+  Round → nuke. Gloom Stalker grants Dread Ambusher (+3 initiative, extra
+  attack on the first round of combat, +3m movement) and Umbral Shroud
+  (invisibility in dim light as a bonus action). Assassin's Assassinate
+  feature auto-crits every attack on Surprised targets AND on any creature
+  that hasn't acted yet in the round — meaning your entire round-1 burst is
+  crits. Battle Master adds Action Surge (a free Action per short rest) and
+  three maneuvers like Trip Attack (knock prone), Menacing Attack (frighten),
+  and Disarming Attack.
+
+  Dual hand crossbows are the weapon platform. You start with a Hand Crossbow
+  +1 in Act 1, swap one for Hellfire Hand Crossbow in Act 2, and run Crimson
+  Mischief + Hand Crossbow +2 in Act 3. Sharpshooter at L4 is the universal
+  feat — toggle for −5 attack, +10 damage; with Risky Ring's advantage on
+  attack rolls + Archery fighting style's +2 to ranged hits, the −5 penalty
+  is mostly cancelled.
+
+  Patch 8 added the Swashbuckler subclass (a melee-focused Rogue alternative).
+  This guide stays on the Patch 7 / cross-version meta of Gloom Stalker
+  Assassin Battle Master, which is endorsed by 12+ of the 16 sources surveyed.
+
+character_creation:
+  note: |
+    Start as Ranger at character creation. Take 5 Ranger levels first (for
+    Sharpshooter at L4 and Extra Attack at L5), then dip 4 Rogue (for
+    Assassinate), then 3 Fighter (for Action Surge and Battle Master).
+  class: Ranger
+  background_suggested: Criminal (Deception + Stealth) or Outlander (Athletics + Survival)
+  cantrips_at_l1:
+    note: "Rangers do not get cantrips natively."
+  spells_known_at_l1:
+    note: "Rangers do not learn spells until Ranger 2."
+  ability_scores:
+    note: "Buy these point-buy values. Wood Elf adds +2 to one stat and +1 to another (Customizable Origin) — put the +2 on DEX and the +1 on CON (or WIS if you want stronger Stealth save profile)."
+    str: 8
+    dex: 15
+    con: 15
+    int: 8
+    wis: 14
+    cha: 10
+  final_starting:
+    str: 8
+    dex: 17
+    con: 16
+    int: 8
+    wis: 14
+    cha: 10
+
+skills:
+  summary: |
+    Skills are picked at character creation and at Rogue 1 (character L6 in
+    this build). Wood Elf grants Stealth + Perception by default. Ranger
+    picks 3 from a tight list. Rogue 1 grants 4 more skills AND Expertise
+    on 2 — the build's biggest skill spike. Fighter multiclass at L10 grants
+    no new skills.
+  at_creation:
+    from_race:
+      pick: [Perception]
+      note: |
+        Wood Elf grants Perception automatically. Stealth proficiency is
+        also part of the Wood Elf kit (BG3 implementation), so you start
+        with both. If you have a different race, prioritize Stealth +
+        Perception + (Investigation or Survival) at character creation.
+    from_background:
+      pick: [Deception, Stealth]
+      background: Criminal
+      note: |
+        Criminal grants Deception and Stealth. Stealth doubles up with the
+        race grant — proficiency doesn't stack but the duplicate frees up
+        the race slot conceptually for other uses (e.g., Outlander
+        background grants Athletics + Survival instead, freeing Stealth
+        for the race / class picks).
+    from_class:
+      pick: [Stealth, Survival, Investigation]
+      note: |
+        Ranger picks 3 from (Animal Handling, Athletics, Insight,
+        Investigation, Nature, Perception, Stealth, Survival). Stealth +
+        Survival (your tracking + ambush kit) + Investigation (search /
+        clue-finding). If your background already grants Stealth, swap to
+        Athletics or Insight.
+  at_level_3_expertise:
+    pick: [Stealth, Sleight of Hand]
+    note: |
+      At Rogue 1 (character L6 in this build) you choose 2 skills to gain
+      Expertise. Stealth doubled is the build's best non-combat tool — pair
+      with Pass Without Trace from a party Druid or Ranger spell (Ranger 5
+      gets it as a class spell) for a +20 Stealth bonus. Sleight of Hand
+      (lockpicks, pickpocketing, item-tricks) is the universal second pick.
+  later_levels: |
+    Rogue 1 grants 4 skill proficiencies of your choice from the Rogue list.
+    Pick 4 you don't already have (typical choices: Sleight of Hand, Insight,
+    Acrobatics, Persuasion). Fighter multiclass at L10 grants NO new skill
+    proficiencies. Final list at L12:
+      • Race (Wood Elf): Perception, Stealth
+      • Background (Criminal): Deception, Stealth (overlap — frees a slot)
+      • Class (Ranger 1): Stealth, Survival, Investigation
+      • Class (Rogue 1, multiclass): Sleight of Hand, Insight, Acrobatics, Persuasion (or your choice)
+      • Expertise (Rogue 1): Stealth, Sleight of Hand (doubled)
+
+stats_progression:
+  priorities: [DEX, CON, WIS]
+  asi_plan:
+    - level: 4
+      pick: "Sharpshooter"
+      reason: |
+        The build's defining feat. Toggle to take -5 to ranged attack rolls
+        for +10 damage. With Archery fighting style (+2 ranged hit) and
+        Risky Ring (advantage on attacks) the -5 penalty is mostly cancelled.
+        Each hand crossbow shot: weapon dice + DEX mod + Sharpshooter +10 +
+        Bhaalist piercing vulnerability doubling = absurd damage.
+    - level: 12
+      pick: "+2 DEX (17 → 19, then 20 with Hag's Hair)"
+      reason: |
+        Hard ASI to push DEX to its cap. With Hag's Hair (+1 DEX) and Mirror
+        of Loss (+2 DEX, bypasses the cap), final DEX = 22. Each +1 DEX is
+        +1 to attack rolls, +1 damage per hit, +1 AC, and +1 to Stealth /
+        Acrobatics / DEX saves.
+  alternates:
+    - feat: "Crossbow Expert (instead of Sharpshooter at L4)"
+      when: "If you don't trust the Sharpshooter accuracy math without Risky Ring."
+      tradeoff: "No -5/+10 toggle but lets you ignore the loading property of crossbows AND make a bonus-action ranged attack with your off-hand crossbow without TWF style. Mostly redundant after Fighter 1's TWF style."
+    - feat: "Alert (instead of +2 DEX at L12)"
+      when: "If you'd rather guarantee going first every fight than push DEX to 22."
+      tradeoff: "+5 initiative and immune to surprise. Massively important in Honor Mode where Surprise round = the encounter. Trades away the flat +1 attack/damage from the DEX bump."
+    - feat: "ASI +2 DEX at L4 (instead of Sharpshooter)"
+      when: "Never recommended — every source insists Sharpshooter at L4 is non-negotiable."
+      tradeoff: "Less damage ceiling, more reliable hits. The build's identity is Sharpshooter."
+  permanent_boosts:
+    note: |
+      Spend Hag's Hair on DEX (19 → 20). Mirror of Loss on DEX bypasses the
+      cap (20 → 22). DEX scales attack rolls, damage, AC, initiative, Stealth,
+      and DEX saves — the most-rewarded stat in the build.
+    items:
+      - { name: "Hag's Hair", grants: "+1 to one ability score (permanent)", where: "Auntie Ethel — Sunlit Wetlands (Act 1).", recommend: "Spend on DEX — pushes 19 → 20." }
+      - { name: "Mirror of Loss (boon)", grants: "+2 to one ability score, bypasses the 20 cap; -1 to all others until you Restore", where: "Gauntlet of Shar (Act 2). Pass the WIS check to gain the boon.", recommend: "Spend on DEX — pushes 20 → 22." }
+  cap_at_12:
+    str: 8
+    dex: 22
+    con: 16
+    int: 8
+    wis: 14
+    cha: 10
+    note: "Final cap assumes Hag's Hair (+1 DEX) + Mirror of Loss (+2 DEX) on Dexterity, the L12 ASI on +2 DEX, and Gloves of Dexterity NOT worn (those would clamp DEX to 18). At endgame you swap Gloves of Dexterity for Helldusk Gloves / Helmet of Grit gear once your raw DEX exceeds 18."
+
+leveling:
+  - level: 1
+    take: Ranger 1
+    pick:
+      - "Skill proficiencies (3) — Stealth, Survival, Investigation (or any 3 from the Ranger list)"
+      - "Saving throw proficiencies — Strength + Dexterity"
+      - "Favoured Enemy — pick Bounty Hunter (proficiency in Investigation, advantage on checks vs Charmed/Paralyzed/Frightened targets) for the broadest applicability"
+      - "Natural Explorer — pick Urban Tracker (Sleight of Hand proficiency) or Wasteland Wanderer (poison resistance)"
+    unlocks:
+      - "Ranger class chassis: d10 hit dice, light/medium armor, shields, simple/martial weapons."
+    notes: |
+      No subclass yet. Carry a longbow (Wood Elf gets longbow proficiency) or
+      a Hand Crossbow +1 if you can find one early. Stealth-first approach
+      every encounter — initiate fights from concealment whenever possible.
+  - level: 2
+    take: Ranger 2
+    pick:
+      - "Fighting Style — Archery (+2 to ranged attack rolls)"
+      - "Spellcasting unlocks — pick 2 spells known: Hunter's Mark (concentration; +1d6 damage on each hit on a marked target) and Longstrider (1-hour speed buff)"
+    unlocks:
+      - "Archery fighting style: +2 to ranged attack rolls. The keystone that makes Sharpshooter math work."
+      - "Ranger spell slots — 2 L1 slots."
+    notes: |
+      Hunter's Mark is your default concentration on every fight. +1d6 per hit
+      on the marked target, transferable as a bonus action when the target dies.
+      With 5+ ranged attacks per turn that's +5d6 per turn from one spell slot.
+  - level: 3
+    take: Ranger 3
+    pick:
+      - "Subclass — Gloom Stalker"
+      - "Dread Ambusher — on the first round of combat: +3 initiative, +3m movement, extra attack on round 1 (additional 1d8 damage on that attack)"
+      - "Umbral Shroud — bonus action; invisible in dim light or darkness"
+      - "Gloom Stalker spells: Disguise Self (auto-prepared, off-list)"
+    unlocks:
+      - "Dread Ambusher: +3 initiative, extra round-1 attack with +1d8 damage rider, +3m round-1 movement."
+      - "Umbral Shroud: bonus-action invisibility in dim light. Stack with darkness clouds for free hides."
+    notes: |
+      Dread Ambusher is the build's signature opening. With Wood Elf's
+      Stealth + Hide bonus action setup, your first round of every fight is
+      invisible attack → +3 init → extra attack with +1d8 damage. Combined
+      with later Assassinate auto-crits, this round 1 nukes most encounters.
+  - level: 4
+    take: Ranger 4
+    pick:
+      - "Feat / ASI — Sharpshooter"
+    unlocks:
+      - "Sharpshooter: ignore cover, no disadvantage on long-range attacks, toggle -5 attack / +10 damage on every ranged attack."
+    notes: |
+      Toggle Sharpshooter on for any target you can reliably hit (with
+      Archery FS +2 and Hunter's Mark +1d6 and Risky Ring advantage you'll
+      hit ~80%+ of the time). Toggle off vs high-AC bosses you might miss.
+  - level: 5
+    take: Ranger 5
+    pick:
+      - "Extra Attack — 2 attacks per Action"
+      - "L2 spell slots unlock — pick Pass Without Trace (concentration; +10 Stealth to self and party in 9m)"
+    unlocks:
+      - "Extra Attack: 2 ranged attacks per Action."
+      - "L2 spell slots."
+      - "Pass Without Trace — +10 Stealth to your party. Stack with high Stealth + Expertise for impossible-to-detect approaches."
+    notes: |
+      Big spike. Before this turn you got 1 attack per Action; now you get 2,
+      plus your bonus-action off-hand crossbow shot, plus Hunter's Mark on
+      every hit, plus Sharpshooter +10. Pass Without Trace makes pre-combat
+      stealth approaches trivial.
+  - level: 6
+    take: Rogue 1
+    pick:
+      - "Sneak Attack 1d6 — once per turn, +1d6 damage on a hit when you have advantage OR an ally is within 1.5m of the target."
+      - "Skill proficiencies (4) — pick from the Rogue list (Sleight of Hand, Insight, Acrobatics, Persuasion are typical)."
+      - "Expertise — pick 2 skills to double proficiency. Stealth + Sleight of Hand."
+      - "Thieves' Cant"
+    unlocks:
+      - "Sneak Attack: +1d6 once per turn on a hit with advantage / ally adjacent. Apply to your highest-damage shot each turn."
+      - "Expertise: Stealth and Sleight of Hand doubled — your Stealth becomes the highest in the party."
+    notes: |
+      Multiclass into Rogue. Sneak Attack adds 1d6 to ONE attack per turn
+      (not per attack — once per turn total). Trigger via advantage from
+      Risky Ring (Act 2) or by being Hidden (your default state).
+  - level: 7
+    take: Rogue 2
+    pick:
+      - "Cunning Action — Hide, Disengage, or Dash as a bonus action"
+    unlocks:
+      - "Cunning Action: Hide as bonus action. Break line of sight, hide, attack from invisibility next turn."
+    notes: |
+      Hide as a bonus action means you can attack, hide, attack from
+      invisibility next turn — perpetual advantage chain. Combined with
+      Umbral Shroud (Gloom Stalker dim-light invisibility) you're invisible
+      most of the time.
+  - level: 8
+    take: Rogue 3
+    pick:
+      - "Subclass — Assassin"
+      - "Assassinate Initiative — advantage on attack rolls against any creature that has not acted yet in the round (so round 1 of every fight)."
+      - "Assassinate Ambush — ALL hits against Surprised creatures are automatic Critical Hits."
+      - "Sneak Attack scales to 2d6"
+    unlocks:
+      - "Assassinate: round-1 attacks against creatures that haven't acted yet have advantage. Attacks vs Surprised targets are auto-crits."
+      - "Sneak Attack: +2d6."
+    notes: |
+      The build comes online. With Assassinate, Surprise round = guaranteed
+      crits on every attack. Combined with Sharpshooter +10, Hunter's Mark
+      +1d6, Bhaalist Armour piercing vulnerability (Act 3), and Sneak Attack
+      2d6, your round-1 burst frequently exceeds 200 damage.
+  - level: 9
+    take: Rogue 4
+    pick:
+      - "Feat / ASI — see alternates section. The third feat slot. Pick Alert (+5 init, no surprise) for Honor Mode reliability OR ASI +2 DEX (17 → 19) for raw scaling."
+      - "Recommended: Alert — going first every round multiplies the build's value, and with Killer's Sweetheart your DEX can reach 22 anyway via Hag + Mirror."
+    unlocks:
+      - "Third feat. The Alert pick guarantees Surprise immunity AND +5 initiative (top of round 1 every fight)."
+    notes: |
+      The L9 ASI is the build's flex slot. Alert is the conservative,
+      Honor-Mode-friendly pick — Surprise immunity + +5 initiative. ASI +2
+      DEX is the alternate damage pick. With Hag's Hair + Mirror of Loss
+      you reach DEX 20-22 anyway, so Alert wins on most playthroughs.
+  - level: 10
+    take: Fighter 1
+    pick:
+      - "Fighting Style — Two-Weapon Fighting (add ability mod to off-hand attack damage)"
+      - "Second Wind — bonus action self-heal 1d10 + Fighter level (1/short rest)"
+      - "Saving throw proficiencies (multiclass) — Constitution"
+      - "Heavy armor proficiency (irrelevant — wear medium armor for Stealth, Bhaalist Armour Act 3 is light)"
+    unlocks:
+      - "Two-Weapon Fighting style: off-hand attack now adds your DEX modifier to damage."
+      - "Constitution save proficiency from multiclass into Fighter — concentrating on Hunter's Mark stops breaking on hits."
+      - "Second Wind self-heal."
+    notes: |
+      Fighter 1 specifically for the CON save proficiency (concentration on
+      Hunter's Mark) and Two-Weapon Fighting style (off-hand DEX-mod damage).
+      Don't equip armor — your Stealth is built around proficiency without
+      heavy armor's disadvantage.
+  - level: 11
+    take: Fighter 2
+    pick:
+      - "Action Surge — 1/short rest, take an additional Action this turn."
+    unlocks:
+      - "Action Surge: 1 extra Action per short rest. Your nova round becomes 4 main attacks + 2 off-hand bonus shots = 6 attacks in one turn."
+    notes: |
+      Action Surge is the build's nova multiplier. Round 1 already has Dread
+      Ambusher + Extra Attack + bonus off-hand = 4 attacks. Action Surge
+      adds 2 more. Each one with Sharpshooter +10 and (if Surprised) auto-
+      crit. ~6 crits, ~250-400 damage.
+  - level: 12
+    take: Fighter 3
+    pick:
+      - "Subclass — Battle Master"
+      - "Pick 3 maneuvers: Trip Attack (DEX save or Prone), Menacing Attack (Frightened), Disarming Attack (drop weapon)"
+      - "Superiority Dice: 4 d8 dice, refresh on short rest"
+      - "Feat / ASI — +2 DEX (17 → 19, then push to 20+ via permanent boosts)"
+    unlocks:
+      - "Battle Master maneuvers: Trip / Menacing / Disarming Attack as riders on your weapon attacks."
+      - "Superiority Dice: 4 d8 dice per short rest (refresh on short rest)."
+      - "Final ASI: +2 DEX."
+    notes: |
+      Build complete. Battle Master maneuvers are extra riders on each
+      attack — pick Trip Attack as the default (Prone enemies eat advantage
+      on every melee attack vs them, plus you can knock priority targets out
+      of position). Menacing Attack pairs with the Reverberation stack from
+      Boots of Stormy Clamour. The +2 DEX ASI completes your DEX scaling.
+
+spells:
+  cantrips:
+    note: "Rangers do not get cantrips natively."
+  level_1:
+    keepers:
+      - { name: Hunter's Mark, why: "Concentration; mark a target, +1d6 damage on every hit. Re-target as bonus action when the marked target dies. Default concentration on every fight." }
+      - { name: Longstrider, why: "1-hour movement buff (+3m) on a friendly. Cast pre-fight." }
+    skip:
+      - { name: Ensnaring Strike, why: "Concentration competes with Hunter's Mark, which is strictly better for the ranged attack-spam playstyle." }
+      - { name: Hail of Thorns, why: "Concentration; small cone AOE. Skip — Hunter's Mark scales better." }
+  level_2:
+    keepers:
+      - { name: Pass Without Trace, why: "Concentration; +10 Stealth to your party in 9m. Stack with Expertise (Stealth) for impossible-to-detect approaches. Conflicts with Hunter's Mark — pick one per fight." }
+      - { name: Cordon of Arrows, why: "Niche; place 4 arrows in a 6m radius that auto-fire on creatures entering. Concentration-free trap setup." }
+    skip:
+      - { name: Spike Growth, why: "Concentration; conflicts with Hunter's Mark. Druid spell territory." }
+  must_pick_now:
+    - at_level: 4
+      spell: "Sharpshooter feat"
+      why: "The build's defining feat. -5 attack / +10 damage toggle on ranged attacks."
+    - at_level: 5
+      spell: "Pass Without Trace"
+      why: "Stealth approach is your default opener. +10 Stealth to the party trivializes pre-combat positioning."
+    - at_level: 8
+      spell: "Assassinate (subclass auto)"
+      why: "Surprise round = auto-crits on every hit. The build's win condition arrives at character L8."
+
+gear:
+  notes: >
+    Wear medium armor (no Stealth disadvantage) until Bhaalist Armour in Act 3.
+    Dual hand crossbows is the weapon platform — never melee unless absolutely
+    forced. Range advantage + Stealth are the build's two pillars.
+  act_1:
+    - { slot: "Main hand", item: "Hand Crossbow +1", where: "Multiple Act 1 vendors — Dammon at the Druid Grove (The Hollow), Roah Moonglow at the Shattered Sanctum, Derryth Bonecloak at the Myconid Colony", why: "+1 hand crossbow, 1d6+1 piercing + DEX mod. Grants Piercing Shot (Gaping Wounds) and Mobile Shot (ranged attack as bonus action after Dash/Disengage)." }
+    - { slot: "Off-hand", item: "Hand Crossbow +1 (second copy)", where: "Buy a second copy from a different vendor or wait for Hellfire Hand Crossbow in Act 2", why: "Same +1 hand crossbow in the off-hand. With TWF style at L10, off-hand shots add DEX mod to damage." }
+    - { slot: "Two-handed alt (early)", item: "Titanstring Bow", where: "Zhentarim Hideout — sold by Brem in the basement after completing 'Find the Missing Shipment'", why: "Titan-String: deals additional damage equal to your STR modifier. Combined with Club of Hill Giant Strength (sets STR 19, +4 mod), every shot adds +4 damage on top of DEX. Use as your two-handed primary until you've stockpiled hand crossbows." }
+    - { slot: "Item", item: "Club of Hill Giant Strength", where: "Underdark — Arcane Tower's roof, NE corner. Break the 'Stool of Hill Giant Strength' (a thatched-roof stool).", why: "Splinters of a Giant's Might: sets STR to 19. Equip as a normal weapon (you don't attack with it) to keep STR 19 active. Pairs with Titanstring Bow for STR-stacked ranged damage. Drop in Act 2 once you commit to dual hand crossbows." }
+    - { slot: "Off-hand melee (alt)", item: "Knife of the Undermountain King", where: "Crèche Y'llek — sold by A'jak'nir Jeera (the quartermaster)", why: "+1 dagger. Organ Rearranger: -1 to crit threshold (crits on 19+) and re-roll damage rolls of 2 or less. Carry as a melee backup or off-hand if you ever pivot to dual-dagger melee mid-fight." }
+    - { slot: "Armor (clothing)", item: "The Graceful Cloth", where: "Rosymorn Monastery Trail — sold by Lady Esther near the Trielta Crags waypoint", why: "Cat's Grace: +2 DEX (max 20), advantage on DEX checks, half falling damage. AC 10 + DEX, no Stealth disadvantage. Pushes DEX to 19 instantly (or 20 after Hag's Hair / racial / Mirror)." }
+    - { slot: "Gloves", item: "Gloves of Archery", where: "Goblin Camp — sold by Grat the Trader", why: "Longbow + Shortbow proficiency AND +2 damage on all ranged weapon attacks. Permanent +2 damage per shot — with 5 shots per turn that's +10 damage per turn for free." }
+    - { slot: "Gloves (alt)", item: "Gloves of Dexterity", where: "Crèche Y'llek — sold by A'jak'nir Jeera", why: "Sets DEX to 18 (no effect if your DEX is already 18+). +1 to attack rolls. Use early when your DEX is 17; swap to Gloves of Archery once your raw DEX exceeds 18 via Hag's Hair / Mirror of Loss." }
+    - { slot: "Boots", item: "Disintegrating Night Walkers", where: "Grymforge — looted from Nere's body after the Duergar fight (Act 1 endgame)", why: "Misty Step 1/short rest, immunity to Web/Ensnared. Wear from acquisition through endgame." }
+    - { slot: "Amulet", item: "Amulet of Misty Step", where: "Crèche Y'llek — sold by A'jak'nir Jeera", why: "Free Misty Step 1/short rest. Stacks with Disintegrating Night Walkers for two teleports per short rest." }
+    - { slot: "Ring", item: "Caustic Band", where: "Underdark — sold by Derryth Bonecloak at the Myconid Colony", why: "+2 acid damage on every weapon hit. With 5 shots per turn that's +10 acid per turn passive." }
+  act_2:
+    - { slot: "Main hand", item: "Hellfire Hand Crossbow", where: "Gauntlet of Shar — looted from Yurgir (kill him at the end of his contract, OR betray him after talking)", why: "+1 hand crossbow with Hellstalker: possibly inflict Burning when attacking from Hidden or Invisible (your default state). Also grants Scorching Ray Shot (3d6 fire, L3 slot, 1/short rest). The build's Act 2 / Act 3 main-hand BiS." }
+    - { slot: "Helm", item: "Marksmanship Hat", where: "Moonrise Towers — sold by Roah Moonglow", why: "+1 to ranged AND thrown attack rolls (and spell attack rolls). Stacks with Archery fighting style's +2 for a flat +3 to-hit on every shot." }
+    - { slot: "Armor (medium)", item: "Dark Justiciar Half-Plate (Rare)", where: "Gauntlet of Shar — on the ground near the altar with the Spear of Night, past the Silent Library riddle door", why: "Medium armor. Advantage on CON saving throws, Shar's Aegis (+2 AC bonus action 1/long rest), Shar's Umbrae (advantage on Stealth while Obscured). Strong Act 2 alt to The Graceful Cloth — heavy AC + Stealth-friendly." }
+    - { slot: "Ring", item: "Risky Ring", where: "Moonrise Towers — sold by Araj Oblodra (relocates to Crimson Draughts in the Lower City for Act 3 if missed)", why: "Advantage on all attack rolls (and disadvantage on saving throws). Cancels Sharpshooter's -5 penalty entirely. Each shot now hits ~85%+ even with Sharpshooter toggled. Build-defining." }
+    - { slot: "Ring", item: "Killer's Sweetheart", where: "Gauntlet of Shar — on the ground where the shadow copy is defeated next to the Brazier in the Self-Same Trial", why: "Executioner: when you kill a creature, your NEXT attack roll is a guaranteed Critical Hit. Refreshes per long rest. Kill a goblin → next shot crits → fold Sneak Attack into that crit for max damage." }
+  act_3:
+    - { slot: "Main hand", item: "Crimson Mischief", where: "Bhaal Temple — looted from Orin's body at the end of 'Get Orin's Netherstone'", why: "+1 dagger (finesse). Main hand: +1d4 piercing vs targets at 50% HP or below; +7 piercing on attacks made with advantage. With Risky Ring's advantage active on every attack, that's +7 piercing PER hit. Wait — this is a dagger, not a crossbow. See below for the off-hand placement." }
+    - { slot: "Off-hand (BiS)", item: "Crimson Mischief (off-hand)", where: "Same as above — Crimson Mischief is the off-hand pick, not main hand", why: "Off-hand effect: when you make an off-hand attack, add your ability modifier to the damage. Combined with TWF fighting style this stacks. Wait — wiki note says Crimson Mischief is intended for an off-hand piercing wielder. For a dual-hand-crossbow build, swap your off-hand to Crimson Mischief in melee fights and keep Hellfire Hand Crossbow main-hand for ranged. Most ranged fights, dual hand crossbows; melee bursts, Crimson Mischief off-hand." }
+    - { slot: "Off-hand (ranged)", item: "Hand Crossbow +2", where: "Lady Jannath's Estate — locked wall vault on the first-floor office (during the Curse of the Estate quest)", why: "+2 hand crossbow. The cleanest off-hand for ranged fights once you've committed to dual hand crossbows in Act 3." }
+    - { slot: "Armor (light)", item: "Bhaalist Armour", where: "Bhaal Temple — sold by the Echo of Abazigal at the Murder Tribunal (after impressing them)", why: "Aura of Murder (3m / 10ft radius): nearby enemies take Piercing damage as if Vulnerable (effectively double piercing damage). Doubles every hand crossbow shot AND every Crimson Mischief stab. The build's Act 3 BiS armor — light, no Stealth penalty, piercing-vulnerability aura." }
+    - { slot: "Helm", item: "Helmet of Grit", where: "Szarr Palace — locked opulent chest in Victoria's cursed corpse room", why: "When the wearer has 50% HP or less, gain an additional bonus action. Combined with Cunning Action (Hide as bonus) and TWF off-hand bonus shot, low-HP turns get a 7th attack. Edge-case but clutch in Honor Mode." }
+    - { slot: "Helm (alt)", item: "Marksmanship Hat (kept)", where: "Carry from Act 2 (Roah Moonglow at Moonrise)", why: "+1 ranged attack rolls is just always good — Helmet of Grit only triggers below 50% HP, while Marksmanship Hat is always-on +1 to-hit. Wear Marksmanship Hat as default, swap to Grit for boss fights you're tanking." }
+    - { slot: "Boots", item: "Helldusk Boots", where: "Wyrm's Rock Fortress — top-floor locked Gilded Chest (NOT House of Hope)", why: "Hellcrawler: bonus-action teleport that deals 2d8 fire damage in a 3m / 10ft zone where you land. 1/short rest. Reposition AND damage in one bonus action. Note: distinct item from Helldusk Armour (Raphael) and Helldusk Gloves (Haarlep) — three separate Helldusk Set pieces." }
+    - { slot: "Gloves", item: "Helldusk Gloves", where: "House of Hope — looted from Haarlep in the Boudoir", why: "Infernal Acuity (+1 spell save DC and +1 to attack rolls), Infernal Touch (weapons deal +1d6 fire on hit), Rays of Fire 1/short rest, +1 STR save. Strict upgrade from Gloves of Archery once you reach the House of Hope (the +2 ranged damage is replaced by the +1d6 fire rider, which scales with your number of hits)." }
+    - { slot: "Cloak", item: "Cloak of Displacement", where: "Wyrm's Crossing — sold by Entharl Danthelon at Danthelon's Dancing Axe", why: "Attack rolls against you have disadvantage while at full HP. With Risky Ring's advantage-on-attacks-vs-you canceled by Cloak of Displacement's disadvantage, you become extremely hard to hit on round 1 of every fight." }
+    - { slot: "Cloak (alt)", item: "Cloak of Protection", where: "Last Light Inn — sold by Quartermaster Talli (carry from Act 2)", why: "+1 AC and +1 saves. Generic alternate to Cloak of Displacement when you've taken hits and aren't at full HP." }
+    - { slot: "Amulet (alt)", item: "Amulet of the Drunkard", where: "Sharess' Caress — sold by Hoots Hooligan", why: "Regain 2d4 HP per turn while Drunk. Marginal for a Rogue who usually doesn't tank — only worth wearing if you commit to drinking each fight (extra alcohol consumable per long rest)." }
+  bis_at_12:
+    main_hand: Hellfire Hand Crossbow
+    off_hand: Hand Crossbow +2 (or Crimson Mischief in melee fights)
+    armor: Bhaalist Armour
+    helm: Marksmanship Hat (default) OR Helmet of Grit (boss fights)
+    gloves: Helldusk Gloves (or Gloves of Archery if you haven't reached House of Hope)
+    boots: Helldusk Boots (or Disintegrating Night Walkers if you skip the Wyrm's Rock chest)
+    cloak: Cloak of Displacement
+    amulet: Amulet of Misty Step (kept from Act 1) — niche slot, Rogue doesn't have a clear amulet BiS
+    ring_1: Risky Ring
+    ring_2: Killer's Sweetheart
+    note: |
+      Drink an Elixir of Bloodlust at the start of every long rest if you can
+      stockpile them — the kill-bonus-action triggers on every kill, scaling
+      hard with your nova-round multi-kill turns.
+
+alternative_splits:
+  intro: |
+    The Gloomstalker Assassin Battle Master ("GAT") is the consensus pick.
+    Several variants exist — most swap one component for a different
+    multiclass dip.
+  options:
+    - name: Gloom Stalker 5 / Assassin 4 / Battle Master 3 (this guide)
+      gives:
+        - "Dread Ambusher (+3 init, extra round-1 attack)."
+        - "Assassinate auto-crits on Surprised targets and round-1 attacks."
+        - "Sharpshooter at L4 + Archery fighting style."
+        - "Action Surge for double-action nova rounds."
+        - "Battle Master maneuvers (Trip, Menacing, Disarming Attack)."
+        - "Three feats (L4, L9, L12)."
+      gives_up:
+        - "Pure subclass capstones (Ranger 11, Rogue 11, Fighter 11)."
+        - "Higher Sneak Attack scaling (Rogue 11 = 6d6 vs Rogue 4 = 2d6)."
+      best_for: Players who want round-1 nukes and the highest single-target burst in the game.
+    - name: Gloom Stalker 5 / Thief 4 / Battle Master 3
+      gives:
+        - "Same Dread Ambusher / Battle Master core."
+        - "Thief's Fast Hands grants a SECOND bonus action — extra off-hand crossbow shot every turn."
+        - "Cunning Action stays from Rogue 2."
+      gives_up:
+        - "Assassinate auto-crits on Surprised / round-1 targets."
+        - "Surprise rounds are still strong but no longer one-shot fights."
+      best_for: Players who dislike Assassinate's dialogue-skip behavior (Assassinate triggers combat before NPCs talk in some scenes), or who want sustained fights instead of round-1 nukes.
+    - name: Gloom Stalker 5 / Assassin 4 / Champion Fighter 3
+      gives:
+        - "Champion's Improved Critical: crits on 19-20 (instead of 20)."
+        - "Stacks with Knife of the Undermountain King's -1 crit threshold for crits on 18-20."
+        - "Passive crit-fishing every round, not just round 1."
+      gives_up:
+        - "Battle Master maneuvers."
+        - "Slightly less control (no Trip / Menacing Attack)."
+      best_for: Crit-fishers. Honor Mode compatibility is excellent — you crit-fish through every fight, not just opening rounds.
+    - name: Pure Assassin Rogue 12
+      gives:
+        - "Sneak Attack scales to 6d6 at Rogue 11."
+        - "Two more feats (Rogue 4, Rogue 8, Rogue 10? — actually Rogue gets ASIs at 4, 8, 10)."
+        - "Reliable Talent (Rogue 11 — minimum 10 on any skill check you're proficient in)."
+        - "Stroke of Luck (Rogue 13+, NOT reachable)."
+      gives_up:
+        - "Extra Attack (you don't get it from Rogue alone)."
+        - "Dread Ambusher round-1 burst."
+        - "Action Surge."
+      best_for: Single-class purists. Rated below GAT for damage by every source surveyed."
+    - name: Swashbuckler Rogue 11 / Hexblade Warlock 1 (Patch 8 only)
+      gives:
+        - "Rakish Audacity: Sneak Attack without advantage when you're isolated."
+        - "Fancy Footwork: no opportunity attacks on a target you've hit."
+        - "Dirty Tricks (disarm, blind, mockery)."
+        - "Hexblade 1 grants medium armor + shield + Hexblade's Curse (+CHA mod weapon damage on cursed target)."
+      gives_up:
+        - "Gloom Stalker / Dread Ambusher entirely (this is melee-focused)."
+        - "Assassinate (no auto-crits)."
+        - "Patch 7 compatibility — Swashbuckler is Patch 8+ only."
+      best_for: Patch 8 players who want a melee Rogue. Skip if you're on Patch 7 or earlier.
+
+race_choice:
+  locked_for_you: Wood Elf (chosen for this guide; meta-optimal for ranged Rogues)
+  why_its_fine: |
+    Wood Elf is the consensus best ranged-Rogue race. Customizable Origin
+    grants +2 DEX + +1 to a stat of your choice (CON or WIS). Fleet of Foot
+    adds +1.5m base movement (10.5m total at L1, scaling). Stealth + Perception
+    proficiencies are baked in. Mask of the Wild grants advantage on Stealth
+    in lightly obscured areas. Darkvision saves a torch slot. Longbow /
+    shortbow / shortsword / longsword proficiency from Elven Weapon Training
+    (already covered by Ranger anyway, but useful pre-Ranger 1).
+  community_meta_picks:
+    - { race: "Wood Elf", upside: "+2 DEX, +1.5m movement, Stealth + Perception proficiency, Fey Ancestry, Darkvision, Mask of the Wild. Best overall." }
+    - { race: "Drow / Lolth-Sworn Drow", upside: "+2 DEX. Free Faerie Fire AND Darkness 1/long rest each. Faerie Fire grants advantage on attacks against targets — a free Acuity for ranged builds." }
+    - { race: "Half-Wood Elf", upside: "+2 to one stat + +1 to two others. Three skill proficiencies (more than Wood Elf). Fey Ancestry. Pure +stat distribution flexibility." }
+    - { race: "Githyanki", upside: "+2 INT (re-distributable), Astral Knowledge skill toggle, free Misty Step at character L5, medium armor proficiency. Mobility specialist." }
+    - { race: "Lightfoot Halfling", upside: "Halfling Luck — reroll natural 1s on attack rolls and saving throws. Pairs especially well with Sharpshooter (never miss to a 1)." }
+    - { race: "Duergar Dwarf", upside: "Free Enlarge AND Invisibility 1/long rest each. Invisibility = guaranteed Surprise round = guaranteed Assassinate auto-crit on round 1." }
+  takeaway: "Wood Elf is the optimization pick. Lightfoot Halfling is the runner-up for crit-reliability. Duergar is the niche pick for Assassin's Surprise abuse. Other races still work — the build's Sharpshooter / Assassinate / Action Surge core scales independent of race choice."
+
+playstyle:
+  early:
+    levels: "1 – 5 (Ranger 1-5)"
+    summary: |
+      Stealth-first hunter. Open every combat from concealment — Hide before
+      initiative, fire from cover, retreat. Hunter's Mark on round 1, then
+      Sharpshooter-toggled shots from Ranger 4 onward. Extra Attack at L5
+      doubles your damage per turn.
+    standard_turn: |
+      Action — 1 attack at L3 (Hand Crossbow + Hunter's Mark), 2 attacks
+      at L5+. Bonus action — second Hand Crossbow shot via Crossbow Expert
+      OR Hide (Cunning Action becomes available at Rogue 2 = char L7).
+      Reaction — Opportunity Attack on enemies leaving your reach.
+    nova_turn: |
+      Round 1 — Hide before initiative + Dread Ambusher (Ranger 3+). Action:
+      2 attacks (one is the Dread Ambusher bonus attack with +1d8 damage).
+      Bonus: off-hand attack OR Hide for next-round advantage.
+  mid:
+    levels: "6 – 9 (Rogue 1-4 — Assassin online)"
+    summary: |
+      Sneak Attack added. Cunning Action: Hide every turn for advantage on
+      next-turn attack. At Rogue 3 (char L8) Assassinate goes online — every
+      attack against a Surprised or round-1 target auto-crits. Round-1
+      bursts now end most fights.
+    standard_turn: |
+      Action — 2 attacks (Hunter's Mark + Sharpshooter on each). Bonus —
+      Cunning Action: Hide for next-turn advantage, OR off-hand attack.
+      Sneak Attack rider on whichever attack lands first with advantage
+      (typically the Hide-and-attack-from-invisibility shot).
+    nova_turn: |
+      Round 1 — Hide before initiative → Surprise the enemy → Dread Ambusher
+      bonus attack + Extra Attack + bonus-action off-hand = 4 attacks. Each
+      one is an auto-crit (Assassinate Ambush against Surprised). Each crit
+      is Sharpshooter +10 + Hunter's Mark +1d6 + weapon dice. Sneak Attack
+      +2d6 on the first hit. ~150-200 damage round 1.
+  late:
+    levels: "10 – 12 (Fighter 1-3 — Action Surge + Battle Master)"
+    summary: |
+      Build complete. Action Surge adds 2 more attacks per round 1. Battle
+      Master maneuvers (Trip Attack as default) add a Prone effect to each
+      shot. With Bhaalist Armour piercing vulnerability, every dart is
+      doubled. Killer's Sweetheart guarantees a crit per long rest.
+    standard_turn: |
+      Action — 2 attacks (Hunter's Mark + Sharpshooter, possibly Trip Attack
+      maneuver on the first hit to knock the target Prone). Bonus —
+      Cunning Action: Hide OR off-hand attack. Use Action Surge once per
+      short rest for a 2-extra-attack burst.
+    nova_turn: |
+      Pre-fight — Hide, drink an Elixir of Bloodlust (kill grants extra
+      bonus action). Round 1 — Surprise → Action: 2 attacks (Trip Attack
+      Prone'd boss = advantage on remaining attacks). Bonus: off-hand attack.
+      Action Surge: 2 more attacks. All 5 are auto-crits via Assassinate.
+      All 5 carry Sharpshooter +10, Hunter's Mark +1d6, Hellfire Hand
+      Crossbow +1d6 fire, Bhaalist Armour piercing-vulnerability doubling,
+      and Helldusk Gloves +1d6 fire. ~250-400 damage in one round.
+
+abilities_situational:
+  - name: Sharpshooter (toggle)
+    when: "Every ranged attack against a target you can reliably hit. Toggle off vs high-AC bosses you might miss."
+    cost: free toggle
+    notes: "-5 attack rolls / +10 damage per hit. With Archery FS +2 + Risky Ring advantage + Hunter's Mark +1d6, you hit ~85%+ even with the penalty. Build-defining."
+  - name: Hide (Cunning Action, Rogue 2+)
+    when: "Every turn you don't need both bonus actions for off-hand attacks. Hide → next turn attack from invisibility = advantage = Sneak Attack trigger."
+    cost: bonus action
+    notes: "Pair with Pass Without Trace (+10 Stealth from Ranger 5 spell) and Expertise (Stealth doubled) for impossible-to-detect approaches."
+  - name: Dread Ambusher (Gloom Stalker 3+)
+    when: "Round 1 of every fight. Passive — applies whenever you start combat."
+    notes: "+3 initiative, +3m movement on round 1, ONE extra attack on your first turn that does an additional 1d8 damage. Combined with Surprise = round 1 deletes most encounters."
+  - name: Assassinate (Assassin Rogue 3+)
+    when: "Round 1 of every fight, especially after Hide → Surprise. Auto-crits on every hit against Surprised targets AND advantage on attacks against creatures that haven't acted yet."
+    notes: "The build's win condition. Open with Hide before initiative → first round all attacks crit. Sneak Attack on a crit is doubled — apply to the highest-roll attack."
+  - name: Sneak Attack (Rogue 1+)
+    when: "Once per turn on a hit with advantage OR an ally adjacent."
+    cost: free (once per turn)
+    notes: "+1d6 at Rogue 1, +2d6 at Rogue 3. Trigger via Risky Ring advantage / Hidden / Surprise / Prone target. Apply to your highest-damage attack each turn (typically the first crit)."
+  - name: Action Surge (Fighter 2+)
+    when: "Once per short rest. Open boss fights with this — 2 extra attacks in one turn."
+    cost: free (1 use per short rest)
+    notes: "Stack on a Surprise round for 6+ auto-crit attacks. The single biggest damage spike in the build."
+  - name: Trip Attack (Battle Master 3+)
+    when: "First hit of any fight against a melee enemy. Prone enemies have disadvantage on attack rolls AND your party gets advantage to attack them."
+    cost: 1 Superiority Die (d8), free rider on a weapon attack
+    notes: "Default maneuver. Use whenever the target is melee-leaning. For ranged-only enemies, use Disarming Attack instead (drops their weapon)."
+  - name: Hunter's Mark
+    when: "Every fight. Concentration; +1d6 damage per hit on the marked target. Re-target as bonus action when the marked target dies."
+    cost: 1 L1 slot, bonus action, concentration
+    notes: "Default concentration. Drops if you cast Pass Without Trace, so plan ahead — Pass Without Trace is for stealth approaches; Hunter's Mark is for the actual fight."
+  - name: Pass Without Trace (Ranger 5+)
+    when: "Pre-combat stealth approach. +10 Stealth to the party in 9m for 1 hour."
+    cost: 1 L2 slot, action, concentration
+    notes: "Cast OUT of combat. Drops Hunter's Mark if you had it. Re-cast Hunter's Mark when initiative rolls."
+  - name: Killer's Sweetheart (Act 2 ring, free crit on next attack after a kill)
+    when: "Once per long rest. Stack on round 1 — kill a goblin with a normal shot, then your next attack is a guaranteed crit. Smite that crit (no — Rogue doesn't smite) — fold Sneak Attack onto the crit for max damage."
+    notes: "The single best item in the build. Plan boss fights around it: kill a weak ally first, then use the queued crit on the boss with Sharpshooter + Sneak Attack on the crit."
+
+mistakes_and_tips:
+  - "Sharpshooter is a TOGGLE — you can turn it off mid-fight. Toggle off when targeting a high-AC boss you might miss; toggle on for everything else."
+  - "Hide BEFORE rolling initiative. The 'Hide' action in stealth-out-of-combat lets you start the fight Hidden, which means your first attack is from invisibility — Surprise round + Assassinate auto-crit. If you forget to Hide before initiative, your round-1 burst loses ~50% of its damage."
+  - "Assassinate triggers AT THE START of dialogue scenes too. Initiating combat from Hidden / Invisible against an NPC during a conversation can skip the dialogue entirely — make sure you've gotten everything you need from the NPC first. Use Thief instead of Assassin if dialogue preservation matters."
+  - "Hunter's Mark is concentration. Pass Without Trace is concentration. They DO NOT stack. Use Pass Without Trace pre-fight (out of combat), then re-cast Hunter's Mark on round 1 (free since combat hasn't started yet, just bonus action)."
+  - "Rogue 1 multiclass into Rogue grants Expertise on 2 skills — pick Stealth + Sleight of Hand. Stealth doubles Pass Without Trace's value; Sleight of Hand opens locks and pickpockets vendors for free items."
+  - "Risky Ring + Sharpshooter + Archery fighting style cancels the -5 to-hit penalty almost entirely. Without Risky Ring, Sharpshooter still works but is less reliable — prioritize getting the ring early in Act 2."
+  - "Honor Mode: Patch 7 made NO Rogue changes. Sharpshooter, Crossbow Expert, Assassinate, and Sneak Attack all work as documented. The build is one of the strongest Honor Mode picks."
+  - "Dual hand crossbows mean you fire one main-hand shot AND one off-hand shot per turn (off-hand takes a bonus action). With Two-Weapon Fighting style at Fighter 1 (char L10), the off-hand shot adds your DEX modifier to damage. Without TWF, off-hand only does weapon dice — confirm you took TWF style."
+  - "Bhaalist Armour's Aura of Murder is a 3m / 10ft AURA — you have to be CLOSE to enemies for the piercing vulnerability to apply. For a ranged Rogue this is awkward; either accept melee positioning for boss fights, or skip Bhaalist and wear Studded Leather +2 / Yuan-ti Scale Mail instead."
+  - "Helldusk Boots' Hellcrawler ability is a teleport that deals 2d8 fire on landing — use it to reposition INTO Bhaalist Armour aura range mid-fight. Bonus action, 1/short rest."
+  - "Killer's Sweetheart only triggers on YOUR kills. Plan multi-target turns to drop a low-HP enemy first (which queues the crit), then nuke the priority target with the crit + Sneak Attack on the same hit."
+  - "Drink an Elixir of Bloodlust at long rest if you can stockpile them — it grants an extra bonus action whenever you reduce a creature to 0 HP. With your nova-round multi-kill turns, this often grants an extra hand crossbow shot mid-round."

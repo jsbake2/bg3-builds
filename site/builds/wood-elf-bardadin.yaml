@@ -134,6 +134,8 @@ leveling:
       - "Spells (4 known) — Dissonant Whispers, Longstrider, Faerie Fire, Healing Word"
       - 'Skill proficiencies (Bard picks 3 from ANY skill) — Persuasion, Deception, Insight. Skip Performance and Acrobatics: your background grants those for free, the screen will already show them as proficient with no checkbox.'
       - Bardic Inspiration (d6, CHA-mod uses per long rest)
+    unlocks:
+      - "Bard L1 spell slots; you start with 4 known spells."
     notes: |
       Stick to ranged early. Bard 1 has no Extra Attack and no subclass yet. Use
       Vicious Mockery for free disadvantage on enemy attacks. Save Inspiration for
@@ -158,6 +160,9 @@ leveling:
       - "Spell — Hold Person (the one you keep forever)"
       - "Spell — Heat Metal (great L2 damage spell, easy to forget)"
       - Slashing / Defensive / Mobile Flourish unlock
+    unlocks:
+      - "L2 spell slots — pick Hold Person and Heat Metal here."
+      - "Bardic Inspiration die scales to d6."
     notes: |
       The build comes alive here. Equip two finesse weapons (rapier or shortsword in
       main hand, shortsword/scimitar in off-hand). Slashing Flourish hits two enemies
@@ -180,6 +185,10 @@ leveling:
       - Font of Inspiration (regain Inspiration on short rest)
       - "Spell — Hypnotic Pattern (3rd level): your AoE control"
       - Extra Attack (Swords Bard exclusive)
+    unlocks:
+      - "L3 spell slots — pick Hypnotic Pattern."
+      - "Extra Attack — 2 attacks per Action."
+      - "Bardic Inspiration die scales to d8."
     notes: |
       Massive power spike. You now hit twice per Action and have 3rd-level slots
       for Hypnotic Pattern. The build is genuinely strong from here on.
@@ -205,6 +214,8 @@ leveling:
       - Fighting Style — Defense (+1 AC)
       - Divine Smite unlocks
       - "Prepared spells (CHA mod + ½ Pal level): Bless, Searing Smite, Thunderous Smite"
+    unlocks:
+      - "Divine Smite — burn any spell slot of L1+ for +2d8 radiant on a melee hit (+1d8 per slot level above L1; +1d8 vs fiends/undead)."
     notes: |
       Every weapon hit can now be Divine Smited. Smite is a YES/NO choice AFTER
       you see the d20 — never pre-declare. Always smite on crits and killing blows.
@@ -232,6 +243,8 @@ leveling:
     pick:
       - "Extra Attack (does not stack with Bard's; still 2 attacks per Action)"
       - "Paladin 2nd-level spells unlock — prepare Misty Step and Branding Smite"
+    unlocks:
+      - "L4 spell slots from multiclass casting (Bard 6 + Paladin 5 → caster level 8). Upcast Smites for 5d8 radiant (6d8 vs fiends/undead)."
     notes: |
       Multiclass caster level = Bard 6 + (Paladin 5 ÷ 2, rounded down) = 8, so
       your full slot table is 4 / 3 / 3 / 2 across spell levels 1–4. Level-4

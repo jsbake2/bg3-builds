@@ -384,18 +384,14 @@ function renderLevelGear(level, data) {
 }
 
 function renderLevelSpells(level, data) {
-  // Show what spells become available at this level.
-  // Bard slot levels in BG3: L1 = L1 spells, L3 = L2 spells, L5 = L3 spells.
-  const events = [];
-  if (level === 1) events.push({ kind: 'unlock', text: 'Bard L1 spell slots; you start with 4 known spells.' });
-  if (level === 3) events.push({ kind: 'unlock', text: 'L2 spell slots — pick Hold Person and Heat Metal here.' });
-  if (level === 5) events.push({ kind: 'unlock', text: 'L3 spell slots — pick Hypnotic Pattern.' });
-  if (level === 8) events.push({ kind: 'unlock', text: 'Divine Smite — burn any spell slot for +2d8 radiant on a melee hit.' });
-  if (level === 11) events.push({ kind: 'unlock', text: 'L4 spell slots from multiclass casting (Bard 6 + Pal 5 = caster 8).' });
-  if (!events.length) return '';
+  // Pull "unlocks" from the per-level YAML entry, so each build owns its own
+  // milestone text. Older entries without `unlocks` simply skip this block.
+  const lvlData = (data.leveling || []).find(l => Number(l.level) === level);
+  const unlocks = lvlData && lvlData.unlocks;
+  if (!unlocks || !unlocks.length) return '';
   return `<section class="lvl-block">
     <h3>What unlocks here</h3>
-    <ul class="unlocks">${events.map(e => `<li>${escapeHtml(e.text)}</li>`).join('')}</ul>
+    <ul class="unlocks">${unlocks.map(u => `<li>${escapeHtml(u)}</li>`).join('')}</ul>
   </section>`;
 }
 
