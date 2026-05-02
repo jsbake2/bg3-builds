@@ -5,7 +5,7 @@ meta:
   race: Wood Elf
   classes: [Bard, Paladin]
   level_range: "1 → 12"
-  difficulty: Intermediate (noob-friendly with this guide)
+  difficulty: Beginner-friendly
   final_split: Bard 6 / Paladin 6
   win_condition: >
     Hold Person → guaranteed crit melee → Divine Smite (smite dice double on crit).
@@ -99,13 +99,17 @@ stats_progression:
   priorities: [CHA, DEX, CON]
   asi_plan:
     - level: 10
-      pick: "+2 CHA (15 → 17 if you skipped earlier ASI; otherwise → 19)"
-      reason: Boosts spell save DC, hit chance, and Aura of Protection at L12.
-    - level: 4_paladin_alt
-      pick: "Alert (if already at CHA 18+)"
-      reason: Initiative + immune to surprise. Skip if CHA isn't 18 yet.
+      pick: "+2 CHA (15 → 17)"
+      reason: Improves spell save DC, the Aura of Protection at L12, and any CHA-based ability check.
+  alternates:
+    - feat: Resilient (Constitution)
+      when: "If you've struggled to keep Concentration on Hold Person before L12."
+      tradeoff: "Loses the +2 CHA ramp. Aura of Protection at L12 mostly fixes Concentration on its own."
+    - feat: Alert
+      when: "If you find yourself surprised in ambushes or going late in initiative."
+      tradeoff: "Pure utility. CHA stays at 15 for the rest of the run."
   cap_at_12:
-    cha: 19
+    cha: 17
     dex: 17
     con: 14
 
@@ -125,12 +129,13 @@ leveling:
   - level: 2
     take: Bard 2
     pick:
-      - Jack of All Trades (½ proficiency on non-proficient checks)
+      - Jack of All Trades (½ proficiency on non-proficient ability checks)
       - Song of Rest (extra HP regen on short rests)
-      - Add a spell — pick Heat Metal — wait, Heat Metal is L2; at Bard 2 you only have L1 slots. Add Disguise Self or keep Sleep for now and replace at L3.
+      - "Spell (gain 1) — pick Disguise Self (utility) or Thunderwave (small AoE)"
     notes: |
-      Filler level. No dramatic new toys, but Jack of All Trades quietly buffs every
-      skill check you make. Keep playing back-line until level 3.
+      A filler level — no dramatic new toys. Jack of All Trades quietly buffs
+      every skill check you aren't proficient in. Keep playing back-line until
+      Bard 3 unlocks Extra Attack-relevant subclass picks at level 5.
   - level: 3
     take: Bard 3
     pick:
@@ -149,11 +154,12 @@ leveling:
   - level: 4
     take: Bard 4
     pick:
-      - Cantrip — Blade Ward (or Minor Illusion)
-      - ASI — skip; save the feat for paladin levels
-      - Spell upgrade — keep Hold Person, swap Sleep out for Healing Word if missing
+      - Cantrip (gain 1) — Blade Ward or Minor Illusion
+      - "ASI/Feat — skip the feat here; save it for Paladin 4 (level 10)"
+      - "Spell — gain 1 and you may swap 1: drop Sleep, pick Invisibility or Enhance Ability"
     notes: |
-      Feat is tempting but the build's feat is +2 CHA at level 10. Stay the course.
+      The feat is tempting but the build's feat slot is +2 CHA at level 10. Stay
+      the course.
   - level: 5
     take: Bard 5
     pick:
@@ -183,39 +189,40 @@ leveling:
   - level: 8
     take: Paladin 2
     pick:
-      - Fighting Style — Defense (+1 AC); skip Great Weapon Fighting (daggers don't qualify)
+      - Fighting Style — Defense (+1 AC)
       - Divine Smite unlocks
-      - Paladin spells (prepared, swappable on long rest):  Bless, Wrathful Smite, Compelled Duel
+      - "Prepared spells (CHA mod + ½ Pal level): Bless, Searing Smite, Thunderous Smite"
     notes: |
-      Now every weapon hit can be smited. Smite is a YES/NO choice AFTER you see
-      the d20 — never pre-declare. Always smite on crits. Always smite a killing
-      blow.
+      Every weapon hit can now be Divine Smited. Smite is a YES/NO choice AFTER
+      you see the d20 — never pre-declare. Always smite on crits and killing blows.
   - level: 9
     take: Paladin 3
     pick:
       - Oath — Vengeance
-      - Channel Oath — Vow of Enmity (advantage on attacks vs target, bonus action)
-      - Channel Oath — Inquisitor's Might (action; +1d4 radiant + Daze on weapon hits, party-wide, 10 turns)
+      - "Channel Oath: Vow of Enmity — bonus action; advantage on attack rolls vs one target for 10 turns"
+      - "Channel Oath: Inquisitor's Might — bonus action self-buff; your weapon attacks deal +1d4 radiant and Daze on hit for 10 turns"
+      - "Oath spells (auto-prepared): Bane, Hunter's Mark"
     notes: |
-      Vow of Enmity opens boss fights. Inquisitor's Might is for long fights only —
-      it's a full Action and one of two Channel Oath uses per short rest.
+      Vow of Enmity is the default Channel Oath — one bonus action, then your
+      whole fight has advantage on the boss. Channel Oath has 1 charge per short
+      rest; both abilities share that pool, so you pick one per fight.
   - level: 10
     take: Paladin 4
     pick:
-      - "Feat — Ability Score Improvement: +2 CHA (15 → 17 → 19 with Birthright/etc)"
-      - Alternative — Resilient (Constitution) for Concentration safety, but Aura at L12 mostly fixes that
+      - "Feat / ASI — +2 CHA (15 → 17). Default pick."
     notes: |
-      +2 CHA is the default. It improves Spell Save DC for Hold Person, Smite radiant
-      damage scaling indirectly via spells, attack rolls (your weapon attacks key off
-      DEX, but spells like Wrathful Smite use CHA save DC), and Aura of Protection at L12.
+      +2 CHA improves the spell save DC on Hold Person, the save DC on Wrathful
+      Smite / Command, and the bonus from Aura of Protection at level 12. See
+      "Stat Progression" for alternate feats (Resilient CON, Alert).
   - level: 11
     take: Paladin 5
     pick:
-      - Extra Attack (does NOT stack with Bard's; still 2 attacks per Action)
-      - Paladin 2nd-level spells — Misty Step, Branding Smite, Find Steed
+      - "Extra Attack (does not stack with Bard's; still 2 attacks per Action)"
+      - "Paladin 2nd-level spells unlock — prepare Misty Step and Branding Smite"
     notes: |
-      Your slot table now: 4× L1 / 3× L2 / 3× L3 / 2× L4 (multiclass caster level = Bard 6 + Paladin 2 = 8).
-      L4 slots = bigger Smites (5d8 radiant, 6d8 vs undead/fiends).
+      Multiclass caster level = Bard 6 + (Paladin 5 ÷ 2, rounded down) = 8, so
+      your full slot table is 4 / 3 / 3 / 2 across spell levels 1–4. Level-4
+      slots upcast Smites for 5d8 radiant (6d8 vs fiends/undead).
   - level: 12
     take: Paladin 6
     pick:
@@ -226,9 +233,9 @@ leveling:
 
 spells:
   cantrips:
-    - { name: Vicious Mockery, source: Bard 1, why: "No-save psychic + disadvantage on next attack. Backup ranged." }
-    - { name: Friends, source: Bard 1, why: "Out-of-combat advantage on Persuasion checks." }
-    - { name: Blade Ward, source: Bard 4, why: "Half damage from weapon attacks. Niche but solid emergency." }
+    - { name: Vicious Mockery, source: Bard 1, why: "Psychic damage + WIS save; on fail, target has disadvantage on its next attack. Free backup ranged." }
+    - { name: Friends, source: Bard 1, why: "Out-of-combat advantage on CHA checks against non-hostiles. Use before key Persuasion rolls." }
+    - { name: Blade Ward, source: Bard 4, why: "Half damage from weapon attacks for 1 turn. Niche emergency button." }
   level_1:
     keepers:
       - { name: Faerie Fire, why: "AoE advantage on attacks. Reveals invisible. Concentration." }
@@ -252,11 +259,15 @@ spells:
     skip:
       - { name: Counterspell, why: "NOT on the Bard list. Don't search for it." }
   paladin_prepared:
-    note: "Paladin spells are prepared each long rest. Slots = total caster slots above."
-    recommended_at_12: [Bless, Command, Wrathful Smite, Thunderous Smite, Misty Step, Branding Smite]
+    note: "Paladin spells are prepared at long rest from the full Paladin list. They share the multiclassed slot table with your Bard spells."
+    recommended_at_12: [Bless, Command, Searing Smite, Thunderous Smite, Misty Step, Branding Smite]
   must_pick_now:
-    - { at_level: 3, spell: "Hold Person + Heat Metal", why: "Heat Metal especially — easy to forget to grab and you may not respec back." }
-    - { at_level: 5, spell: "Hypnotic Pattern", why: "Carries multi-enemy fights where Hold Person only catches one target." }
+    - at_level: 3
+      spell: "Hold Person + Heat Metal"
+      why: "Hold Person is the build's win condition. Heat Metal is the best L2 damage spell vs armored enemies and is easy to overlook."
+    - at_level: 5
+      spell: "Hypnotic Pattern"
+      why: "Best AoE control in the game. Covers fights where Hold Person can only catch one target."
 
 gear:
   notes: >
@@ -302,17 +313,22 @@ gear:
 
 playstyle:
   early:
-    levels: "3 – 6 (Bard only)"
+    levels: "1 – 6 (pure Bard)"
     summary: |
-      You're a face/skill character with a melee finesse package. Two weapons,
-      Slashing Flourish to cleave, Faerie Fire/Hold Person for control.
+      Levels 1–2 you play as a back-line caster: ranged hand crossbow + Vicious
+      Mockery, Healing Word for emergencies. From Bard 3 onward you're a melee
+      face/skill character with a finesse dual-wield package — Slashing Flourish
+      to cleave, Faerie Fire and Hold Person for control. Extra Attack lands at
+      Bard 5.
     standard_turn: |
-      Action: 1 attack (or 2 at L5) + Slashing Flourish to hit a 2nd target. Bonus
-      action: off-hand attack (Two-Weapon Fighting adds DEX mod to damage). Reaction:
-      hold for Cutting Words on a big incoming hit.
+      Action — 1 attack at L3, 2 attacks at L5+, plus Slashing Flourish to hit a
+      second target on the same swing. Bonus action — off-hand attack (Two-Weapon
+      Fighting adds your DEX mod to off-hand damage). Reaction — hold for Cutting
+      Words on a big incoming attack.
     nova_turn: |
-      Round 1: Faerie Fire on a clump (advantage on the whole party's attacks). Round 2:
-      Hold Person on the priority target. Round 3: melee on the held target = auto-crit.
+      Round 1 — Faerie Fire on a clump (advantage for your whole party). Round 2
+      — Hold Person on the priority target. Round 3 — melee on the held target;
+      every hit auto-crits.
   mid:
     levels: "7 – 9 (Paladin 1–3)"
     summary: |
@@ -366,10 +382,10 @@ abilities_situational:
     when: "Single dangerous caster — the WIS save fail eats their reaction (Counterspell, Shield, Reaction-AoO). Or to push a target through Spike Growth."
   - name: Vow of Enmity
     when: "Round 1 of any boss fight. Lasts 10 turns — basically the whole fight."
-    notes: "Free advantage. Stacks with Held auto-crit but mostly used when Hold Person isn't legal."
+    notes: "Bonus-action advantage on attacks vs the target. The advantage is redundant once Hold Person lands (auto-crits already), so save Vow primarily for fights where Hold Person is illegal: undead, constructs, fiends, beasts."
   - name: Inquisitor's Might
-    when: "Long, multi-turn fights only (Steel Watch, Cazador, House of Hope). It costs your Action."
-    notes: "Don't burn it on 2-round trash fights."
+    when: "Long, multi-turn fights (Steel Watch, Cazador, House of Hope). Bonus-action self-buff lasting 10 turns: +1d4 radiant on weapon attacks and a chance to Daze on hit."
+    notes: "Shares its Channel Oath charge with Vow of Enmity — pick one per fight. Don't burn it on 2-round trash fights."
   - name: Divine Smite
     when: "After a confirmed hit. Always on crits. Always on killing blows. Hold the slot if <2 left and the fight has multiple bosses remaining."
     notes: "BG3 lets you choose post-hit. Never pre-declare."
