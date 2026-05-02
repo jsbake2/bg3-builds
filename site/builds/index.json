@@ -5,6 +5,12 @@
       "file": "wood-elf-bardadin.yaml",
       "name": "Wood Elf Bardadin",
       "tagline": "Swords Bard 6 / Vengeance Paladin 6"
+    },
+    {
+      "id": "githyanki-evoker",
+      "file": "githyanki-evoker.yaml",
+      "name": "Githyanki Evoker",
+      "tagline": "Pure Evocation Wizard 12"
     }
   ]
 }

@@ -1,0 +1,558 @@
+meta:
+  id: githyanki-evoker
+  name: Githyanki Evoker
+  tagline: Pure Evocation Wizard 12 — Magic Missile / Fireball / Cone of Cold
+  race: Githyanki
+  classes: [Wizard]
+  level_range: "1 → 12"
+  difficulty: Intermediate
+  final_split: Wizard 12 (pure)
+  win_condition: >
+    Sculpt Spells lets allies stand inside your Fireballs unharmed. Empowered
+    Evocation adds your INT mod (+5 with INT 20, +6 with 22) to every Magic
+    Missile dart and Fireball cube. Quickspell Gloves let you cast a cantrip as
+    a bonus action every turn for free. Magic Missile with all riders stacked
+    (Markoheshkir element + Phalar Aluve Sing + Empowered Evocation + Spineshudder
+    Reverberation) becomes the highest sustained-damage spell in the game.
+
+overview: |
+  This is the strongest pure-caster build in BG3. You play it from the back line —
+  squishy in melee, devastating at range. Every turn you cast a leveled spell as
+  your Action and a damage cantrip as your bonus action (via Quickspell Gloves),
+  with Shield (reaction +5 AC) ready when something targets you and Counterspell
+  ready when an enemy caster opens its mouth.
+
+  Two subclass features make this build exceptional. **Sculpt Spells** at Wizard 2
+  lets allies in the AoE of your evocation spells auto-pass for zero damage —
+  Fireball becomes "drop it on top of the melee, friends are fine." **Empowered
+  Evocation** at Wizard 10 adds your INT mod to one damage roll of every wizard
+  evocation spell — and in BG3 it actually applies to every dart of Magic Missile,
+  every cube of Fireball, every ray of Scorching Ray. With INT 20 that's +5 per
+  hit on a multi-hit spell.
+
+  Pure Wizard 12 is the cleaner, more popular choice over the multi-class
+  variants. You get a third ASI (vs 2 with a 1-level dip), the full L6 spell list
+  (Chain Lightning, Disintegrate, Otto's Irresistible Dance, Globe of
+  Invulnerability), and simpler levelling. The Fighter / Cleric / Sorcerer
+  multiclass variants are documented in the Reference → Alternative splits
+  section if you'd rather trade those for Concentration safety or Action Surge.
+
+character_creation:
+  note: |
+    Start as Wizard at character creation and stay Wizard for all 12 levels.
+    No multiclass.
+  class: Wizard
+  background_suggested: Sage (Arcana + History)
+  cantrips_at_l1: [Fire Bolt, Ray of Frost, Mind Sliver]
+  spells_known_at_l1:
+    [Magic Missile, Shield, Find Familiar, Chromatic Orb, Sleep, Mage Armor]
+  ability_scores:
+    note: "Buy these point-buy values. Githyanki adds +2 INT and +1 to a stat of your choice — put the +1 on CON."
+    str: 8
+    dex: 14
+    con: 15
+    int: 15
+    wis: 10
+    cha: 8
+  final_starting:
+    str: 8
+    dex: 14
+    con: 16
+    int: 17
+    wis: 10
+    cha: 8
+
+skills:
+  summary: |
+    Wizard picks 2 skill proficiencies from a small list (Arcana, History,
+    Investigation, Medicine, Religion, Insight). Sage background grants 2 more.
+    Githyanki Astral Knowledge lets you choose an ability category for free
+    skill proficiency in 4 skills — situational toggle out of combat.
+  at_creation:
+    from_race:
+      pick: ["Astral Knowledge (toggle)"]
+      note: |
+        Githyanki Astral Knowledge isn't a fixed skill list — it grants
+        proficiency in all skills tied to one ability score (STR/DEX/CON/INT/
+        WIS/CHA) for an hour. Toggle to INT before exploration to pick up
+        Arcana/History/Investigation/Religion proficiency on demand.
+    from_background:
+      pick: [Arcana, History]
+      background: Sage
+      note: "Sage covers two of your most-used skills — Arcana for magic-item identification and History for lore checks."
+    from_class:
+      pick: [Investigation, Insight]
+      note: |
+        Wizard's class skill list is restrictive (Arcana, History, Investigation,
+        Medicine, Religion, Insight). Investigation finds traps and clues;
+        Insight reads NPCs. Both INT/WIS-based.
+  at_level_3_expertise:
+    pick: []
+    note: |
+      Wizard does NOT grant Expertise. Skill bonuses don't double anywhere in
+      this build. You're a caster — most checks resolve via INT-based Arcana,
+      History, Investigation, all of which you're proficient in.
+  later_levels: |
+    No new skill proficiencies appear after Wizard 1. Final list at L12:
+      • Race (Githyanki): Astral Knowledge toggle
+      • Background (Sage): Arcana, History
+      • Class (Wizard 1): Investigation, Insight
+
+stats_progression:
+  priorities: [INT, CON, DEX]
+  asi_plan:
+    - level: 4
+      pick: "+2 INT (17 → 19)"
+      reason: Improves spell save DC, spell attack rolls, and the future Empowered Evocation damage rider.
+    - level: 8
+      pick: "Resilient (Constitution)"
+      reason: "Half-feat — adds CON save proficiency AND +1 CON (16 → 17, mod stays +3 unless Hag's Hair takes it to 18). The CON save proficiency is what keeps Concentration on Hypnotic Pattern, Hold Monster, Wall of Fire, Greater Invisibility, etc."
+    - level: 12
+      pick: "Alert (+5 initiative, immune to surprise)"
+      reason: Wizards want to act first. Going first means casting Hypnotic Pattern before the enemy moves.
+  alternates:
+    - feat: War Caster
+      when: "If you'd rather have advantage on Concentration saves than initiative."
+      tradeoff: "Comparable to Resilient (CON). Pick whichever feels stronger."
+    - feat: "+2 INT (at L8 instead of Resilient)"
+      when: "If you're confident in Concentration management without Resilient (CON)."
+      tradeoff: "Pushes INT to 20 sooner without needing Hag's Hair, but Concentration becomes fragile."
+    - feat: Lucky
+      when: "Honor Mode safety net. 3 luck points per long rest let you reroll a save / attack / forced enemy disadvantage."
+      tradeoff: "Pure defensive niche. Loses Alert and the +1 CON."
+  permanent_boosts:
+    note: |
+      Spend Hag's Hair on INT to push 19 → 20 (the ASI cap). Spend Mirror of Loss
+      on INT as well — it bypasses the cap and pushes 20 → 22, which scales every
+      damage roll on every Magic Missile, Fireball, Cone of Cold, and Chain
+      Lightning you'll ever cast.
+    items:
+      - { name: "Hag's Hair", grants: "+1 to one ability score (permanent)", where: "Auntie Ethel — Sunlit Wetlands (Act 1).", recommend: "Spend on INT — pushes 19 → 20." }
+      - { name: "Mirror of Loss (boon)", grants: "+2 to one ability score (permanent), bypasses the 20 cap; -1 to all others until you Restore at the same shrine", where: "Gauntlet of Shar (Act 2). Pass the WIS check to gain the boon.", recommend: "Spend on INT — pushes 20 → 22." }
+  cap_at_12:
+    str: 8
+    dex: 14
+    con: 17
+    int: 22
+    wis: 10
+    cha: 8
+    note: "Final cap assumes Hag's Hair (+1 INT) and Mirror of Loss (+2 INT) are both spent on Intelligence; Resilient (CON) is taken at L8 (CON 16 → 17)."
+
+leveling:
+  - level: 1
+    take: Wizard 1
+    pick:
+      - "Cantrips (3) — Fire Bolt, Ray of Frost, Mind Sliver"
+      - "Spellbook (6 spells) — Magic Missile, Shield, Find Familiar, Mage Armor, Chromatic Orb, Sleep"
+      - "Skill proficiencies (2) — Investigation, Insight (or pick from Arcana, History, Medicine, Religion if your background already covers those)"
+      - "Arcane Recovery — once per day, regain spell slots totalling half your wizard level (rounded up). Refreshes on short rest in BG3."
+    notes: |
+      Stand at the back. Magic Missile is your auto-hit primary; Shield (reaction
+      +5 AC) is your defensive backup; Find Familiar's raven scouts and shoves
+      grease bombs onto enemies. Sleep ends fights when targets are below 24 HP
+      — drops off past character L4.
+  - level: 2
+    take: Wizard 2
+    pick:
+      - Subclass — School of Evocation
+      - "Sculpt Spells — when you cast an evocation spell with an area, choose creatures to auto-pass the save and take ZERO damage"
+    notes: |
+      The reason we picked Evocation. From now on Fireball, Cone of Cold, Cloud
+      of Daggers, and Lightning Bolt are "drop it on top of the melee" spells
+      — allies pass for free and take zero damage.
+  - level: 3
+    take: Wizard 3
+    pick:
+      - L2 spell slots unlock
+      - "Spells from level-up (2) — pick Misty Step + Mirror Image"
+    notes: |
+      Misty Step is mandatory: bonus-action 18m teleport with no AOO. Mirror
+      Image gives 3 illusory duplicates that absorb attacks — concentration-free
+      so it stacks with everything.
+  - level: 4
+    take: Wizard 4
+    pick:
+      - "Cantrip (gain 1) — Light or Minor Illusion (Githyanki already has Mage Hand)"
+      - "Feat / ASI — +2 INT (17 → 19)"
+      - "Spells from level-up (2) — pick Scorching Ray + Cloud of Daggers"
+    notes: |
+      First ASI. +2 INT raises your spell save DC by 1, your spell attack rolls
+      by 1, and the future Empowered Evocation rider by 1.
+  - level: 5
+    take: Wizard 5
+    pick:
+      - L3 spell slots unlock — Fireball, Counterspell, Hypnotic Pattern, Haste
+      - "Spells from level-up (2) — pick Fireball + Counterspell. Scribe Hypnotic Pattern from a scroll as soon as possible."
+    notes: |
+      The build's first big spike. Fireball + Sculpt Spells means you drop a 6m
+      explosion on top of melee — your allies take zero damage, enemies take 8d6.
+      Counterspell shuts down enemy casters as a reaction.
+  - level: 6
+    take: Wizard 6
+    pick:
+      - "Subclass feature — Potent Cantrip: targets that succeed on a save against your save-based cantrips still take half damage"
+      - "Spells from level-up (2) — pick Slow + Haste (or Hypnotic Pattern if not yet scribed)"
+    notes: |
+      Potent Cantrip means Fire Bolt and Ray of Frost always do damage, even
+      against successful saves. Combined with Quickspell Gloves (Act 2), this is
+      your reliable damage floor.
+  - level: 7
+    take: Wizard 7
+    pick:
+      - L4 spell slots unlock
+      - "Spells from level-up (2) — pick Greater Invisibility + Wall of Fire"
+    notes: |
+      Greater Invisibility (concentration) makes a melee ally untouchable AND
+      attacking at advantage — game-changing buff. Wall of Fire is a chokepoint
+      concentration AOE (5d8 fire on entry / end of turn).
+  - level: 8
+    take: Wizard 8
+    pick:
+      - "Feat / ASI — Resilient (Constitution): +1 CON and CON-save proficiency"
+      - "Spells from level-up (2) — pick Evard's Black Tentacles + Stoneskin (or Banishment)"
+    notes: |
+      Resilient (CON) is the build's defensive cornerstone. Without it your
+      Concentration spells break the moment an arrow hits you. With it plus
+      Robe of the Weave + Markoheshkir, you almost never lose Hypnotic Pattern
+      mid-fight.
+  - level: 9
+    take: Wizard 9
+    pick:
+      - L5 spell slots unlock
+      - "Spells from level-up (2) — pick Cone of Cold + Hold Monster"
+    notes: |
+      Cone of Cold is the best raw-damage AOE in the game (8d8 cold, 18m cone).
+      Sculpt Spells protects your allies. Hold Monster is Hold Person's upgrade
+      — works on giants, beasts, monstrosities, fey.
+  - level: 10
+    take: Wizard 10
+    pick:
+      - "Cantrip (gain 1) — Toll the Dead (necrotic, 1d8/1d12 based on full HP) or Acid Splash"
+      - "Subclass feature — Empowered Evocation: add your INT mod (+5 with INT 20, +6 with 22) to ONE damage roll of every wizard evocation spell you cast"
+    notes: |
+      Empowered Evocation is the build's biggest single power spike. In BG3 it
+      applies to every damage roll on multi-roll spells — every Magic Missile
+      dart, every Scorching Ray, every Cone of Cold target. With INT 22 that's
+      +6 per dart on a Magic Missile.
+  - level: 11
+    take: Wizard 11
+    pick:
+      - L6 spell slots unlock
+      - "Spells from level-up (2) — pick Chain Lightning + Disintegrate (or Globe of Invulnerability for Honor Mode boss fights)"
+    notes: |
+      Chain Lightning hits up to 4 targets for 12d8 lightning (Sculpt Spells
+      protects allies). Disintegrate is 10d6+40 force on a single target,
+      ignoring almost every resistance. Globe of Invulnerability creates a 3m
+      sphere immune to spells L5 and below — drop on yourself vs enemy mages.
+  - level: 12
+    take: Wizard 12
+    pick:
+      - "Feat / ASI — Alert (+5 initiative, immune to surprise, can't be auto-failed on initiative)"
+      - "Spells from level-up (2) — pick Otto's Irresistible Dance + Mass Suggestion (or another L6 like Globe of Invulnerability if not yet picked)"
+    notes: |
+      Build complete. Alert puts you at +7 initiative (DEX +2 + Alert +5),
+      meaning you almost always go first. Going first is everything for a
+      wizard: Hypnotic Pattern before the enemy moves and the fight is already
+      over.
+
+spells:
+  cantrips:
+    - { name: Fire Bolt, source: Wizard 1, why: "Default 1d10 fire ranged. With Hat of Fire Acuity each cast stacks Arcane Acuity (raises your spell save DC and attack rolls). With Quickspell Gloves it's bonus-action damage every turn." }
+    - { name: Ray of Frost, source: Wizard 1, why: "1d8 cold + slows the target by 3m. Synergizes with Mourning Frost staff (Encrusted with Frost) and Cold-themed Markoheshkir imbue." }
+    - { name: Mind Sliver, source: Wizard 1, why: "Psychic damage + −1d4 on the target's next save. Cast it the turn before Hold Monster / Hypnotic Pattern to debuff the resisting save." }
+    - { name: Mage Hand, source: Githyanki racial (free), why: "Free from your race — saves a cantrip slot. Pull levers, drop items into hostile zones, throw barrels of grease into a Fireball." }
+    - { name: Light, source: Wizard 4, why: "Cast on a weapon or rock for a free torch. Cheap utility." }
+    - { name: Toll the Dead, source: Wizard 10, why: "1d8 necrotic vs full-HP enemies, 1d12 vs damaged enemies. Wisdom save — with Empowered Evocation rider, this is reliable bonus-action damage at full INT." }
+  level_1:
+    keepers:
+      - { name: Magic Missile, why: "Auto-hit. Scales with slot (3+1 darts per slot level). Empowered Evocation adds INT mod to every dart. The build's signature." }
+      - { name: Shield, why: "Reaction +5 AC vs an attack that would hit, also negates Magic Missile. Core defense." }
+      - { name: Find Familiar, why: "Owl scout, raven flyer, spider grease-bomber. Free utility forever." }
+      - { name: Chromatic Orb, why: "Single-target nova; 3d8 of an element of your choice. Pairs with elemental gear and Markoheshkir imbue." }
+      - { name: Mage Armor, why: "Optional after Fighter 1 — heavy armor outclasses it. Skip if you found a robe with AC." }
+      - { name: Sleep, why: "Free L1 disable through level 4. Drops out of usefulness fast (HP cap)." }
+    skip:
+      - { name: Burning Hands, why: "Small AoE, Sculpt Spells doesn't help vs allies in melee. Fireball replaces it at L5." }
+      - { name: Color Spray, why: "Same HP-cap problem as Sleep. Drop both by Wizard 5." }
+  level_2:
+    keepers:
+      - { name: Misty Step, why: "Bonus-action 18m teleport. Mandatory mobility." }
+      - { name: Mirror Image, why: "3 illusory duplicates of yourself absorb attacks. Concentration-free; layered defense with Shield." }
+      - { name: Web, why: "Restrains targets in a 6m radius (DEX save). Concentration. Combos with Hold Monster / Hypnotic Pattern." }
+      - { name: Scorching Ray, why: "3 attack-roll fire darts. Solid single-target before Fireball unlocks." }
+      - { name: Invisibility, why: "Out-of-combat positioning + reposition mid-fight. Concentration." }
+    keepers_extra:
+      - { name: Cloud of Daggers, why: "Concentration; 5d4 slashing per turn in a 1.5m cube. Combos with Web / Hypnotic Pattern (held targets eat the damage) and triggers Boots of Stormy Clamour Reverberation." }
+  level_3:
+    keepers:
+      - { name: Fireball, why: "8d6 fire in 6m — Sculpt Spells protects allies. Best raw AoE before Cone of Cold." }
+      - { name: Counterspell, why: "Reaction; auto-cancels enemy spells L3 and below. Mandatory." }
+      - { name: Hypnotic Pattern, why: "Best AoE control spell in the game. Charm-incapacitate any humanoid that fails. Concentration." }
+      - { name: Haste, why: "Concentration; +2 AC, doubled speed, extra Action per turn for one ally. Cast on the party tank or melee DPS." }
+      - { name: Slow, why: "Concentration AoE alternative to Hypnotic Pattern. Works on undead/constructs (no charm save)." }
+      - { name: Fly, why: "Cast pre-fight on a melee ally for the full vertical mobility play." }
+    skip:
+      - { name: Animate Dead, why: "Niche. Skeletons clutter combat and can't keep up with action economy." }
+  level_4:
+    keepers:
+      - { name: Greater Invisibility, why: "Concentration; an ally is invisible AND attacks at advantage. Game-changing on a melee ally." }
+      - { name: Wall of Fire, why: "Concentration; 5d8 fire to anyone passing through OR ending turn within. Chokepoint control." }
+      - { name: Stoneskin, why: "Concentration; resistance to non-magical bludgeoning/piercing/slashing. Defensive layer." }
+      - { name: Polymorph, why: "Concentration; turn an enemy into a sheep (no actions, low HP). Soft Banishment." }
+      - { name: Banishment, why: "Removes a target from the fight on a CHA save fail. Backup soft control." }
+    keepers_extra:
+      - { name: "Evard's Black Tentacles", why: "Concentration; restrains targets in a 4m square (DEX save) and deals 3d6 bludgeoning per turn while restrained. Best L4 control spell — strictly better than Web in most situations." }
+    skip:
+      - { name: Confusion, why: "Replaced by Hypnotic Pattern (more reliable lock-down)." }
+  level_5:
+    keepers:
+      - { name: Cone of Cold, why: "8d8 cold in a 18m cone. Best raw AoE damage spell in the build." }
+      - { name: Hold Monster, why: "Hold Person's upgrade — works on giants, beasts, monstrosities, fey. Auto-crit setup for melee allies. Concentration." }
+      - { name: Telekinesis, why: "Move/throw enemies, push them off cliffs/into hazards. Concentration." }
+      - { name: Cloudkill, why: "Concentration; 5d8 poison cloud, moves on its own each turn. Stacks with Spike Growth / Web." }
+      - { name: Wall of Stone, why: "Concentration; 10x10 stone wall. Block enemy advance, split groups." }
+  level_6:
+    keepers:
+      - { name: Chain Lightning, why: "12d8 lightning to up to 4 targets. Best multi-target nova." }
+      - { name: Disintegrate, why: "10d6+40 force on a single target — ignores most resistances. Boss-killer." }
+      - { name: Globe of Invulnerability, why: "Concentration; 3m sphere blocks all spells L5 and below. Anti-mage bubble." }
+      - { name: Otto's Irresistible Dance, why: "Concentration; target wastes turns dancing in place. WIS save fail = boss-locked." }
+  must_pick_now:
+    - at_level: 1
+      spell: "Magic Missile + Shield + Find Familiar"
+      why: "Magic Missile is your auto-hit primary; Shield is your reaction defense; Find Familiar is permanent utility."
+    - at_level: 6
+      spell: "Fireball + Counterspell"
+      why: "Fireball is your AoE; Counterspell is your reaction control. Hypnotic Pattern can be scribed from a scroll."
+    - at_level: 11
+      spell: "Empowered Evocation kicks in — re-evaluate prepared spells to maximize evocation damage spells."
+      why: "+INT mod to every damage roll on Wizard evocation spells. Shifts the math toward Magic Missile, Fireball, Cone of Cold, Chain Lightning."
+
+gear:
+  notes: >
+    Wizards prefer light armor + INT scaling, but with Fighter 1 you wear heavy
+    armor (Adamantine Splint by Act 1, Helldusk by Act 3). Robes are reserved
+    for the spell-bonus slots like Robe of the Weave. Staff is your weapon —
+    you won't auto-attack in melee, but staves carry massive spell-bonus stats.
+  act_1:
+    - { slot: "Staff", item: "Spellsparkler", where: "Underdark — Arcane Tower (return Bernard's matrix to him or loot from Bernard's chamber)", why: "Each cantrip you cast grants 2 stacks of Lightning Charges (up to 5). At 5 stacks, your next cantrip deals +1d8 lightning. Trivial to maintain with Quickspell + Fire Bolt later." }
+    - { slot: "Helm", item: "Cap of Curing", where: "Crèche Y'llek vendor (A'jak'nir Jeera)", why: "Healing on you also restores a 2nd party member for 1d4. Niche but free utility." }
+    - { slot: "Armor", item: "Adamantine Scale Mail", where: "Grymforge — Adamantine Forge (mithral ore + scale mail mould)", why: "Medium armor, immune to crits, reflects crits as Stun. With Fighter 1 you have heavy armor prof, but Scale Mail beats Splint for spellcasters because the lighter weight matters less than the crit immunity." }
+    - { slot: "Boots", item: "Boots of Speed", where: "Goblin Camp — drop from Crusher (the goblin that demands you kiss his foot in the courtyard)", why: "Doubles your movement speed for free. Crucial for repositioning out of melee." }
+    - { slot: "Amulet", item: "Amulet of Misty Step", where: "Crèche Y'llek (vendor / quest reward)", why: "Free Misty Step 1/short rest. Stack with Wizard's Misty Step spell for double escape." }
+    - { slot: "Ring", item: "The Whispering Promise", where: "Druid Grove — sold by Arron after the tiefling rescue", why: "When you heal an ally, both gain +1d4 Bless to attacks. Pairs with Healing Word from Find Familiar (raven) or wand of magic missile + healing potions." }
+    - { slot: "Ring", item: "Caustic Band", where: "Crèche Y'llek — sold by A'jak'nir Jeera", why: "+2 acid damage on weapon hits. Niche on a wizard; carry for off-build party members." }
+  act_2:
+    - { slot: "Helm", item: "Hat of Fire Acuity", where: "Last Light Inn — sold by Mattis (or pickpocket); also looted from Lorroakan's chamber in Act 3", why: "Each fire-damage spell you cast grants 1 stack of Arcane Acuity (max 10). Each stack = +1 to your spell save DC AND spell attack rolls. Spam Fire Bolt cantrip → max stacks → Hold Monster lands at +10 DC." }
+    - { slot: "Gloves", item: "Quickspell Gloves", where: "Last Light Inn — sold by Mattis", why: "1 cantrip per turn becomes a bonus action. You now cast a leveled spell + a damage cantrip every turn for the rest of the game. Build-defining." }
+    - { slot: "Staff", item: "Mourning Frost", where: "Mountain Pass — Lady Esther's quest reward (give her the gith egg) or kill her", why: "+1 spell save DC, +1 spell attack on cold spells. Cold spells inflict 2 stacks of Encrusted with Frost (cold vulnerability). Pairs with Ray of Frost cantrip + later Cone of Cold." }
+    - { slot: "Boots", item: "Boots of Stormy Clamour", where: "Crèche Y'llek (Act 1 carry) — sold by A'jak'nir Jeera", why: "Inflicting any condition grants the target 2 stacks of Reverberation. Combos with Web, Hold Monster, Slow, and Cloud of Daggers (which inflicts Bleed)." }
+    - { slot: "Amulet", item: "Amulet of the Devout", where: "Last Light Inn — Isobel's chamber chest (or pickpocket)", why: "+1 spell save DC and 1 free Channel Divinity per long rest. The +1 DC is generic and stacks with everything." }
+    - { slot: "Ring", item: "Ring of Mental Inhibition", where: "Crèche Y'llek — earned by passing the Astral Knowledge tests", why: "Targets that take psychic damage from your spells lose advantage on next attack. Pairs with Mind Sliver." }
+    - { slot: "Off-hand weapon", item: "Phalar Aluve", where: "Selunite Outpost in the Underdark — pull from the rock (Act 1, equip in Act 2 once you've found it)", why: "Wizards aren't melee, but you carry Phalar Aluve in the off-hand for its Shriek mode: a 6m aura that gives all enemies inside +1d4 vulnerability to the next damage instance. Stack on top of Magic Missile (each dart procs vulnerability separately) for huge multipliers." }
+    - { slot: "Cloak", item: "Cloak of Protection", where: "Sold by multiple Act 2/3 vendors (Last Light Inn, Sorcerous Sundries)", why: "+1 AC and +1 to all saves. Always good." }
+  act_3:
+    - { slot: "Staff", item: "Markoheshkir", where: "Sorcerous Sundries — Lorroakan's vault chest (after the Nightsong/Lorroakan fight)", why: "+1 spell save DC, +1 spell attack rolls. Imbue with one of four elements (Fire/Cold/Lightning/Acid) per long rest, granting +1d6 of that damage to all your spells AND a thematic ability (e.g. Kereska's Favour for fire = +1 spell save DC against fire-resistant enemies). The endgame BiS staff." }
+    - { slot: "Robes", item: "Robe of the Weave", where: "Sorcerous Sundries — Tolna Tome-Monger or chest in Lorroakan's chamber", why: "+1 spell save DC, +1 spell attack rolls, +2 AC. Stacks with Markoheshkir / Amulet of the Devout / Hood of the Weave / Cloak of the Weave for cumulative +DC/+attack." }
+    - { slot: "Helm", item: "Hood of the Weave", where: "Sorcerous Sundries — same area as Robe of the Weave (Lorroakan's vault)", why: "+1 spell save DC. Three Weave items (Robe + Hood + Cloak) stack to +3 spell save DC and +3 spell attack rolls — the highest passive spellcasting bonus in the game. Use this slot if you've maxed Acuity and don't need the Hat of Fire Acuity engine anymore." }
+    - { slot: "Cloak", item: "Cloak of the Weave", where: "Sorcerous Sundries — same area as Robe of the Weave", why: "+1 spell save DC, +1 spell attack rolls. The third piece of the Weave triple-stack." }
+    - { slot: "Helm", item: "Hat of Storm Scion's Power", where: "Drop from Crèche Voss / Iron Throne survivor cleanup", why: "Lightning/Thunder damage spells stack Arcane Acuity (alternative to Hat of Fire Acuity). Pairs with Chain Lightning / Lightning Bolt theme." }
+    - { slot: "Gloves", item: "Quickspell Gloves (kept)", where: "Continue from Act 2.", why: "Stays best-in-slot through Act 3 because the bonus-action cantrip every turn never falls off. Helldusk Gloves is the alternative if you've maxed Acuity and want raw +1 to attacks + Fly + Lightning Bolt." }
+    - { slot: "Amulet", item: "Spineshudder Amulet", where: "Sorcerous Sundries — Lorroakan's vault or Steel Watch foundry chest", why: "Lightning/Thunder spells inflict 2 stacks of Reverberation per damage roll. With Magic Missile (each dart counts as a hit), an upcasted L6 Magic Missile inflicts 16 stacks of Reverberation in one cast — instant prone + thunder damage." }
+    - { slot: "Amulet (alternate)", item: "Psychic Spark", where: "Steam Foundry / Iron Throne loot in Act 3 (Lower City)", why: "Adds +1 dart to every Magic Missile cast. Enormous if you're committing to the Magic Missile playstyle — turn an L1 cast from 3 darts into 4, an L6 cast from 8 into 9." }
+    - { slot: "Gloves (alternate)", item: "Gloves of Belligerent Skies", where: "Last Light Inn — sold by Mattis (also drops in Moonrise area in Act 2)", why: "Whenever you deal Radiant, Lightning, Thunder, or Psychic damage, the target takes 2 stacks of Reverberation per damage instance. Stacks with Magic Missile (force, doesn't trigger), Chain Lightning (lightning, triggers per target), Toll the Dead (necrotic, doesn't trigger). Best on lightning/thunder builds." }
+    - { slot: "Ring", item: "Callous Glow Ring", where: "Moonrise Towers area (carry from Act 2)", why: "+2 radiant damage to illuminated targets per damage instance. Combos with Light cantrip and Magic Missile darts (each dart triggers separately). The +2 per dart adds up fast." }
+    - { slot: "Boots", item: "Disintegrating Night Walkers", where: "Gauntlet of Shar — defeat Yurgir or complete Shar's trials", why: "Misty Step 1/short rest, immunity to difficult terrain, never slip on ice." }
+    - { slot: "Ring", item: "Band of the Mystic Scoundrel", where: "Sharess' Caress vendor / Stone Lord's guildhall in the sewers", why: "After a successful weapon attack, cast Enchantment/Illusion as a bonus action. Niche on a wizard who rarely melees, BUT your bonded weapon (familiar attacks?) can trigger it. Generally skip." }
+    - { slot: "Ring", item: "Ring of Spell-Battery", where: "Sorcerous Sundries vendor", why: "Once per short rest, regain a spell slot of any level — separate from Arcane Recovery. Stack with Spellcrux Amulet for two free slots per long rest." }
+  bis_at_12:
+    main_hand: Markoheshkir
+    off_hand: "Phalar Aluve (Shriek mode active for vulnerability aura)"
+    armor: Robe of the Weave
+    helm: Hat of Fire Acuity (offensive engine) OR Hood of the Weave (max defense / max DC)
+    gloves: Quickspell Gloves
+    boots: Disintegrating Night Walkers
+    cloak: Cloak of the Weave
+    amulet: Psychic Spark (Magic Missile theme) OR Spineshudder Amulet (lightning/thunder theme) OR Amulet of Greater Health (defensive)
+    ring_1: Callous Glow Ring
+    ring_2: Ring of Spell-Battery (or Risky Ring if leaning Scorching Ray attack rolls)
+
+alternative_splits:
+  intro: |
+    Pure Wizard 12 is the cleanest pick and what this guide builds, but the
+    community is split. Roughly 60% of guides recommend pure Wizard 12 for the
+    third ASI and L6 spell access; 40% take a single-level dip (most often
+    Cleric 1) to gain heavy armor proficiency or domain features. Fighter dips
+    show up too, but with caveats — Fighter 2 (for Action Surge) costs you L6
+    spells, which most authors say isn't worth it.
+  options:
+    - name: Pure Wizard 12 — Evocation (this guide)
+      gives:
+        - "Three ASIs (L4, L8, L12) — enough for +2 INT, Resilient (CON), AND Alert."
+        - "Full L6 spell access with both L6 slots — Chain Lightning, Disintegrate, Globe of Invulnerability, Otto's Irresistible Dance."
+        - "Wizard 10 Empowered Evocation comes online at character L10 (the multiclass version delays it)."
+        - "Simplest play: pick Wizard at L1 and stay."
+      gives_up:
+        - "Heavy armor proficiency. AC is 14 base (DEX 14) + Mage Armor → 16, vs 18+ with a Cleric or Fighter dip."
+        - "CON save proficiency until L8 (when Resilient covers it)."
+      best_for: First-time wizards, party leaders who want the deepest spellbook, anyone who values simplicity.
+    - name: Wizard 11 / Cleric 1 (Tempest or Light)
+      gives:
+        - "Heavy armor + shield proficiency from Cleric 1 — wear actual armor instead of relying on Mage Armor concentration."
+        - "Cleric cantrips (Sacred Flame, Guidance), Bless, Healing Word."
+        - "Tempest Domain: Channel Divinity to maximize Lightning/Thunder damage rolls (works on Lightning Bolt, Chain Lightning, Call Lightning)."
+        - "Light Domain: Warding Flare reaction (impose disadvantage on an attack against you)."
+      gives_up:
+        - "Wizard 12 — the third ASI and Wizard 12 capstone."
+        - "Slightly delayed L6 spell access (one level later)."
+      best_for: Players who want a 21+ AC wizard that doesn't burn concentration on Mage Armor. The most-recommended dip in the survey.
+    - name: Wizard 10 / Tempest Cleric 2
+      gives:
+        - "Channel Divinity — Destructive Wrath: maximize the damage of one Lightning or Thunder spell. Combine with Wet condition (vulnerability) for absurd Chain Lightning numbers."
+        - "Heavy armor + shields + martial weapon proficiencies."
+        - "Bless, Healing Word, Cure Wounds, Spiritual Weapon."
+      gives_up:
+        - "Wizard 11 = no L6 spells. Cap at L5: Cone of Cold, Hold Monster, Cloudkill."
+        - "Empowered Evocation triggers a level later."
+      best_for: Lightning-themed wizards (Gale playthroughs especially) who lean into the Wet + Chain Lightning + Destructive Wrath combo.
+    - name: Wizard 11 / Sorcerer 1 (Draconic) OR Wizard 10 / Sorcerer 2
+      gives:
+        - "CON-save proficiency from Sorcerer 1 (Concentration safety)."
+        - "Armor of Agathys self-buff."
+        - "At Sorc 2: 2 Sorcery Points + Twin Spell or Quicken Spell metamagic. Quicken Spell makes a leveled spell a bonus action — bypassing the one-leveled-spell-per-turn rule."
+      gives_up:
+        - "Wizard 12 capstone or one Wizard level (depending on dip depth)."
+      best_for: Optimization purists who want sustained metamagic over a once-per-short-rest dip benefit.
+    - name: Wizard 11 / Fighter 1
+      gives:
+        - "Constitution save proficiency."
+        - "Heavy armor + shield proficiency."
+        - "Defense fighting style (+1 AC), Second Wind self-heal."
+      gives_up:
+        - "Wizard 12 — the third ASI."
+        - "DOES NOT INCLUDE Action Surge — that's Fighter 2. A 1-level Fighter dip is purely defensive."
+      best_for: Defensive niche. Cleric 1 is generally preferred over Fighter 1 because clerics also get full caster spell support (Bless, scribe-able cleric scrolls).
+
+race_choice:
+  locked_for_you: Githyanki (chosen for this guide; meta-optimal for Wizard)
+  why_its_fine: |
+    Githyanki is the consensus best Wizard race in BG3. +2 INT directly scales every
+    spell save DC and Empowered Evocation damage roll. Mage Hand is free (saves a
+    cantrip slot). Astral Knowledge grants on-demand skill proficiencies in any
+    ability category (toggle to INT for Arcana/History/Investigation/Religion).
+    Misty Step at character L3 is free without burning a spell slot. Medium armor
+    proficiency (early).
+  community_meta_picks:
+    - { race: "Githyanki", upside: "+2 INT, Mage Hand racial, Astral Knowledge (toggle skill profs), free Misty Step at character L5, medium armor proficiency. Most-cited Wizard race in the survey." }
+    - { race: "Half-Elf (High)", upside: "+2 to one stat + +1 to two others, free Wizard cantrip (4th cantrip slot), three skill proficiencies, Fey Ancestry. Co-meta with Githyanki." }
+    - { race: "Gnome (Forest)", upside: "+2 INT, Gnome Cunning (advantage on INT/WIS/CHA saves vs magic — huge defensive niche). Speak with Animals as a free spell." }
+    - { race: "Drow / Lolth-Sworn Drow", upside: "Free Faerie Fire and Darkness 1/long rest. Faerie Fire grants advantage on attack rolls — useful for spell-attack spells (Scorching Ray, Chromatic Orb)." }
+  takeaway: "Githyanki and High Half-Elf are the consensus picks. Forest Gnome is the defensive runner-up. If you're locked into a non-meta race, the INT cap shifts but every other build choice still works."
+
+playstyle:
+  early:
+    levels: "1 – 4 (Wizard L1-4)"
+    summary: |
+      Stand at the back. Magic Missile is your auto-hit primary; Shield (reaction)
+      saves you when an attack would hit. Send Find Familiar's raven to scout
+      and shove targets. Sleep ends fights when enemies are below 24 HP — drops
+      off past character L4.
+    standard_turn: |
+      Action — Magic Missile or Chromatic Orb. Bonus action — nothing (or Misty
+      Step at L3+). Reaction — hold for Shield (+5 AC vs an attack that hits,
+      also negates Magic Missile).
+    nova_turn: |
+      Round 1 — Sleep on a clump of low-HP enemies (ends them outright). Round
+      2 — Magic Missile (L1 slot, 3 darts). Round 3 — reposition with Misty Step
+      and continue Magic Missile / cantrip.
+  mid:
+    levels: "5 – 9 (Wizard L5-9 — Fireball + Hypnotic Pattern unlock)"
+    summary: |
+      The build's identity emerges. Quickspell Gloves (Act 2) make every turn a
+      cantrip + leveled spell. Hat of Fire Acuity stacks +spell save DC every
+      Fire Bolt — by round 3 your Hold Monster lands at +5 DC over baseline.
+      Hypnotic Pattern locks down rooms; Counterspell shuts down enemy mages.
+    standard_turn: |
+      Action — Fireball / Magic Missile / Hypnotic Pattern (drop everything and
+      hold concentration if you can land it). Bonus action — Fire Bolt via
+      Quickspell Gloves (free damage every turn, stacks Acuity). Reaction —
+      Shield or Counterspell.
+    nova_turn: |
+      Round 1 — Hypnotic Pattern on the cluster (locks the room) + Quickspell
+      Fire Bolt (Acuity stack). Round 2 — Fireball or upcast Magic Missile on
+      whatever survives. Round 3 — Hold Monster on the surviving boss while
+      Hypnotic Pattern locks the rest; melee allies auto-crit the held target.
+  late:
+    levels: "10 – 12 (Wizard L10-12 — Empowered Evocation + L6 spells)"
+    summary: |
+      Empowered Evocation at Wizard 10 turns Magic Missile from "decent" into
+      "broken." With INT 22, every dart deals base 1d4+1 + 6 (INT) + 1d4
+      (Phalar Aluve Shriek vulnerability) + 1d6 (Markoheshkir element imbue) ≈
+      15+ damage, all auto-hit. An L6 Magic Missile is 8 darts (≈ 120 damage in
+      one cast). With Psychic Spark amulet add a 9th dart. With Phalar Aluve
+      Shriek up, EVERY dart procs vulnerability separately.
+    standard_turn: |
+      Action — Magic Missile (upcast for the situation), Cone of Cold, Chain
+      Lightning, or Disintegrate. Bonus action — Quickspell cantrip (Fire Bolt
+      to stack Acuity, or Toll the Dead vs a damaged target). Reaction — Shield
+      / Counterspell.
+    nova_turn: |
+      Pre-fight — drink a Potion of Speed (your own bonus-action Haste, no
+      concentration), put up Phalar Aluve Sing for the party. Round 1 — Globe
+      of Invulnerability on yourself (anti-mage bubble) and Chain Lightning on
+      the cluster. Round 2 — Disintegrate on the boss + Quickspell Fire Bolt.
+      Round 3 — Hold Monster on the surviving boss for melee allies' next
+      round.
+
+abilities_situational:
+  - name: Magic Missile
+    when: "Sustained DPS or anti-Mirror-Image. Auto-hits — always 100% damage. Upcast for more darts."
+    notes: "Each dart procs Empowered Evocation (+INT mod), Phalar Aluve Sing (+1d4 from the buff), Markoheshkir imbue (+1d6 element), and Spineshudder Amulet (Reverberation per dart). Magic Missile is the build's signature precisely because every modifier multiplies."
+  - name: Shield (reaction)
+    when: "Whenever an enemy attack roll exceeds your AC by 5 or less, OR when you're hit by a Magic Missile."
+    cost: 1 L1+ slot, 1 reaction
+    notes: "Lasts 1 turn — also negates Magic Missile entirely."
+  - name: Counterspell (reaction)
+    when: "Enemy caster begins casting a non-cantrip spell. L3 slot autocounters L3 and below. Higher slots needed for L4+."
+    cost: 1 L3+ slot, 1 reaction
+    notes: "Honor Mode: many bosses have Legendary Resistance and can autosucceed Counterspell saves. Use the slot anyway on key spells like Disintegrate."
+  - name: Fireball (Sculpt Spells)
+    when: "Multiple enemies clumped within 4m of each other. Sculpt Spells excludes your allies — drop it on top of the melee."
+    cost: 1 L3+ slot
+    notes: "Allies inside the AOE auto-pass for half damage AND take zero damage. Free targeting."
+  - name: Hypnotic Pattern
+    when: "Multi-enemy fights vs humanoids/beasts. Fails on undead, constructs, elementals."
+    cost: 1 L3+ slot
+    notes: "Concentration. Drop EVERYTHING to keep this up — it ends fights."
+  - name: Hold Monster
+    when: "Single tough boss. Auto-crit setup for melee allies."
+    cost: 1 L5+ slot
+    notes: "Concentration. Better than Hold Person — works on giants, beasts, monstrosities."
+  - name: Misty Step
+    when: "When an enemy melee approaches. Bonus-action 18m teleport, no AOO."
+    cost: 1 L2+ slot OR 1 use of Amulet of Misty Step OR free at character L3+ (Githyanki racial)
+    notes: "The Githyanki racial use is independent of your Misty Step spell — you have multiple ways to teleport per day."
+  - name: Quickspell Gloves
+    when: "Every turn after you have them (Act 2)."
+    cost: bonus action
+    notes: "Once per turn, cantrips can be cast as a bonus action. Stack a damage cantrip onto every Action you take. Build-defining."
+  - name: Empowered Evocation
+    when: "Wizard 10+ — automatic. Every Wizard evocation spell adds +INT mod to ONE damage roll."
+    notes: "Magic Missile and Scorching Ray each have multiple damage rolls — Empowered Evocation applies to ALL of them in BG3 (the rules text is ambiguous but the implementation favors the player). Confirm in tooltip."
+  - name: Find Familiar (raven)
+    when: "Out of combat scouting. The raven flies high and can attack squishy enemies."
+    notes: "Permanent companion until killed. Dismiss / re-summon with the same spell."
+
+mistakes_and_tips:
+  - "Wizards SCRIBE spells from scrolls into the spellbook (50 gp × spell level — so a L3 scroll costs 150 gp to scribe). Stockpile gold and scrolls; every spell you scribe is a permanent expansion of your prepared list. Vendor scrolls restock on level-up."
+  - "Concentration spells DO NOT stack. Hypnotic Pattern + Hold Monster = pick one. Greater Invisibility on an ally + Haste on another = pick one. Resilient (CON) at L8 is your insurance against losing it under fire."
+  - "Counterspell at L3 only stops spells of level 3 and below. Upcast to L4 for L4 spells, L5 for L5, etc. Save high-level slots for the boss's big spell — don't burn them on a goblin's Fire Bolt."
+  - "Sculpt Spells only protects targets you SEE. Invisible allies inside your Fireball AOE still take damage. Drop Greater Invisibility AFTER your Fireball, not before."
+  - "Sleep loses value past character level 4 (HP cap of ~24). Drop it from your prepared list once you have Hypnotic Pattern at L5."
+  - "Patch 7 Honor Mode nerf — the Magic Missile per-dart damage rider exploits (DRS multipliers) were rebalanced. Each dart still procs Empowered Evocation, Phalar Aluve Shriek vulnerability, Spineshudder Reverberation, and Callous Glow Ring radiant — but the damage no longer multiplies the way the per-dart bonuses used to. The Scorching Ray + Hat of Fire Acuity loop becomes the ceiling pick on Honor Mode; outside Honor Mode, Magic Missile remains supreme."
+  - "Hat of Fire Acuity is bonkers — every Fire Bolt cantrip you cast (free via Quickspell every turn) adds +1 to your spell save DC and spell attack rolls (max 10 stacks). After 3 cantrip turns you're at +3 DC; your Hold Monster, Hypnotic Pattern, and Polymorph land far more reliably. Stacks decay 1 per turn at start of turn AND −2 when you take damage, so don't tank hits."
+  - "Buy Markoheshkir as soon as you can afford it in Act 3 — it's roughly 9000 gp from Tolna Tome-Monger or Lorroakan's vault. Imbue it with the element matching your day's plan (Fire for Hat of Fire Acuity stacking, Cold for Mourning Frost vulnerability, Lightning for Spineshudder Reverberation, Acid for raw bypass)."
+  - "Stack the Weave triple — Robe + Hood + Cloak of the Weave from Sorcerous Sundries grant +3 spell save DC and +3 spell attack rolls cumulative. The single biggest passive caster bonus in the game."
+  - "Phalar Aluve Shriek (off-hand sword toggle) gives a 6m aura that adds +1d4 vulnerability damage to enemies inside on the next instance of damage they take. Each Magic Missile dart counts as a separate instance — in BG3, this means each dart triggers Shriek separately, multiplying its value."
+  - "Vendor scrolls restock on level-up. After every level-up, revisit Tolna Tome-Monger (Druid Grove → moves to Sorcerous Sundries Act 3), Quartermaster Talli (Last Light Inn), and the Open Hand temple stockists for fresh scrolls and spell-DC items."
+  - "Don't cast a leveled spell and a leveled spell in the same turn — BG3 enforces the 5e rule that you can only cast one leveled spell per turn (cantrips from Quickspell are exempt). Without a Sorcerer's Quicken Spell or a Fighter 2 Action Surge dip, your turn is one Action spell + one bonus-action cantrip."
