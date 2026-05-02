@@ -279,14 +279,14 @@ code, kbd { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
   background: transparent;
   border: 0;
   border-radius: var(--r-sm);
-  padding: 0.6rem 0.2rem 0.4rem;
+  padding: 0;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0;
-  min-height: 64px;
+  aspect-ratio: 1 / 1;   /* square cell so the d20 has room to be a d20 */
   transition: transform 0.12s ease;
   font-family: var(--ff-body);
   isolation: isolate;
@@ -294,12 +294,12 @@ code, kbd { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
 .lvl-cell:hover { transform: translateY(-1px); }
 .lvl-cell.active { transform: translateY(-2px); }
 
-/* the d20 SVG sits behind the number */
+/* the d20 SVG fills the cell behind the number */
 .lvl-cell .d20 {
   position: absolute;
-  inset: 4px;
-  width: calc(100% - 8px);
-  height: calc(100% - 8px);
+  inset: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   transition: filter 0.18s ease;
   z-index: 0;
@@ -350,11 +350,12 @@ code, kbd { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
   position: relative;
   z-index: 1;
   font-family: var(--ff-display);
-  font-size: 1.15rem;
+  font-size: 1.4rem;
   color: var(--ink-soft);
   font-weight: 700;
   line-height: 1;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+  margin-top: -2px;
 }
 .lvl-cell.active .lvl-num {
   color: var(--gold);
