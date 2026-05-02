@@ -115,7 +115,7 @@ leveling:
     pick:
       - Cantrips — Vicious Mockery, Friends
       - "Spells (4 known) — Dissonant Whispers, Longstrider, Faerie Fire, Healing Word"
-      - "Skill proficiencies — Deception, Persuasion, Performance"
+      - 'Skill proficiencies (Bard picks 3 from ANY skill) — Persuasion, Deception, Insight. Skip Performance and Acrobatics: your background grants those for free, the screen will already show them as proficient with no checkbox.'
       - Bardic Inspiration (d6, CHA-mod uses per long rest)
     notes: |
       Stick to ranged early. Bard 1 has no Extra Attack and no subclass yet. Use
