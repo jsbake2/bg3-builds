@@ -304,74 +304,85 @@ code, kbd { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
   transition: filter 0.18s ease;
   z-index: 0;
 }
-.lvl-cell .d20-outer {
-  fill: var(--bg-2);
+/* d20 die faces — each polygon class is a different visible face */
+.lvl-cell .d20-shell {
+  fill: #1a1208;
   stroke: var(--line-2);
-  stroke-width: 2;
+  stroke-width: 2.5;
+  stroke-linejoin: miter;
+  transition: fill 0.18s ease, stroke 0.18s ease, stroke-width 0.18s ease;
+}
+.lvl-cell .d20-top {
+  fill: #3a2a16;
+  stroke: var(--line-2);
+  stroke-width: 1.2;
+  transition: fill 0.18s ease, stroke 0.18s ease;
+}
+.lvl-cell .d20-left {
+  fill: #211710;
+  stroke: var(--line-2);
+  stroke-width: 1.2;
+  transition: fill 0.18s ease, stroke 0.18s ease;
+}
+.lvl-cell .d20-right {
+  fill: #2a1d10;
+  stroke: var(--line-2);
+  stroke-width: 1.2;
+  transition: fill 0.18s ease, stroke 0.18s ease;
+}
+.lvl-cell .d20-front {
+  fill: #2c1f10;
+  stroke: var(--line-2);
+  stroke-width: 1.5;
   stroke-linejoin: miter;
   transition: fill 0.18s ease, stroke 0.18s ease;
 }
-.lvl-cell .d20-inner {
-  fill: rgba(255, 215, 130, 0.04);
-  stroke: var(--line-2);
-  stroke-width: 1.2;
-  stroke-linejoin: miter;
-  opacity: 0.55;
-  transition: fill 0.18s ease, stroke 0.18s ease, opacity 0.18s ease;
-}
-.lvl-cell .d20-line {
-  stroke: var(--line-2);
+.lvl-cell .d20-edge {
+  stroke: var(--line);
   stroke-width: 1;
-  opacity: 0.4;
+  opacity: 0.6;
   transition: stroke 0.18s ease, opacity 0.18s ease;
 }
-.lvl-cell:hover .d20-outer { fill: var(--bg-3); stroke: var(--gold-deep); }
-.lvl-cell:hover .d20-inner { opacity: 0.75; }
-.lvl-cell:hover .d20-line { opacity: 0.6; }
-
-.lvl-cell.active .d20 { filter: drop-shadow(0 0 4px rgba(214, 168, 90, 0.55)); }
-.lvl-cell.active .d20-outer {
-  fill: url(#d20-active-grad-fallback, linear-gradient(180deg, #3a2a16, #25190a));
-  fill: #2c1f10;
-  stroke: var(--gold);
-  stroke-width: 2.2;
-}
-.lvl-cell.active .d20-inner {
-  fill: rgba(214, 168, 90, 0.13);
-  stroke: var(--gold);
-  opacity: 1;
-}
-.lvl-cell.active .d20-line {
-  stroke: var(--gold);
-  opacity: 0.75;
-}
-
-.lvl-cell .lvl-num {
-  position: relative;
-  z-index: 1;
+.lvl-cell .d20-num {
   font-family: var(--ff-display);
-  font-size: 1.4rem;
-  color: var(--ink-soft);
+  font-size: 26px;
   font-weight: 700;
-  line-height: 1;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
-  margin-top: -2px;
+  fill: var(--ink-soft);
+  paint-order: stroke fill;
+  stroke: rgba(0, 0, 0, 0.6);
+  stroke-width: 0.6px;
+  transition: fill 0.18s ease;
 }
-.lvl-cell.active .lvl-num {
-  color: var(--gold);
-  text-shadow: 0 0 8px rgba(214, 168, 90, 0.6), 0 1px 2px rgba(0, 0, 0, 0.7);
-}
-.lvl-cell .lvl-take {
-  position: relative;
-  z-index: 1;
-  font-size: 0.6rem;
-  color: var(--ink-mute);
-  letter-spacing: 0.06em;
+.lvl-cell .d20-take {
+  font-family: var(--ff-body);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  fill: var(--ink-mute);
   text-transform: uppercase;
-  margin-top: 1px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  transition: fill 0.18s ease;
 }
-.lvl-cell.active .lvl-take { color: var(--ink-soft); }
+
+/* hover state — warm up the die */
+.lvl-cell:hover .d20-shell { fill: #1f1509; stroke: var(--gold-deep); }
+.lvl-cell:hover .d20-top { fill: #4a361b; stroke: var(--gold-deep); }
+.lvl-cell:hover .d20-left { fill: #2a1d12; stroke: var(--gold-deep); }
+.lvl-cell:hover .d20-right { fill: #322216; stroke: var(--gold-deep); }
+.lvl-cell:hover .d20-front { fill: #3a2a16; stroke: var(--gold-deep); }
+.lvl-cell:hover .d20-num { fill: var(--ink); }
+
+/* active state — gold-glow rolled die */
+.lvl-cell.active .d20 {
+  filter: drop-shadow(0 0 6px rgba(214, 168, 90, 0.65));
+}
+.lvl-cell.active .d20-shell { fill: #261810; stroke: var(--gold); stroke-width: 3; }
+.lvl-cell.active .d20-top { fill: #5c4220; stroke: var(--gold); }
+.lvl-cell.active .d20-left { fill: #2c1d10; stroke: var(--gold); }
+.lvl-cell.active .d20-right { fill: #3a2818; stroke: var(--gold); }
+.lvl-cell.active .d20-front { fill: #4a361c; stroke: var(--gold); stroke-width: 2; }
+.lvl-cell.active .d20-edge { stroke: var(--gold); opacity: 0.8; }
+.lvl-cell.active .d20-num { fill: var(--gold); }
+.lvl-cell.active .d20-take { fill: var(--ink-soft); }
 
 /* ---------- level panel ---------- */
 .lvl-panel {

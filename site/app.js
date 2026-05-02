@@ -251,9 +251,7 @@ function renderLevelPicker(levels, cur) {
                     data-go-level="${n}"
                     aria-current="${n === cur}"
                     title="Level ${n} — ${escapeHtml(take)}">
-              ${d20Svg()}
-              <span class="lvl-num">${n}</span>
-              <span class="lvl-take">${escapeHtml(short)}</span>
+              ${d20Svg(n, short)}
             </button>`;
   }).join('');
 
@@ -265,19 +263,29 @@ function renderLevelPicker(levels, cur) {
   `;
 }
 
-// Stylized d20 "face" — outer hexagon + inner triangle + corner spokes.
-// Same SVG for every cell; the level number sits on top via positioned span.
-function d20Svg() {
+// Full d20 face — hexagonal shell + 4 visible faces with depth shading +
+// the rolled level number on the front face + the class-take label on the
+// bottom face. Everything rendered inside the SVG so colors are stylable
+// via CSS classes and the dice reads correctly at any size.
+function d20Svg(level, takeShortLabel) {
   return `
     <svg class="d20" viewBox="0 0 100 100" aria-hidden="true">
-      <polygon class="d20-outer" points="50,8 88,28 88,72 50,92 12,72 12,28"/>
-      <polygon class="d20-inner" points="50,30 72,68 28,68"/>
-      <line class="d20-line" x1="50" y1="8" x2="50" y2="30"/>
-      <line class="d20-line" x1="88" y1="28" x2="72" y2="68"/>
-      <line class="d20-line" x1="12" y1="28" x2="28" y2="68"/>
-      <line class="d20-line" x1="50" y1="92" x2="50" y2="68"/>
-      <line class="d20-line" x1="88" y1="72" x2="72" y2="68"/>
-      <line class="d20-line" x1="12" y1="72" x2="28" y2="68"/>
+      <!-- outer hexagonal silhouette -->
+      <polygon class="d20-shell" points="50,3 94,27 94,73 50,97 6,73 6,27"/>
+      <!-- top face (small triangle, lighter) -->
+      <polygon class="d20-top" points="6,27 94,27 50,52"/>
+      <!-- left face -->
+      <polygon class="d20-left" points="6,27 50,52 6,73"/>
+      <!-- right face -->
+      <polygon class="d20-right" points="94,27 50,52 94,73"/>
+      <!-- front face (big — number lives here) -->
+      <polygon class="d20-front" points="6,73 50,52 94,73 50,97"/>
+      <!-- divider line down the middle of front face for d20 vibes -->
+      <line class="d20-edge" x1="50" y1="52" x2="50" y2="97"/>
+      <!-- the rolled number -->
+      <text class="d20-num" x="50" y="86" text-anchor="middle">${escapeHtml(String(level))}</text>
+      <!-- class label on the top face -->
+      <text class="d20-take" x="50" y="44" text-anchor="middle">${escapeHtml(takeShortLabel || '')}</text>
     </svg>
   `;
 }
