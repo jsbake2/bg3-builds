@@ -10,17 +10,20 @@ meta:
   win_condition: >
     Sculpt Spells lets allies stand inside your Fireballs unharmed. Empowered
     Evocation adds your INT mod (+5 with INT 20, +6 with 22) to every Magic
-    Missile dart and Fireball cube. Quickspell Gloves let you cast a cantrip as
-    a bonus action every turn for free. Magic Missile with all riders stacked
-    (Markoheshkir element + Phalar Aluve Sing + Empowered Evocation + Spineshudder
-    Reverberation) becomes the highest sustained-damage spell in the game.
+    Missile dart and Fireball cube. Quickspell Gloves give one bonus-action
+    cantrip per short rest (3 per long rest with two short rests). Magic Missile
+    with riders stacked (Markoheshkir element imbue + Phalar Aluve Shriek
+    vulnerability + Empowered Evocation INT mod + Callous Glow Ring radiant on
+    illuminated targets + Psychic Spark extra dart) becomes the highest
+    sustained per-cast damage in the game.
 
 overview: |
   This is the strongest pure-caster build in BG3. You play it from the back line —
-  squishy in melee, devastating at range. Every turn you cast a leveled spell as
-  your Action and a damage cantrip as your bonus action (via Quickspell Gloves),
-  with Shield (reaction +5 AC) ready when something targets you and Counterspell
-  ready when an enemy caster opens its mouth.
+  squishy in melee, devastating at range. Most turns you cast a leveled spell as
+  your Action and have Shield ready (reaction +5 AC) when something targets you
+  and Counterspell ready when an enemy caster opens its mouth. Once per short
+  rest, Quickspell Gloves let you bonus-action a cantrip alongside a leveled
+  spell — that's a 1-2 punch you save for the round you most want to nova.
 
   Two subclass features make this build exceptional. **Sculpt Spells** at Wizard 2
   lets allies in the AoE of your evocation spells auto-pass for zero damage —
@@ -194,8 +197,8 @@ leveling:
       - "Spells from level-up (2) — pick Slow + Haste (or Hypnotic Pattern if not yet scribed)"
     notes: |
       Potent Cantrip means Fire Bolt and Ray of Frost always do damage, even
-      against successful saves. Combined with Quickspell Gloves (Act 2), this is
-      your reliable damage floor.
+      against successful saves. This is your reliable damage floor — every Fire
+      Bolt also stacks 1 Arcane Acuity once you have the Hat in Act 2.
   - level: 7
     take: Wizard 7
     pick:
@@ -257,7 +260,7 @@ leveling:
 
 spells:
   cantrips:
-    - { name: Fire Bolt, source: Wizard 1, why: "Default 1d10 fire ranged. With Hat of Fire Acuity each cast stacks Arcane Acuity (raises your spell save DC and attack rolls). With Quickspell Gloves it's bonus-action damage every turn." }
+    - { name: Fire Bolt, source: Wizard 1, why: "Default 1d10 fire ranged. With Hat of Fire Acuity each cast stacks 1 Arcane Acuity (max 10) — your spell save DC and attack rolls climb each turn. Cast as your Action when you don't need a leveled spell, or via Quickspell Gloves (1/short rest) as a bonus action on top of a leveled spell." }
     - { name: Ray of Frost, source: Wizard 1, why: "1d8 cold + slows the target by 3m. Synergizes with Mourning Frost staff (Encrusted with Frost) and Cold-themed Markoheshkir imbue." }
     - { name: Mind Sliver, source: Wizard 1, why: "Psychic damage + −1d4 on the target's next save. Cast it the turn before Hold Monster / Hypnotic Pattern to debuff the resisting save." }
     - { name: Mage Hand, source: Githyanki racial (free), why: "Free from your race — saves a cantrip slot. Pull levers, drop items into hostile zones, throw barrels of grease into a Fireball." }
@@ -335,47 +338,57 @@ gear:
     for the spell-bonus slots like Robe of the Weave. Staff is your weapon —
     you won't auto-attack in melee, but staves carry massive spell-bonus stats.
   act_1:
-    - { slot: "Staff", item: "Spellsparkler", where: "Underdark — Arcane Tower (return Bernard's matrix to him or loot from Bernard's chamber)", why: "Each cantrip you cast grants 2 stacks of Lightning Charges (up to 5). At 5 stacks, your next cantrip deals +1d8 lightning. Trivial to maintain with Quickspell + Fire Bolt later." }
-    - { slot: "Helm", item: "Cap of Curing", where: "Crèche Y'llek vendor (A'jak'nir Jeera)", why: "Healing on you also restores a 2nd party member for 1d4. Niche but free utility." }
-    - { slot: "Armor", item: "Adamantine Scale Mail", where: "Grymforge — Adamantine Forge (mithral ore + scale mail mould)", why: "Medium armor, immune to crits, reflects crits as Stun. With Fighter 1 you have heavy armor prof, but Scale Mail beats Splint for spellcasters because the lighter weight matters less than the crit immunity." }
-    - { slot: "Boots", item: "Boots of Speed", where: "Goblin Camp — drop from Crusher (the goblin that demands you kiss his foot in the courtyard)", why: "Doubles your movement speed for free. Crucial for repositioning out of melee." }
-    - { slot: "Amulet", item: "Amulet of Misty Step", where: "Crèche Y'llek (vendor / quest reward)", why: "Free Misty Step 1/short rest. Stack with Wizard's Misty Step spell for double escape." }
-    - { slot: "Ring", item: "The Whispering Promise", where: "Druid Grove — sold by Arron after the tiefling rescue", why: "When you heal an ally, both gain +1d4 Bless to attacks. Pairs with Healing Word from Find Familiar (raven) or wand of magic missile + healing potions." }
-    - { slot: "Ring", item: "Caustic Band", where: "Crèche Y'llek — sold by A'jak'nir Jeera", why: "+2 acid damage on weapon hits. Niche on a wizard; carry for off-build party members." }
+    - { slot: "Staff", item: "Spellsparkler", where: "Waukeen's Rest — quest reward from Counsellor Florrick after rescuing Grand Duke Ravengard", why: "Each spell-damage hit you score (cantrip or leveled) grants 2 stacks of Lightning Charges (max 5). While at 5 stacks, your next damaging hit deals +1d8 lightning. Easy to maintain with Fire Bolt every turn." }
+    - { slot: "Armor", item: "Adamantine Scale Mail", where: "Grymforge — Adamantine Forge (mithral ore + scale mail mould)", why: "Medium armor, immune to crits, reflects crits as Stun. Wizards aren't proficient in medium armor by default — use Mage Armor (L1 spell) for AC instead, OR multiclass dip Cleric 1 / Fighter 1 for proficiency. Skip if pure Wizard." }
+    - { slot: "Robe (early)", item: "Mage Armor (cast on yourself)", where: "Wizard L1 spell — no item needed", why: "13 + DEX mod AC for 8 hours. Concentration-free. Cast every long rest. This is the pure-wizard early-game answer to AC." }
+    - { slot: "Boots", item: "Boots of Speed", where: "Underdark — given by Thulla at the Myconid Colony / Ebonlake Grotto after curing the Duergar poisoning (give her Noblestalk or use a Lesser Restoration scroll)", why: "Toggle to double your movement speed and gain attacker disadvantage. Crucial for repositioning out of melee." }
+    - { slot: "Amulet", item: "Psychic Spark", where: "Underdark — sold by Blurg at the Myconid Colony", why: "Adds +1 dart to every Magic Missile cast (an L1 cast becomes 4 darts, an L6 cast becomes 9). Also grants Magic Missile 1/long rest as a free L1 cast. Build-defining for a Magic Missile-leaning wizard, and you grab it in Act 1." }
+    - { slot: "Amulet (alt)", item: "Amulet of Misty Step", where: "Crèche Y'llek — sold by A'jak'nir Jeera", why: "Free Misty Step 1/short rest. Stack with Wizard's Misty Step spell for double escape." }
+    - { slot: "Helm", item: "Diadem of Arcane Synergy", where: "Crèche Y'llek — Inquisitor's Chamber, carried by Ardent Jhe'rezath", why: "When you inflict ANY condition (a target failing a save against your spell — Hold Person, Faerie Fire from Find Familiar, Fear, etc), you gain Arcane Synergy: +INT mod to weapon damage for 2 turns. Niche for a pure Wizard who rarely melees, but free if you can grab it." }
+    - { slot: "Gloves", item: "Gloves of Belligerent Skies", where: "Crèche Y'llek — elegant chest in the Inquisitor's Chamber", why: "Whenever you deal Radiant, Lightning, or Thunder damage, the target takes 2 stacks of Reverberation per damage instance. Crucial on a Lightning/Thunder-themed wizard (Lightning Bolt, Chain Lightning, Witch Bolt, Shatter)." }
+    - { slot: "Ring", item: "The Whispering Promise", where: "Goblin Camp — sold by Grat the Trader", why: "When you heal an ally (e.g., Cure Wounds scroll, Healing Word from Find Familiar's raven via Wand), both gain Bless (+1d4 to attack rolls and saves) for 3 turns. Niche on this build — give to a party Cleric/Bard if you have one." }
+    - { slot: "Ring", item: "Caustic Band", where: "Underdark — sold by Derryth Bonecloak at the Myconid Colony", why: "+2 acid damage on weapon hits. Niche on a wizard; pass to a martial party member." }
+    - { slot: "Staff (alt)", item: "Mourning Frost", where: "Underdark — crafted at any forge from three components: Icy Crystal (Filro the Forgotten near the Sussur Tree), Icy Helve (Dhourn west of the Selûnite Outpost), and Icy Metal (Xargrim in the Myconid Colony)", why: "+1 spell save DC, +1 spell attack rolls on cold spells; cold spells you cast inflict 2 stacks of Encrusted with Frost (cold vulnerability). Strong with Ray of Frost cantrip + later Cone of Cold. Switch in for cold-themed days; otherwise stick with Spellsparkler until Markoheshkir." }
+    - { slot: "Boots (alt)", item: "Disintegrating Night Walkers", where: "Grymforge — looted from Nere's body after the Duergar fight (Act 1 endgame)", why: "Misty Step 1/short rest, immunity to Web/Ensnared. The pure-Wizard's BiS boots — drop in Act 1, wear from then on." }
   act_2:
-    - { slot: "Helm", item: "Hat of Fire Acuity", where: "Last Light Inn — sold by Mattis (or pickpocket); also looted from Lorroakan's chamber in Act 3", why: "Each fire-damage spell you cast grants 1 stack of Arcane Acuity (max 10). Each stack = +1 to your spell save DC AND spell attack rolls. Spam Fire Bolt cantrip → max stacks → Hold Monster lands at +10 DC." }
-    - { slot: "Gloves", item: "Quickspell Gloves", where: "Last Light Inn — sold by Mattis", why: "1 cantrip per turn becomes a bonus action. You now cast a leveled spell + a damage cantrip every turn for the rest of the game. Build-defining." }
-    - { slot: "Staff", item: "Mourning Frost", where: "Mountain Pass — Lady Esther's quest reward (give her the gith egg) or kill her", why: "+1 spell save DC, +1 spell attack on cold spells. Cold spells inflict 2 stacks of Encrusted with Frost (cold vulnerability). Pairs with Ray of Frost cantrip + later Cone of Cold." }
-    - { slot: "Boots", item: "Boots of Stormy Clamour", where: "Crèche Y'llek (Act 1 carry) — sold by A'jak'nir Jeera", why: "Inflicting any condition grants the target 2 stacks of Reverberation. Combos with Web, Hold Monster, Slow, and Cloud of Daggers (which inflicts Bleed)." }
-    - { slot: "Amulet", item: "Amulet of the Devout", where: "Last Light Inn — Isobel's chamber chest (or pickpocket)", why: "+1 spell save DC and 1 free Channel Divinity per long rest. The +1 DC is generic and stacks with everything." }
-    - { slot: "Ring", item: "Ring of Mental Inhibition", where: "Crèche Y'llek — earned by passing the Astral Knowledge tests", why: "Targets that take psychic damage from your spells lose advantage on next attack. Pairs with Mind Sliver." }
-    - { slot: "Off-hand weapon", item: "Phalar Aluve", where: "Selunite Outpost in the Underdark — pull from the rock (Act 1, equip in Act 2 once you've found it)", why: "Wizards aren't melee, but you carry Phalar Aluve in the off-hand for its Shriek mode: a 6m aura that gives all enemies inside +1d4 vulnerability to the next damage instance. Stack on top of Magic Missile (each dart procs vulnerability separately) for huge multipliers." }
-    - { slot: "Cloak", item: "Cloak of Protection", where: "Sold by multiple Act 2/3 vendors (Last Light Inn, Sorcerous Sundries)", why: "+1 AC and +1 to all saves. Always good." }
+    - { slot: "Helm", item: "Hat of Fire Acuity", where: "Worn by the Strange Ox — found at the Last Light Inn (Act 2) or the Circus of the Last Days in Rivington (Act 3). Persuade or pickpocket the ox. Available earlier if you can corner it.", why: "Each fire-damage spell you cast grants 1 stack of Arcane Acuity (max 10). Each stack = +1 to your spell save DC AND +1 to your spell attack rolls. Spam Fire Bolt → max stacks → Hold Monster lands at +10 DC." }
+    - { slot: "Boots", item: "Boots of Stormy Clamour", where: "Underdark — sold by Omeluum at the Myconid Colony, after completing 'Help Omeluum Investigate the Parasite' (Act 1 acquisition, equip from then on)", why: "Inflicting any condition stacks 2 Reverberation on the target. Combos with Web, Hold Monster, Slow, Cloud of Daggers, and any save-fail your spells cause." }
+    - { slot: "Amulet (alt)", item: "Spellcrux Amulet", where: "Moonrise Towers Prison — worn by the Warden", why: "Once per long rest, regain a spell slot of any level. Effectively a free big spell per day (an extra L6 Chain Lightning or Disintegrate at endgame)." }
+    - { slot: "Ring", item: "Ring of Mental Inhibition", where: "Shadow-Cursed Lands — locked chest in the House in Deep Shadows (east of the Shadowed Battlefield Waypoint)", why: "Targets that take psychic damage from your spells (Mind Sliver cantrip, Phantasmal Killer if scribed) have disadvantage on attack rolls for 1 turn." }
+    - { slot: "Off-hand weapon", item: "Phalar Aluve", where: "Selûnite Outpost in the Underdark — pull from the rock (Act 1 acquisition; carry in inventory until you want the aura)", why: "Two toggleable aura modes: Sing (allies in 6m get +1d4 to attack rolls and saves) or Shriek (enemies in 6m take +1d4 vulnerability damage on the next damage instance). Shriek + Magic Missile is silly: each dart triggers vulnerability separately. Toggle Shriek before any nova round." }
+    - { slot: "Cloak", item: "Cloak of Protection", where: "Last Light Inn — sold by Quartermaster Talli", why: "+1 AC and +1 to all saves. Always good." }
   act_3:
-    - { slot: "Staff", item: "Markoheshkir", where: "Sorcerous Sundries — Lorroakan's vault chest (after the Nightsong/Lorroakan fight)", why: "+1 spell save DC, +1 spell attack rolls. Imbue with one of four elements (Fire/Cold/Lightning/Acid) per long rest, granting +1d6 of that damage to all your spells AND a thematic ability (e.g. Kereska's Favour for fire = +1 spell save DC against fire-resistant enemies). The endgame BiS staff." }
-    - { slot: "Robes", item: "Robe of the Weave", where: "Sorcerous Sundries — Tolna Tome-Monger or chest in Lorroakan's chamber", why: "+1 spell save DC, +1 spell attack rolls, +2 AC. Stacks with Markoheshkir / Amulet of the Devout / Hood of the Weave / Cloak of the Weave for cumulative +DC/+attack." }
-    - { slot: "Helm", item: "Hood of the Weave", where: "Sorcerous Sundries — same area as Robe of the Weave (Lorroakan's vault)", why: "+1 spell save DC. Three Weave items (Robe + Hood + Cloak) stack to +3 spell save DC and +3 spell attack rolls — the highest passive spellcasting bonus in the game. Use this slot if you've maxed Acuity and don't need the Hat of Fire Acuity engine anymore." }
-    - { slot: "Cloak", item: "Cloak of the Weave", where: "Sorcerous Sundries — same area as Robe of the Weave", why: "+1 spell save DC, +1 spell attack rolls. The third piece of the Weave triple-stack." }
-    - { slot: "Helm", item: "Hat of Storm Scion's Power", where: "Drop from Crèche Voss / Iron Throne survivor cleanup", why: "Lightning/Thunder damage spells stack Arcane Acuity (alternative to Hat of Fire Acuity). Pairs with Chain Lightning / Lightning Bolt theme." }
-    - { slot: "Gloves", item: "Quickspell Gloves (kept)", where: "Continue from Act 2.", why: "Stays best-in-slot through Act 3 because the bonus-action cantrip every turn never falls off. Helldusk Gloves is the alternative if you've maxed Acuity and want raw +1 to attacks + Fly + Lightning Bolt." }
-    - { slot: "Amulet", item: "Spineshudder Amulet", where: "Sorcerous Sundries — Lorroakan's vault or Steel Watch foundry chest", why: "Lightning/Thunder spells inflict 2 stacks of Reverberation per damage roll. With Magic Missile (each dart counts as a hit), an upcasted L6 Magic Missile inflicts 16 stacks of Reverberation in one cast — instant prone + thunder damage." }
-    - { slot: "Amulet (alternate)", item: "Psychic Spark", where: "Steam Foundry / Iron Throne loot in Act 3 (Lower City)", why: "Adds +1 dart to every Magic Missile cast. Enormous if you're committing to the Magic Missile playstyle — turn an L1 cast from 3 darts into 4, an L6 cast from 8 into 9." }
-    - { slot: "Gloves (alternate)", item: "Gloves of Belligerent Skies", where: "Last Light Inn — sold by Mattis (also drops in Moonrise area in Act 2)", why: "Whenever you deal Radiant, Lightning, Thunder, or Psychic damage, the target takes 2 stacks of Reverberation per damage instance. Stacks with Magic Missile (force, doesn't trigger), Chain Lightning (lightning, triggers per target), Toll the Dead (necrotic, doesn't trigger). Best on lightning/thunder builds." }
-    - { slot: "Ring", item: "Callous Glow Ring", where: "Moonrise Towers area (carry from Act 2)", why: "+2 radiant damage to illuminated targets per damage instance. Combos with Light cantrip and Magic Missile darts (each dart triggers separately). The +2 per dart adds up fast." }
-    - { slot: "Boots", item: "Disintegrating Night Walkers", where: "Gauntlet of Shar — defeat Yurgir or complete Shar's trials", why: "Misty Step 1/short rest, immunity to difficult terrain, never slip on ice." }
-    - { slot: "Ring (alternate engine)", item: "Band of the Mystic Scoundrel", where: "Act 3 — Circus of the Last Days in Rivington. Win Akabi's spin-the-wheel game to be teleported to the Jungle (one party member only); the ring is in a backpack there. Alt: pickpocket Akabi's Djinni Ring, or pass Bard-only skill checks.", why: "After a successful weapon attack, cast an Enchantment or Illusion spell as a bonus action. Wizards are proficient with daggers, slings, quarterstaffs (Markoheshkir is a quarterstaff!), and light crossbows — any of those hits triggers it. Hold Monster, Hypnotic Pattern, Confusion, Tasha's Hideous Laughter, and Polymorph all qualify. Skip on THIS build: the bonus action conflicts with Quickspell Gloves (which is your every-turn cantrip damage), and a wizard's weapon attack damage is poor compared to spending your Action on a leveled spell. The ring is build-defining on a different wizard variant that runs Helmet of Arcane Acuity (weapon-hit Acuity stacks) instead of Hat of Fire Acuity." }
-    - { slot: "Ring", item: "Ring of Spell-Battery", where: "Sorcerous Sundries vendor", why: "Once per short rest, regain a spell slot of any level — separate from Arcane Recovery. Stack with Spellcrux Amulet for two free slots per long rest." }
+    - { slot: "Staff", item: "Markoheshkir", where: "Sorcerous Sundries — Lorroakan's vault chest (Ramazith's Tower) after the Nightsong / Lorroakan fight", why: "+1 spell save DC, +1 spell attack rolls. Imbue with one of four elements (Fire/Cold/Lightning/Acid) per long rest, granting +1d6 of that damage to all your spells. The endgame BiS staff for any wizard." }
+    - { slot: "Robes", item: "Robe of the Weave", where: "Ramazith's Tower — sealed inside the Globe of Invulnerability in Lorroakan's chamber. Disable the globe with a DC 20 Arcana check, then loot the chest inside.", why: "+1 spell save DC, +1 spell attack rolls, +2 AC. Plus Weave Eater (1d6 healing whenever you succeed on a save). Stacks with Markoheshkir for cumulative +DC/+attack." }
+    - { slot: "Helm", item: "Hood of the Weave", where: "Sold by Mystic Carrion at Philgrave's Mansion in the Lower City", why: "+2 spell save DC AND +2 spell attack rolls. The single biggest passive caster bonus on a head slot. Mid-fight alternative when you've maxed Acuity and don't need the Hat of Fire Acuity engine anymore." }
+    - { slot: "Cloak", item: "Cloak of the Weave", where: "Sold by Helsik at the Devil's Fee in Rivington (special stock — needs the Mason's Guild questline or Devil's Fee items)", why: "Absorb Elements 1/short rest (reaction: gain resistance to one elemental type and add +1d6 of that type to your next attack). Defensive elemental insurance. Note: this cloak does NOT grant the +DC/+attack bonus — those riders are only on the Robe and Hood." }
+    - { slot: "Helm (alt)", item: "Hat of Storm Scion's Power", where: "Sold by Araj Oblodra (Moonrise Towers Act 2, or her relocated stall at Crimson Draughts in the Lower City for Act 3)", why: "Lightning/Thunder damage spells stack Arcane Acuity. Alternative head slot for a Lightning/Thunder-themed wizard (Lightning Bolt, Chain Lightning, Witch Bolt, Shatter)." }
+    - { slot: "Gloves", item: "Quickspell Gloves", where: "Sorcerous Sundries — sold by Lorroakan's projection (or Rolan once he runs the shop)", why: "ONCE PER SHORT REST you may cast a cantrip as a bonus action. Refreshes on short rest, so ~3 free bonus-action cantrips per long rest. Strong but not 'every turn' — pace your nova rounds around the charges." }
+    - { slot: "Gloves (alt)", item: "Helldusk Gloves", where: "House of Hope — looted from Haarlep in the Boudoir", why: "Infernal Acuity (+1 spell save DC and +1 to attack rolls), Infernal Touch (weapons deal +1d6 fire on hit), Rays of Fire 1/short rest, +1 STR save. Strong universal slot — use when you've already used your Quickspell charge for the encounter." }
+    - { slot: "Amulet", item: "Spineshudder Amulet", where: "Moonrise Towers — looted from a Mimic in Isobel's bedroom upstairs (Act 2 acquisition)", why: "When you hit a target with a RANGED SPELL ATTACK ROLL, they take 2 stacks of Reverberation. Triggers off Scorching Ray (3 attack rolls = 6 stacks), Eldritch Blast, Witch Bolt, etc. Does NOT trigger off Magic Missile (auto-hit, no attack roll) or save-based spells (Hold Monster, Fireball). Strong if you lean Scorching Ray; skip if you lean Magic Missile." }
+    - { slot: "Amulet", item: "Amulet of the Devout", where: "Lower City — main Offering Chest in the basement of Stormshore Tabernacle", why: "+2 spell save DC. Extra Channel Divinity charge per long rest (irrelevant for pure Wizard, you don't have CD). The +2 DC is the headline — stacks with Markoheshkir, Robe, and Hood for cumulative scaling." }
+    - { slot: "Amulet (alt)", item: "Amulet of Greater Health", where: "House of Hope — left-most pedestal in the Archive room", why: "Sets CON to 23 (mod +6). Frees your CON ASI room AND gives +6 to Concentration saves. Wear if you keep losing Concentration on Hypnotic Pattern / Hold Monster." }
+    - { slot: "Boots", item: "Disintegrating Night Walkers (kept)", where: "Carried from Act 1 (Nere drop in Grymforge)", why: "Already wearing since Act 1 endgame." }
+    - { slot: "Ring", item: "Callous Glow Ring", where: "Gauntlet of Shar — opulent chest in the vault room near Balthazar (Act 2 acquisition, equip from then on)", why: "+2 radiant damage to illuminated targets per damage instance. Triggers per Magic Missile dart (each dart is a separate damage instance) but only against illuminated targets — combo with Light cantrip on the boss for guaranteed +2/dart." }
+    - { slot: "Cloak (alt)", item: "Cloak of Displacement", where: "Wyrm's Crossing — sold by Entharl Danthelon at Danthelon's Dancing Axe", why: "Attack rolls against you have disadvantage while at full HP. Defensive alternative when you don't need the Cloak of Protection saves and aren't running the Cloak of the Weave for elemental absorption." }
+    - { slot: "Ring (alternate engine)", item: "Band of the Mystic Scoundrel", where: "Circus of the Last Days in Rivington — win Akabi's spin-the-wheel game to be teleported to the Jungle (one party member only); the ring is in a backpack there. Alt: pickpocket Akabi's Djinni Ring, or pass Bard-only skill checks.", why: "After a successful weapon attack, cast an Enchantment or Illusion spell as a bonus action. Wizards are proficient with daggers, slings, quarterstaffs (Markoheshkir!), and light crossbows. Skip on THIS build: the bonus action conflicts with Quickspell Gloves' charge, and a wizard's weapon attack damage is poor compared to spending your Action on a leveled spell. Build-defining only on a wizard variant that runs Helmet of Arcane Acuity (weapon-hit Acuity stacks) instead of Hat of Fire Acuity." }
   bis_at_12:
     main_hand: Markoheshkir
     off_hand: "Phalar Aluve (Shriek mode active for vulnerability aura)"
     armor: Robe of the Weave
-    helm: Hat of Fire Acuity (offensive engine) OR Hood of the Weave (max defense / max DC)
-    gloves: Quickspell Gloves
+    helm: Hat of Fire Acuity (offensive Acuity engine) OR Hood of the Weave (+2 DC / +2 spell attack)
+    gloves: Quickspell Gloves (1/short rest cantrip-as-bonus-action)
     boots: Disintegrating Night Walkers
-    cloak: Cloak of the Weave
-    amulet: Psychic Spark (Magic Missile theme) OR Spineshudder Amulet (lightning/thunder theme) OR Amulet of Greater Health (defensive)
+    cloak: Cloak of Protection (or Cloak of the Weave for elemental absorption)
+    amulet: Amulet of the Devout (+2 DC) OR Psychic Spark (+1 Magic Missile dart) OR Amulet of Greater Health (defensive CON 23)
     ring_1: Callous Glow Ring
-    ring_2: Ring of Spell-Battery (or Risky Ring if leaning Scorching Ray attack rolls)
+    ring_2: Risky Ring (if leaning Scorching Ray attack-roll spells)
+    note: |
+      The build's Hat of Fire Acuity stack engine wants Fire Bolt cantrip every
+      turn; with Quickspell Gloves at only 1 charge per short rest, you're
+      casting Fire Bolt as your Action on most non-nova turns to maintain
+      Acuity stacks. A no-Quickspell turn looks like: Action = Fire Bolt
+      (+1 Acuity stack), Bonus = nothing or Misty Step.
 
 alternative_splits:
   intro: |
@@ -468,20 +481,22 @@ playstyle:
   mid:
     levels: "5 – 9 (Wizard L5-9 — Fireball + Hypnotic Pattern unlock)"
     summary: |
-      The build's identity emerges. Quickspell Gloves (Act 2) make every turn a
-      cantrip + leveled spell. Hat of Fire Acuity stacks +spell save DC every
-      Fire Bolt — by round 3 your Hold Monster lands at +5 DC over baseline.
-      Hypnotic Pattern locks down rooms; Counterspell shuts down enemy mages.
+      The build's identity emerges. Hat of Fire Acuity stacks +spell save DC
+      every Fire Bolt — by round 3 your Hold Monster lands at +5 DC over
+      baseline. Hypnotic Pattern locks down rooms; Counterspell shuts down enemy
+      mages. Quickspell Gloves (Act 3 from Sorcerous Sundries) give one free
+      bonus-action cantrip per short rest — save the charge for the round you
+      need both a leveled spell AND Acuity-stacking damage.
     standard_turn: |
-      Action — Fireball / Magic Missile / Hypnotic Pattern (drop everything and
-      hold concentration if you can land it). Bonus action — Fire Bolt via
-      Quickspell Gloves (free damage every turn, stacks Acuity). Reaction —
+      Action — Fireball / Magic Missile / Hypnotic Pattern, OR a Fire Bolt
+      cantrip if you need to ramp Acuity stacks for a future control spell.
+      Bonus action — usually nothing, occasionally Misty Step. Reaction —
       Shield or Counterspell.
     nova_turn: |
-      Round 1 — Hypnotic Pattern on the cluster (locks the room) + Quickspell
-      Fire Bolt (Acuity stack). Round 2 — Fireball or upcast Magic Missile on
-      whatever survives. Round 3 — Hold Monster on the surviving boss while
-      Hypnotic Pattern locks the rest; melee allies auto-crit the held target.
+      Round 1 — Hypnotic Pattern on the cluster (locks the room). Round 2 —
+      Fireball or upcast Magic Missile on whatever survives. Round 3 — Hold
+      Monster on the surviving boss while Hypnotic Pattern locks the rest;
+      melee allies auto-crit the held target.
   late:
     levels: "10 – 12 (Wizard L10-12 — Empowered Evocation + L6 spells)"
     summary: |
@@ -493,21 +508,22 @@ playstyle:
       Shriek up, EVERY dart procs vulnerability separately.
     standard_turn: |
       Action — Magic Missile (upcast for the situation), Cone of Cold, Chain
-      Lightning, or Disintegrate. Bonus action — Quickspell cantrip (Fire Bolt
-      to stack Acuity, or Toll the Dead vs a damaged target). Reaction — Shield
-      / Counterspell.
+      Lightning, or Disintegrate. Bonus action — usually nothing; spend your
+      Quickspell charge here on the round you most need it (typically when you
+      cast a save-spell as your Action and want to also stack Acuity for the
+      next round). Reaction — Shield / Counterspell.
     nova_turn: |
       Pre-fight — drink a Potion of Speed (your own bonus-action Haste, no
-      concentration), put up Phalar Aluve Sing for the party. Round 1 — Globe
-      of Invulnerability on yourself (anti-mage bubble) and Chain Lightning on
-      the cluster. Round 2 — Disintegrate on the boss + Quickspell Fire Bolt.
-      Round 3 — Hold Monster on the surviving boss for melee allies' next
-      round.
+      concentration), toggle Phalar Aluve Shriek for the vulnerability aura.
+      Round 1 — Globe of Invulnerability on yourself (anti-mage bubble) and
+      Chain Lightning on the cluster. Round 2 — Disintegrate on the boss +
+      Quickspell Fire Bolt for the bonus-action Acuity stack. Round 3 — Hold
+      Monster on the surviving boss; melee allies auto-crit the held target.
 
 abilities_situational:
   - name: Magic Missile
-    when: "Sustained DPS or anti-Mirror-Image. Auto-hits — always 100% damage. Upcast for more darts."
-    notes: "Each dart procs Empowered Evocation (+INT mod), Phalar Aluve Sing (+1d4 from the buff), Markoheshkir imbue (+1d6 element), and Spineshudder Amulet (Reverberation per dart). Magic Missile is the build's signature precisely because every modifier multiplies."
+    when: "Sustained DPS or anti-Mirror-Image. Auto-hits — always 100% damage. Upcast for more darts. Single best spell against the rare Mirror-Image enemy because each dart pops one image."
+    notes: "Each dart procs Empowered Evocation (+INT mod), Phalar Aluve Shriek vulnerability (multiplies the dart by 1.5×), Markoheshkir imbue (+1d6 element), Psychic Spark (+1 dart total), and Callous Glow Ring (+2 radiant if target is illuminated). Note: Spineshudder Amulet does NOT trigger on Magic Missile — it requires an attack roll, and Magic Missile auto-hits without one. For Spineshudder synergy use Scorching Ray (3 attack rolls per cast)."
   - name: Shield (reaction)
     when: "Whenever an enemy attack roll exceeds your AC by 5 or less, OR when you're hit by a Magic Missile."
     cost: 1 L1+ slot, 1 reaction
@@ -533,9 +549,9 @@ abilities_situational:
     cost: 1 L2+ slot OR 1 use of Amulet of Misty Step OR free at character L3+ (Githyanki racial)
     notes: "The Githyanki racial use is independent of your Misty Step spell — you have multiple ways to teleport per day."
   - name: Quickspell Gloves
-    when: "Every turn after you have them (Act 2)."
-    cost: bonus action
-    notes: "Once per turn, cantrips can be cast as a bonus action. Stack a damage cantrip onto every Action you take. Build-defining."
+    when: "Once per short rest. Save the charge for the round you most need both a leveled spell AND a cantrip — typically a turn where you want to drop a save-spell as Action and Fire-Bolt for an Acuity stack as bonus action."
+    cost: bonus action, 1 charge per short rest (refreshes on short rest)
+    notes: "Strong but not unlimited. Roughly 3 free bonus-action cantrips per long rest with two short rests. Sourced from Sorcerous Sundries in Act 3."
   - name: Empowered Evocation
     when: "Wizard 10+ — automatic. Every Wizard evocation spell adds +INT mod to ONE damage roll."
     notes: "Magic Missile and Scorching Ray each have multiple damage rolls — Empowered Evocation applies to ALL of them in BG3 (the rules text is ambiguous but the implementation favors the player). Confirm in tooltip."
@@ -549,10 +565,12 @@ mistakes_and_tips:
   - "Counterspell at L3 only stops spells of level 3 and below. Upcast to L4 for L4 spells, L5 for L5, etc. Save high-level slots for the boss's big spell — don't burn them on a goblin's Fire Bolt."
   - "Sculpt Spells only protects targets you SEE. Invisible allies inside your Fireball AOE still take damage. Drop Greater Invisibility AFTER your Fireball, not before."
   - "Sleep loses value past character level 4 (HP cap of ~24). Drop it from your prepared list once you have Hypnotic Pattern at L5."
-  - "Patch 7 Honor Mode nerf — the Magic Missile per-dart damage rider exploits (DRS multipliers) were rebalanced. Each dart still procs Empowered Evocation, Phalar Aluve Shriek vulnerability, Spineshudder Reverberation, and Callous Glow Ring radiant — but the damage no longer multiplies the way the per-dart bonuses used to. The Scorching Ray + Hat of Fire Acuity loop becomes the ceiling pick on Honor Mode; outside Honor Mode, Magic Missile remains supreme."
-  - "Hat of Fire Acuity is bonkers — every Fire Bolt cantrip you cast (free via Quickspell every turn) adds +1 to your spell save DC and spell attack rolls (max 10 stacks). After 3 cantrip turns you're at +3 DC; your Hold Monster, Hypnotic Pattern, and Polymorph land far more reliably. Stacks decay 1 per turn at start of turn AND −2 when you take damage, so don't tank hits."
+  - "Patch 7 Honor Mode rebalance — the Magic Missile per-dart damage rider exploits (DRS multipliers) were toned down. Each dart still procs Empowered Evocation, Phalar Aluve Shriek vulnerability, and Callous Glow Ring radiant. But Spineshudder Amulet does NOT trigger on Magic Missile — it requires an attack roll, and Magic Missile auto-hits. For the Spineshudder Reverberation loop, lean Scorching Ray instead (3 attack rolls per cast)."
+  - "Hat of Fire Acuity is bonkers — every Fire Bolt cantrip you cast adds +1 to your spell save DC and spell attack rolls (max 10 stacks). After 3 Fire Bolt turns you're at +3 DC; your Hold Monster, Hypnotic Pattern, and Polymorph land far more reliably. Stacks decay 1 per turn at start of turn AND −2 when you take damage, so don't tank hits while ramping."
   - "Buy Markoheshkir as soon as you can afford it in Act 3 — it's roughly 9000 gp from Tolna Tome-Monger or Lorroakan's vault. Imbue it with the element matching your day's plan (Fire for Hat of Fire Acuity stacking, Cold for Mourning Frost vulnerability, Lightning for Spineshudder Reverberation, Acid for raw bypass)."
   - "Stack the Weave triple — Robe + Hood + Cloak of the Weave from Sorcerous Sundries grant +3 spell save DC and +3 spell attack rolls cumulative. The single biggest passive caster bonus in the game."
   - "Phalar Aluve Shriek (off-hand sword toggle) gives a 6m aura that adds +1d4 vulnerability damage to enemies inside on the next instance of damage they take. Each Magic Missile dart counts as a separate instance — in BG3, this means each dart triggers Shriek separately, multiplying its value."
   - "Vendor scrolls restock on level-up. After every level-up, revisit Tolna Tome-Monger (Druid Grove → moves to Sorcerous Sundries Act 3), Quartermaster Talli (Last Light Inn), and the Open Hand temple stockists for fresh scrolls and spell-DC items."
-  - "Don't cast a leveled spell and a leveled spell in the same turn — BG3 enforces the 5e rule that you can only cast one leveled spell per turn (cantrips from Quickspell are exempt). Without a Sorcerer's Quicken Spell or a Fighter 2 Action Surge dip, your turn is one Action spell + one bonus-action cantrip."
+  - "BG3 enforces the 5e rule that you can only cast one leveled spell per turn — even with Quickspell Gloves' bonus-action cast, the bonus-action spell must be a CANTRIP. Without a Sorcerer's Quicken Spell or a Fighter 2 Action Surge dip, your turn caps at one leveled spell + one cantrip per turn."
+  - "Quickspell Gloves give 1 charge per short rest (NOT every turn — a common misconception). With 2 short rests per long rest you get ~3 free bonus-action cantrips per day. Save them for nova rounds."
+  - "Spineshudder Amulet only triggers on RANGED SPELL ATTACK ROLLS — Scorching Ray (3 rays = 3 attack rolls), Eldritch Blast, Witch Bolt qualify. Magic Missile (auto-hit), Fireball / Cone of Cold (save-based), and Hold Monster (save-based) do NOT trigger it."
