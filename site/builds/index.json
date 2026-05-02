@@ -11,6 +11,12 @@
       "file": "githyanki-evoker.yaml",
       "name": "Githyanki Evoker",
       "tagline": "Pure Evocation Wizard 12"
+    },
+    {
+      "id": "half-elf-ancients-paladin",
+      "file": "half-elf-ancients-paladin.yaml",
+      "name": "Half-Elf Ancients Paladin",
+      "tagline": "Pure Oath of Ancients Paladin 12 — party aura tank"
     }
   ]
 }

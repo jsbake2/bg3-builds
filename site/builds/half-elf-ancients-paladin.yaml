@@ -1,0 +1,577 @@
+meta:
+  id: half-elf-ancients-paladin
+  name: Half-Elf Ancients Paladin
+  tagline: Pure Oath of Ancients Paladin 12 — party-wide aura tank
+  race: Half-Elf
+  classes: [Paladin]
+  level_range: "1 → 12"
+  difficulty: Beginner-friendly
+  final_split: Paladin 12 (pure)
+  win_condition: >
+    Aura of Protection at Paladin 6 grants +CHA modifier to ALL saving throws for
+    you AND every ally within 9m. Aura of Warding at Paladin 7 (Oath of Ancients
+    only) grants resistance to spell damage for everyone in the same aura. You
+    are not just a personal tank — you are a moving 9m bubble of party-wide
+    save bonuses and spell-damage halving. Stand in the middle of the squishies,
+    smite priority targets, Compelled Duel the boss.
+
+overview: |
+  This is the strongest tank build in BG3 — not because the Paladin survives
+  best in isolation (Bear Heart Barbarian wins that contest), but because the
+  Paladin tanks for the WHOLE PARTY. Every save vs Hold Person, Banishment,
+  Dominate Person, Petrification, and the dozens of other save-or-suck spells
+  Honor Mode throws at you gets +CHA mod. Every fireball gets halved for
+  everyone in your aura. Your party stops needing a healer.
+
+  Pure Paladin 12 (no multiclass) is the cleanest pick. You get all 12 levels
+  of class progression: Aura of Protection at L6, Aura of Warding at L7
+  (Ancients-exclusive), Aura of Courage at L10 (immunity to Frightened in your
+  bubble), Improved Divine Smite at L11 (every melee hit deals +1d8 radiant
+  passively), and your third ASI/Feat at L12. Multiclass Sorcadin / Padlock
+  variants chase a higher nova ceiling at the cost of these auras — they get
+  documented in Reference → Alternative splits.
+
+  Oath of Ancients is the tank-leaning Paladin oath. Vengeance is the damage
+  oath (used in the Bardadin build). Devotion is the buff oath (Sacred Weapon).
+  Ancients gets Aura of Warding (the keystone party-defense feature) and
+  thematic spells like Speak with Animals, Plant Growth, and Protection from
+  Energy.
+
+character_creation:
+  note: |
+    Start as Paladin at character creation. Stay Paladin for all 12 levels.
+  class: Paladin
+  background_suggested: Noble (Persuasion + History) or Soldier (Athletics + Intimidation)
+  cantrips_at_l1: []
+  spells_known_at_l1:
+    note: "Paladins do not learn spells until Paladin 2. They do not pick spells at character creation."
+  ability_scores:
+    note: "Buy these point-buy values. Half-Elf adds +2 CHA and two floating +1s — put them on STR and CON."
+    str: 16
+    dex: 10
+    con: 14
+    int: 8
+    wis: 10
+    cha: 14
+  final_starting:
+    str: 17
+    dex: 10
+    con: 15
+    int: 8
+    wis: 10
+    cha: 16
+
+skills:
+  summary: |
+    Skill picks are mostly set at character creation. Paladin grants 2 class
+    skill proficiencies from a small list (Athletics, Insight, Intimidation,
+    Medicine, Persuasion, Religion). Half-Elf adds 2 more skill proficiencies
+    of your choice. Background adds 2 more. No expertise feature on Paladin.
+  at_creation:
+    from_race:
+      pick: [Insight, Perception]
+      note: |
+        Half-Elf grants 2 skill proficiencies of any choice. Insight (WIS) reads
+        NPCs; Perception (WIS) finds traps and hidden things. Pick whatever
+        non-CHA skills you want here — your CHA skills are covered by class +
+        background.
+    from_background:
+      pick: [Persuasion, History]
+      background: Noble
+      note: |
+        Noble background grants Persuasion and History. The Persuasion is the
+        more useful pick — Paladin's CHA 16 makes you the party face. Soldier
+        (Athletics + Intimidation) is the alternate background if you'd rather
+        be physical/intimidating than diplomatic.
+    from_class:
+      pick: [Intimidation, Athletics]
+      note: |
+        Paladin picks 2 from a fixed list (Athletics, Insight, Intimidation,
+        Medicine, Persuasion, Religion). Intimidation is a CHA skill — uses
+        your high CHA. Athletics (STR) helps with shoves, climbs, escape from
+        grapples, and the few mandatory STR-skill checks in the game.
+        If your background already covers Persuasion, skip it here.
+  at_level_3_expertise:
+    pick: []
+    note: |
+      Paladin does NOT grant Expertise. Skill bonuses don't double anywhere in
+      this build. Your CHA 16 + Aura of Protection bonus already make you very
+      strong on social checks naturally.
+  later_levels: |
+    No new skill proficiencies appear after Paladin 1. Final list at L12:
+      • Race (Half-Elf): Insight, Perception, Darkvision (passive)
+      • Background (Noble): Persuasion, History
+      • Class (Paladin 1): Intimidation, Athletics
+
+stats_progression:
+  priorities: [STR, CHA, CON]
+  asi_plan:
+    - level: 4
+      pick: "Great Weapon Master (GWM)"
+      reason: |
+        Toggle adds -5 to attack rolls for +10 damage. With Bless concentration
+        up (+1d4 to attack rolls) and good gear (+1/+2 weapons, +1 from Cloak
+        of Protection later), you offset the -5 penalty. Critical hits and
+        kills with a melee attack also grant a free bonus-action attack —
+        big snowball potential.
+    - level: 8
+      pick: "Resilient (Constitution)"
+      reason: |
+        Half-feat: +1 CON (15 → 16, push to 18 with permanent boosts) and
+        Constitution save proficiency. Concentration on Bless / Shield of
+        Faith / Hold Person stays up under fire. Aura of Protection at L6
+        already adds +CHA to CON saves, so this stacks on top.
+    - level: 12
+      pick: "Savage Attacker"
+      reason: |
+        Once per turn, when you make a weapon attack, re-roll the damage dice
+        and take the higher result. Massive on a Smite-spam paladin — Smite
+        damage dice get the re-roll too. Final ASI; if STR is already 20
+        from Mirror of Loss, this is the strict damage upgrade.
+  alternates:
+    - feat: "+2 STR (at L4 instead of GWM)"
+      when: "If you don't trust the GWM accuracy math or you're not using a 2H weapon."
+      tradeoff: "Trades GWM's +10 damage on hit for +1 to all weapon attacks and +1 to AC if dual-wield finesse. Less damage ceiling, more reliability."
+    - feat: Polearm Master
+      when: "If you're using a halberd, glaive, or pike instead of a greatsword/maul."
+      tradeoff: "Bonus-action butt-end attack + reaction OAs when enemies enter your reach. Strong defensive feat. Replaces GWM at L4 OR Savage Attacker at L12."
+    - feat: Tough
+      when: "If you want raw HP. +24 HP at L12 (2 HP per level)."
+      tradeoff: "Replaces Savage Attacker. The HP scaling is fine but you already have d10 hit dice + CON 16+; usually unnecessary."
+    - feat: Sentinel
+      when: "If your party lacks a frontline and you want to hard-lock enemies."
+      tradeoff: "Reaction attack on someone leaving your reach reduces their speed to 0. Replaces GWM. Good aggro tool, but BG3 AI ignores threat — Compelled Duel is the actual taunt."
+    - feat: War Caster
+      when: "Alternative to Resilient (CON) for Concentration."
+      tradeoff: "Advantage on Concentration saves (multiplicative with Aura of Protection bonus). Pick Resilient (CON) instead — it's a half-feat and adds CON proficiency on a class that doesn't have it."
+  permanent_boosts:
+    note: |
+      Hag's Hair on STR pushes 17 → 18 (no extra modifier). Mirror of Loss on
+      STR pushes to 20 (the cap). With the L4 GWM pick (no STR ASI), you reach
+      STR 20 via Mirror of Loss alone. Spend Hag's Hair on STR to push past 20
+      (Mirror bypasses the cap, so 18 → 20 + Mirror = 22? Actually Mirror adds
+      a flat +2 from base, so 18 → 20). Verify in-game tooltip.
+    items:
+      - { name: "Hag's Hair", grants: "+1 to one ability score (permanent)", where: "Auntie Ethel — Sunlit Wetlands (Act 1).", recommend: "Spend on STR — pushes 17 → 18 (no extra modifier yet, but it sets up the Mirror of Loss combo)." }
+      - { name: "Mirror of Loss (boon)", grants: "+2 to one ability score (permanent), bypasses the 20 cap; -1 to all others until you Restore at the same shrine", where: "Gauntlet of Shar (Act 2). Pass the WIS check (DC 18) to gain the boon.", recommend: "Spend on STR — pushes 18 → 20." }
+  cap_at_12:
+    str: 20
+    dex: 10
+    con: 16
+    int: 8
+    wis: 10
+    cha: 16
+    note: "Final cap assumes Hag's Hair (+1 STR) + Mirror of Loss (+2 STR) on Strength, and Resilient (CON) at L8 (CON 15 → 16). GWM at L4 and Savage Attacker at L12 spend on damage rather than stat scaling."
+
+leveling:
+  - level: 1
+    take: Paladin 1
+    pick:
+      - "Skill proficiencies (2) — Intimidation + Athletics (or Persuasion + Athletics if Noble doesn't cover Persuasion)"
+      - "Lay on Hands — pool of 5 HP per Paladin level (5 at L1, 60 at L12). Use to heal allies, cure disease, or remove Frightened/Charmed for 1 use of the pool."
+      - "Divine Sense — 1+CHA mod uses per long rest; reveals Aberrations, Celestials, Fiends, and Undead in 18m."
+      - "Saving throw proficiencies — Wisdom + Charisma."
+    notes: |
+      Open every fight in melee. You don't have Smite or any auras yet — you're
+      a martial with d10 hit dice and heavy armor proficiency. Spend Lay on
+      Hands liberally; it refreshes on long rest, hoarding it doesn't help.
+  - level: 2
+    take: Paladin 2
+    pick:
+      - "Fighting Style — Great Weapon Fighting (GWF): re-roll 1s and 2s on damage dice with a 2H or versatile weapon. The damage tank's pick."
+      - "Spellcasting unlocks — prepare CHA mod + ½ Pal level = 1 + 1 = 2 spells per long rest. Pick Bless + Wrathful Smite."
+      - "Divine Smite — burn any spell slot of L1+ for +2d8 radiant on a melee hit (+1d8 per slot level above L1, up to 5d8 total at L4 slot, +1d8 vs fiends/undead)."
+    notes: |
+      Smite is decided AFTER the d20 rolls — never pre-declare. Always smite
+      on crits (the dice double) and killing blows. Bless concentration on
+      yourself + 2 allies adds +1d4 to attack rolls and saving throws — drop
+      it round 1 of every important fight.
+  - level: 3
+    take: Paladin 3
+    pick:
+      - "Subclass — Oath of Ancients"
+      - "Channel Oath: Nature's Wrath — bonus action; roots a target in place on a STR/DEX save fail. 1 charge per short rest."
+      - "Channel Oath: Turn the Faithless — bonus action; Fey and Fiends within 9m must use their action to flee for 1 minute on a WIS save fail. Niche, but devastating in fey/fiend-heavy fights (House of Hope, Cazador's spawn)."
+      - "Oath spells (auto-prepared): Ensnaring Strike, Speak with Animals — these don't count toward your prepared limit."
+    notes: |
+      Channel Oath is shared between Nature's Wrath and Turn the Faithless —
+      pick one per short rest. Default to Nature's Wrath against most enemies;
+      Turn the Faithless for fiend-heavy fights.
+  - level: 4
+    take: Paladin 4
+    pick:
+      - "Feat / ASI — Great Weapon Master (GWM)"
+      - "Spell prepared count goes up by 1 (Pal 4 = 3 prepared)"
+    notes: |
+      GWM has two effects. (1) Toggle a -5 attack penalty for +10 damage —
+      strong with Bless / Vow of Enmity / advantage. (2) When you crit OR
+      drop an enemy with a melee attack, you get a free bonus-action attack
+      this turn. Combined with Smite, this snowballs hard.
+  - level: 5
+    take: Paladin 5
+    pick:
+      - "Extra Attack — 2 attacks per Action."
+      - "L2 spell slots unlock — prepare Aid (party-wide +5 max HP), Branding Smite (concentration; weapon glows with magical light, +2d6 radiant on next hit, target Outlined). Misty Step is auto-prepared as an oath spell."
+    notes: |
+      Big power spike. 2 attacks per turn doubles your Smite damage potential
+      and your GWM bonus-action triggers. Misty Step (oath spell, free to cast)
+      is your mobility — bonus-action 18m teleport with no AOO.
+  - level: 6
+    take: Paladin 6
+    pick:
+      - "Aura of Protection — passive, 9m radius. You and allies in the aura get +CHA modifier (+3 with CHA 16, +4 with 18, +5 with 20) to ALL saving throws."
+      - "Spell prepared count: Pal 6 = 4 prepared."
+    notes: |
+      The single most important Paladin level. Stand within 9m of your
+      squishies and they suddenly pass save-or-suck spells (Hold Person,
+      Dominate Person, Petrification, Banishment) at +3. Your Concentration
+      becomes nearly unbreakable too.
+  - level: 7
+    take: Paladin 7
+    pick:
+      - "Subclass feature — Aura of Warding (Ancients only): you and allies within 9m have RESISTANCE to spell damage. Halves Fireball, Cone of Cold, Lightning Bolt, Necrotic, Acid Arrow, etc."
+    notes: |
+      The reason you picked Ancients. Half spell damage for the WHOLE party.
+      Stacks multiplicatively with Cloak of the Weave's elemental absorption,
+      Aura of Protection's +saves, and any party-member resistance. Honor Mode
+      bosses spam high-damage spells; this trivializes those rounds.
+  - level: 8
+    take: Paladin 8
+    pick:
+      - "Feat / ASI — Resilient (Constitution): +1 CON (15 → 16) AND CON save proficiency."
+      - "Spell prepared count: Pal 8 = 5 prepared."
+    notes: |
+      Resilient (CON) is the build's defensive cornerstone. Paladins natively
+      have only WIS + CHA save proficiency — no CON. Without Resilient, your
+      Concentration on Bless / Branding Smite / Hold Person breaks the moment
+      you take a serious hit. With it, plus Aura of Protection's +CHA, your
+      Concentration is iron.
+  - level: 9
+    take: Paladin 9
+    pick:
+      - "L3 spell slots unlock — prepare Aura of Vitality (concentration; bonus action heals 2d6 to one ally in 9m for 1 minute / 10 turns)."
+      - "Oath spells auto-prepared: Plant Growth, Protection from Energy."
+    notes: |
+      Aura of Vitality is the build's emergency heal: 10 turns of bonus-action
+      2d6 heal on tap. Paired with Lay on Hands + Cure Wounds scrolls, you can
+      recover from any HP scare without burning a real turn.
+  - level: 10
+    take: Paladin 10
+    pick:
+      - "Aura of Courage — passive, same 9m radius. You and allies in the aura are immune to Frightened."
+      - "Spell prepared count: Pal 10 = 6 prepared."
+    notes: |
+      Frightened immunity sounds niche, but it shuts down every Fear /
+      Cause Fear / Cazador presence / dragon's Frightful Presence in the game.
+      Free defensive layer.
+  - level: 11
+    take: Paladin 11
+    pick:
+      - "Improved Divine Smite — passive; all melee weapon attacks deal an extra +1d8 radiant damage. No spell slot needed."
+      - "Spell prepared count stays at 6."
+    notes: |
+      The build's biggest single damage spike. Every swing now adds 1d8 radiant
+      passively. With 2 attacks per turn (Extra Attack) + GWM bonus-action on
+      crits/kills, you're pushing 3-4 weapon hits per round, each with an
+      extra 1d8 radiant tagged on. Smite slots remain a separate burst layer.
+  - level: 12
+    take: Paladin 12
+    pick:
+      - "Feat / ASI — Savage Attacker (re-roll one weapon attack's damage dice once per turn, take the higher result)"
+      - "Spell prepared count: Pal 12 = 7 prepared."
+    notes: |
+      Build complete. Savage Attacker re-rolls Smite damage dice too — on a
+      crit Smite (5d8 + 5d8 doubled = 10d8) you re-roll all of them once and
+      take the higher set. With STR 20 + GWF reroll + GWM +10 + Improved
+      Divine Smite +1d8 + Branding Smite +2d6 + Smite slot, your nova rounds
+      hit 100+ damage on a single melee attack.
+
+spells:
+  cantrips:
+    note: "Paladins do not get cantrips natively."
+  level_1:
+    keepers:
+      - { name: Bless, why: "Concentration; +1d4 to attack rolls AND saving throws for you and 2 allies, 1 minute. Drop turn 1 of every fight." }
+      - { name: Wrathful Smite, why: "Concentration smite; +1d6 psychic on hit and target is Frightened on WIS save fail. Frightened = disadvantage on attacks AND can't move closer." }
+      - { name: Searing Smite, why: "Concentration smite; +1d6 fire on hit and target burns for 1d6/turn until they pass a CON save. Pairs with anything that prevents healing." }
+      - { name: Compelled Duel, why: "Bonus action; CHA save fail forces target to attack only YOU for 1 minute and disadvantage on attacks against anyone else. The only true taunt in the game." }
+      - { name: Heroism, why: "Concentration; an ally is immune to Frightened and gains CHA-mod temp HP at start of each turn for 1 minute." }
+    skip:
+      - { name: Cure Wounds, why: "Action cost is too expensive — you have Lay on Hands for free out-of-action heals." }
+  level_2:
+    keepers:
+      - { name: Aid, why: "Each ally's HP and max HP +5 (or +10/+15 at higher slot levels) for 8 hours. Cast each long rest." }
+      - { name: Branding Smite, why: "Concentration; +2d6 radiant on next melee hit AND target glows (preventing invisibility). Saves a Smite slot for big plays." }
+      - { name: Find Steed, why: "Permanent mount summon. Mount has its own initiative + attack." }
+      - { name: Misty Step, why: "Auto-prepared (oath). Bonus-action 18m teleport, no AOO." }
+      - { name: Moonbeam, why: "Auto-prepared (oath). Concentration; 1.5m radius column deals 2d10 radiant to creatures inside or entering. Move the beam each turn." }
+  level_3:
+    keepers:
+      - { name: Aura of Vitality, why: "Concentration; bonus-action 2d6 heal to any ally in 9m, 1 minute. The build's mid-fight heal pool." }
+      - { name: Crusader's Mantle, why: "Concentration; you and friendly creatures in 9m deal +1d4 radiant on weapon attacks for 1 minute." }
+      - { name: Plant Growth, why: "Auto-prepared (oath). 12m radius difficult terrain — quarter movement for enemies. Combine with Spike Growth from a party member for instant chokepoint." }
+      - { name: Protection from Energy, why: "Auto-prepared (oath). Concentration; one ally gets resistance to chosen damage type for 1 hour." }
+    skip:
+      - { name: Daylight, why: "Niche — only useful vs darkness-using enemies (drow, vampire spawn). Skip unless going to Cazador or Mountain Pass darkness." }
+  paladin_prepared:
+    note: "Pal 12 prepares CHA mod + ½ Pal level = 3 + 6 = 9 spells per long rest. Oath spells (Ensnaring Strike, Speak with Animals, Misty Step, Moonbeam, Plant Growth, Protection from Energy) are AUTO-PREPARED and don't count toward the limit — that's a free 6 spells."
+    recommended_at_12:
+      - "L1: Bless, Wrathful Smite, Compelled Duel, Heroism (4)"
+      - "L2: Aid, Branding Smite, Find Steed (3)"
+      - "L3: Aura of Vitality, Crusader's Mantle (2)"
+      - "Plus auto-prepared oath spells: Ensnaring Strike, Speak with Animals, Misty Step, Moonbeam, Plant Growth, Protection from Energy"
+  must_pick_now:
+    - at_level: 2
+      spell: "Bless + Wrathful Smite"
+      why: "Bless is your every-fight concentration buff; Wrathful Smite is your concentration-smite that also Frightens (denying enemy attacks)."
+    - at_level: 5
+      spell: "Aid + Branding Smite"
+      why: "Aid is the long-rest party-HP buff (+5 max HP per ally at L2, scales). Branding Smite is concentration smite damage."
+    - at_level: 9
+      spell: "Aura of Vitality"
+      why: "10 turns of bonus-action 2d6 heal — the build's emergency healing kit. Make sure it's prepared."
+
+alternative_splits:
+  intro: |
+    Pure Paladin 12 is the cleanest tank. The community's main alternatives
+    trade some Aura uptime / Improved Divine Smite for nova damage. Bear Heart
+    Barbarian is a co-meta tank that's more personally durable but doesn't
+    project a party aura.
+  options:
+    - name: Pure Oath of Ancients Paladin 12 (this guide)
+      gives:
+        - "Aura of Protection at L6 (+CHA mod to all party saves in 9m)."
+        - "Aura of Warding at L7 (resistance to spell damage for self + allies in 9m). Ancients-exclusive."
+        - "Aura of Courage at L10 (immunity to Frightened in aura)."
+        - "Improved Divine Smite at L11 (passive +1d8 radiant on every melee hit)."
+        - "Three feats (L4, L8, L12)."
+        - "Simplest play: pick Paladin at L1 and stay."
+      gives_up:
+        - "Multiclass nova ceiling (Sorcadin Quickened Smites, Padlock short-rest slot recovery)."
+        - "L4+ Wizard/Sorc/Warlock spells if you wanted scribing or invocation."
+      best_for: Players who want the strongest party-defense tank, Honor Mode runners, anyone valuing simplicity.
+    - name: Wildheart Bear Heart Barbarian 12
+      gives:
+        - "Bear Aspect at Barbarian 6: resistance to ALL damage except psychic while Raging. Combined with Rage's native physical resistance, you take ¼ damage from physical and ½ from everything except psychic."
+        - "Brutal Critical at Barb 9 (extra weapon dice on crits)."
+        - "Relentless Rage at Barb 11 (CON save to drop to 1 HP instead of 0 when Raging)."
+        - "Highest personal damage soak in the game."
+      gives_up:
+        - "All party-wide auras. You tank only yourself."
+        - "Smite economy."
+        - "Concentration spells (Rage breaks Concentration)."
+        - "Heavy armor proficiency at L1 (medium only — get Adamantine Splint via Cleric/Fighter dip if you want heavy)."
+      best_for: Solo-survival mains, parties that already have a Paladin, players who want to be unkillable in melee.
+    - name: Sorcadin (Paladin 6 / Sorcerer 6)
+      gives:
+        - "Aura of Protection at Pal 6."
+        - "Sorcerer 6 metamagic: Quicken Spell turns a 6-second smite spell into a bonus action — pair with weapon-attack Smite for 2 leveled spells per turn."
+        - "Twin Spell on Hold Person / Bless / Haste."
+        - "Higher single-target nova ceiling than pure Paladin."
+      gives_up:
+        - "Aura of Warding at Pal 7 (the Ancients keystone)."
+        - "Improved Divine Smite at Pal 11 (passive +1d8 radiant)."
+        - "Aura of Courage at Pal 10."
+      best_for: Optimization purists who want the highest single-target burst on Honor Mode boss fights.
+    - name: Padlock (Paladin 6 / Hexblade Warlock 6 — using Fiend or Great Old One since Hexblade isn't in BG3)
+      gives:
+        - "Aura of Protection at Pal 6."
+        - "Pact of the Blade (Fiend Warlock 3): Eldritch Smite uses Warlock slots instead of Paladin slots — preserves Smite economy."
+        - "Eldritch Blast scaling at Warlock 5 (4d10 ranged from a melee class)."
+        - "Mortal Reminder reaction or Dark One's Blessing temp HP."
+      gives_up:
+        - "Aura of Warding (Ancients-only at Pal 7)."
+        - "Improved Divine Smite at Pal 11."
+      best_for: Players who want Smite power and a reliable ranged option.
+    - name: Sword-and-Board Devotion Paladin 12
+      gives:
+        - "Channel Oath: Sacred Weapon — adds CHA mod to attack rolls AND makes weapon magical for 1 minute. Stacks with Bless."
+        - "Channel Oath: Holy Rebuke — radiant retribution reaction."
+        - "Higher AC via Shield + Defense fighting style + Adamantine Shield."
+        - "Same Auras at L6/L10 (NOT Aura of Warding — that's Ancients-only)."
+      gives_up:
+        - "Aura of Warding (Ancients-only)."
+        - "GWF damage scaling (you're using one-handed weapons)."
+        - "GWM feat synergy (one-handed weapons don't qualify)."
+      best_for: Players who want maximum AC and the Sacred Weapon CHA-to-hit buff over passive damage scaling.
+
+race_choice:
+  locked_for_you: Half-Elf (chosen for this guide; meta-optimal for charisma-based paladins)
+  why_its_fine: |
+    Half-Elf is the consensus best paladin race. +2 CHA scales every Aura of
+    Protection bonus, every Compelled Duel save DC, every Wrathful Smite save
+    DC. Two floating +1s let you put +1 on STR (→17 starting) and +1 on CON
+    (→15). Three skill proficiencies are a passive scope upgrade. Fey Ancestry
+    grants advantage on saves vs Charm and immunity to magical Sleep.
+    Darkvision saves a torch slot.
+  community_meta_picks:
+    - { race: "Half-Elf", upside: "+2 CHA, +1/+1 floating, three skill profs, Fey Ancestry (charm save advantage), Darkvision. The default optimization pick." }
+    - { race: "Mountain Dwarf", upside: "+2 STR, +2 CON, medium-armor proficiency (irrelevant — Pal has heavy), Stonecunning, Dwarven Resilience (poison resistance + advantage on poison saves)." }
+    - { race: "Gold Dwarf", upside: "+2 CON, +1 WIS, Dwarven Resilience, Dwarven Toughness (+1 HP per level = +12 HP at L12)." }
+    - { race: "Half-Orc", upside: "+2 STR, +1 CON, Savage Attacks (extra crit die — multiplies Smite damage on crits), Relentless Endurance (drop to 1 HP instead of 0 once per long rest)." }
+    - { race: "Zariel Tiefling (Karlach)", upside: "Origin character: starts as Tiefling with fire resistance, Hellish Rebuke, and Fireball at higher levels. Roleplay-driven pick if you're playing Karlach as your tank." }
+  takeaway: "Half-Elf is the optimization pick for CHA scaling. Mountain Dwarf and Gold Dwarf are runner-ups for raw HP/CON. Half-Orc is the crit-fishing pick. If you're playing Karlach as your tank, her Tiefling stat array works fine — the build doesn't break."
+
+playstyle:
+  early:
+    levels: "1 – 5 (Pal 1-5)"
+    summary: |
+      You're a melee martial with d10 hit dice and heavy armor proficiency.
+      Open with a 2H weapon (greatsword/maul/halberd). Smite unlocks at Pal 2.
+      Bless concentration on yourself + 2 allies turn 1 of every important
+      fight. Lay on Hands for emergency heals. No auras yet — you tank only
+      via raw HP and AC.
+    standard_turn: |
+      Action — 1 attack (or 2 at L5+) with your 2H weapon. Smite on a confirmed
+      hit only — never pre-declare. Always smite on crits (dice double) and
+      killing blows. Bonus action — Misty Step (oath spell at L5+) or nothing.
+      Reaction — Opportunity Attack on enemies leaving your reach.
+    nova_turn: |
+      Round 1 — Bless (concentration, you + 2 allies). Round 2 — Wrathful
+      Smite on the boss (concentration; on hit Frightens them). Round 3 —
+      Branding Smite as concentration (+2d6 radiant on next hit) → 2 attacks
+      with Branding Smite + a real Smite slot on the first hit.
+  mid:
+    levels: "6 – 10 (Pal 6-10 — Auras come online)"
+    summary: |
+      The build's identity emerges. Aura of Protection (L6) = +CHA mod (+3) to
+      all party saves in 9m. Aura of Warding (L7) = resistance to spell damage
+      for everyone in 9m. Aura of Courage (L10) = no Frightened in 9m. Stand
+      between the squishies and the enemy melee — your 9m bubble passively
+      saves the party.
+    standard_turn: |
+      Action — 2 attacks. Bonus action — Misty Step / Nature's Wrath (root) /
+      Compelled Duel (taunt the boss). Decide post-hit whether to Smite.
+      Always smite crits and killing blows. Reaction — OA, or hold for an
+      ally's incoming hit if you have Cutting Words from a party Bard.
+    nova_turn: |
+      Round 1 — Bless concentration up + Compelled Duel on the boss
+      (CHA save fail = boss can only attack you). Round 2 — 2 attacks,
+      Smite on hit, GWM-toggled. Round 3 — if Wrathful Smite still on
+      from Bless swap, 2 attacks with GWM + Smite. ~80–120 damage round.
+  late:
+    levels: "11 – 12 (Pal 11-12 — Improved Divine Smite + final ASI)"
+    summary: |
+      Improved Divine Smite at L11 adds +1d8 radiant to every melee weapon
+      attack passively — no spell slot needed. With 2 attacks per turn that's
+      +2d8 radiant per turn for free. Add Crusader's Mantle (+1d4 radiant party
+      aura) and your party melts.
+    standard_turn: |
+      Action — 2 attacks. Each hit: weapon damage (rerolled 1s/2s via GWF)
+      + Improved Divine Smite +1d8 radiant + Crusader's Mantle +1d4 radiant
+      + GWM +10 (if toggled) + Bless +1d4. Smite on crit/kill. Bonus action —
+      Misty Step / Compelled Duel / Nature's Wrath. Reaction — OA / Sentinel
+      stop (if taken).
+    nova_turn: |
+      Pre-fight — Aid (party-wide +5/+10 max HP) at long rest. Bless
+      concentration. Round 1 — Compelled Duel + Branding Smite (concentration
+      sticks to your weapon). Round 2 — 2 attacks, Smite each on a 5d8 slot
+      = 5d8 + 5d8 (double on crit if it crits) + 1d8 IDS + 2d6 Branding +
+      weapon dice + GWM +10 + STR mod +5 + Savage Attacker reroll. A Smited
+      crit hits ~150–200 damage in a single attack.
+
+abilities_situational:
+  - name: Compelled Duel (the only true taunt)
+    when: "Round 1 of any boss fight where the boss has a high CHA save bonus or you can't afford the boss to ignore you. Bonus action; CHA save fail = target attacks ONLY you for 1 minute, with disadvantage on attacks against anyone else."
+    cost: 1 L1+ slot, bonus action
+    notes: "BG3's AI mostly ignores threat, so this is the ONLY real way to lock a boss onto you. Save your L1 slots for this and Bless before spending them on Smites."
+  - name: Bless
+    when: "Round 1 of every important fight. Concentration; +1d4 to attack rolls and saving throws for you and 2 allies for 1 minute."
+    cost: 1 L1+ slot, action
+    notes: "Default concentration on most turns. Drops if you cast another concentration spell. Aura of Protection still applies on top."
+  - name: Wrathful Smite
+    when: "On a target where Frightened (disadvantage on attacks, can't move closer) is more valuable than the +2d6 of a regular Smite slot — typically a melee boss or a high-AC mage."
+    cost: 1 L1 slot, concentration
+    notes: "Concentration smite — replaces Bless if you cast it. Save for boss fights where Frightened wins the round."
+  - name: Divine Smite
+    when: "After a confirmed hit. Always on crits (dice double). Always on killing blows. Hold the slot if you have <2 left and the fight has multiple bosses remaining."
+    cost: 1 L1+ slot
+    notes: "Radiant damage. +1d8 vs Fiends and Undead (Cazador, Raphael, ALL of Act 2 SCL bosses). Decide post-hit — never pre-declare."
+  - name: Lay on Hands
+    when: "Emergency heal between combats OR a clutch action-economy heal in combat. Can also remove disease and Frightened/Charmed."
+    cost: 5 HP per heal-point used, action (in combat) or out-of-combat free use
+    notes: "5 HP/Pal level pool = 60 HP at L12. Refreshes on long rest. Spend it — hoarding doesn't help."
+  - name: Channel Oath (Nature's Wrath / Turn the Faithless)
+    when: "Nature's Wrath on most enemies (root); Turn the Faithless on Fey/Fiend-heavy fights (House of Hope, Cazador's spawn)."
+    cost: 1 charge per short rest (shared between the two)
+    notes: "Bonus action. Nature's Wrath roots a target until it passes a STR or DEX save. Turn the Faithless turns Fey and Fiends in 9m to flee for 1 minute (WIS save)."
+  - name: Aura of Vitality (L9+)
+    when: "Once any ally drops below 50% HP. Concentration; bonus-action 2d6 heal to any ally in 9m for 10 turns."
+    cost: 1 L3 slot, concentration
+    notes: "Replaces Bless concentration when you need to triage. The 10-turn duration usually covers a whole fight."
+  - name: Misty Step (oath spell, L5+)
+    when: "When you need to reach an isolated boss or get out of melee danger. Bonus-action 18m teleport, no AOO."
+    cost: 1 L2 slot, bonus action
+    notes: "Auto-prepared — doesn't count toward your prepared limit. Free escape button."
+  - name: Aura of Protection (passive, L6+)
+    when: "Always on. Stand within 9m of squishy allies."
+    notes: "Passive +CHA mod to all saving throws for self + allies. The single biggest party-defense feature in the game."
+  - name: Aura of Warding (passive, L7+, Ancients only)
+    when: "Always on. Especially valuable vs spellcaster bosses."
+    notes: "Resistance to spell damage for self + allies in 9m. Halves Fireball, Cone of Cold, Lightning Bolt, etc. Stacks multiplicatively with party-member resistance from other sources."
+  - name: Improved Divine Smite (passive, L11+)
+    when: "Every melee weapon attack."
+    notes: "Passive +1d8 radiant per melee hit. No slot, no concentration, no decision. With Extra Attack you get +2d8 radiant per turn for free."
+
+mistakes_and_tips:
+  - "Smite is decided AFTER the d20 rolls. Never pre-declare. Always smite on crits (dice double) and killing blows."
+  - "Aura of Protection is the build's defining feature. Stay within 9m (≈30ft) of squishy allies. Don't charge ahead leaving casters behind — they lose your CHA-mod save bonus the moment they're outside the bubble."
+  - "DO NOT respec to a multiclass before Pal 6. Aura of Protection at L6 + Aura of Warding at L7 are the entire reason to play Ancients Paladin. Multiclass earlier and you've built a worse Battlemaster."
+  - "Concentration: Bless / Branding Smite / Wrathful Smite / Aura of Vitality are mutually exclusive. You can only have ONE up at a time. Resilient (CON) at L8 + Aura of Protection's CHA bonus protect them from breaking under fire."
+  - "DO NOT break your Oath. Ancients restrictions are loose (don't surrender to despair, don't deny life), but specific dialogue choices in Act 2 (the Shadowfell scenes) and Act 3 (Cazador, Bhaal Temple) can break it. If you break it, you become an Oathbreaker at L1 of that subclass and you LOSE your auras until you level up again."
+  - "Lay on Hands is generous — 5 HP per Pal level. You have 60 HP to spend per long rest at L12. Use it. Hoarding doesn't help."
+  - "Compelled Duel is the only hard taunt in the game. BG3's AI mostly ignores threat — Sentinel feat doesn't force aggro, only locks down a target leaving your reach. If you want the boss to attack you and not the wizard, cast Compelled Duel."
+  - "Aid (L2 spell) is a long-rest party HP buff. Cast it once per long rest as a ritual. +5 max HP per ally at L2 slot, +10 at L3, +15 at L4. Free temp HP all day."
+  - "GWM toggle is situational. With Bless up + advantage from Vow / Faerie Fire / prone, the -5 attack penalty is fine. Without buffs, untoggle vs high-AC enemies."
+  - "Honor Mode: this build is one of the most-recommended Honor tanks. Aura of Protection trivializes Honor's high-DC save spells; Aura of Warding halves the spell damage Honor bosses spam. Bring Adamantine Splint Mail (crit immunity) to the Adamantine Forge in Act 1 — Honor enemies hit hard, and being unable to crit you is huge."
+  - "Pure Paladin is simple to play but the auras require positioning awareness — practice standing in the optimal spot relative to your party. The build's ceiling is in the AURA POSITIONING, not the smite math."
+
+gear:
+  notes: >
+    Heavy armor disables nothing on a pure Paladin (no Bard / Wizard
+    spellcasting penalty). Two-handed weapon for GWF + GWM scaling. Shield is
+    a viable alternate for the sword-and-board variant — see Reference →
+    Alternative splits for the Devotion sword-and-board guide.
+  act_1:
+    - { slot: "Main hand (early)", item: "Everburn Blade", where: "Nautiloid Prologue — looted from Commander Zhalk at the helm. Save Lae'zel for the fight; Zhalk is downed only if the player kills the brain or rescues the dragon mid-fight.", why: "Uncommon greatsword: 2d6 slashing + STR + 1d4 fire (always fire-dipped). Three weapon actions: Pommel Strike (daze), Lacerate (bleed), Cleave (hit 3 enemies in a cone for half damage). Best 2H weapon for the first ~5 character levels." }
+    - { slot: "Main hand (late Act 1)", item: "Adamantine Longsword", where: "Crafted at the Adamantine Forge in Grymforge. Combine the Longsword Mould (around the forge) + Mithral Ore (from Nere's quest area).", why: "+1 longsword. Diamondsbane (every hit on an OBJECT is a guaranteed crit — useful for breaking doors / chests). Lethal Weapon (ignores resistance to slashing damage). The Adamantine Forge is required for the crit-immune Splint Armour anyway, so make this off the same trip." }
+    - { slot: "Armor", item: "Adamantine Splint Armour", where: "Crafted at the Adamantine Forge in Grymforge — Splint Mould + Mithral Ore.", why: "AC 18 heavy armor. Crit-IMMUNE — attackers cannot crit you. Reduces all incoming damage by 2 (Magical Plate). Intense Adamantine Backlash: when struck by a melee attack, the attacker is sent Reeling for 3 turns (disadvantage on attack rolls). The build's Act 1 BiS heavy armor — wear from Grymforge until Helldusk Armour in Act 3." }
+    - { slot: "Off-hand (alt)", item: "Adamantine Shield", where: "Crafted at the Adamantine Forge in Grymforge — Shield Mould + Mithral Ore.", why: "+2 AC. Attackers cannot crit you (stacks with Splint). Shield Blow reaction (STR save or Prone on miss). Adamantine Shield passive: when a melee attack misses you, the attacker is sent Reeling for 2 turns. Take this if running sword-and-board variant — see Alternative splits." }
+    - { slot: "Off-hand carry", item: "Phalar Aluve", where: "Selûnite Outpost in the Underdark — pull from the rock (DC 15 Strength).", why: "Carry in inventory or off-hand for the toggleable Sing aura (+1d4 to attack rolls and saves to allies in 6m) or Shriek aura (vulnerability to next damage instance for enemies in 6m). Shriek before any nova round." }
+    - { slot: "Helm", item: "Helmet of Smiting", where: "Rosymorn Monastery — locked gilded chest in the Selûnite Outpost area, south-west of the waypoint.", why: "+1 Constitution saving throws. Bolstering Smite: when you apply a condition with a Smite spell (Wrathful Smite Frighten, Searing Smite Burning, Branding Smite Outline, Banishing Smite at L13+), you gain temp HP equal to your CHA mod for 2 turns. Effectively free defensive layer every concentration-smite cast." }
+    - { slot: "Helm (alt)", item: "Holy Lance Helm", where: "Rosymorn Monastery — in a painted chest accessible from the top level.", why: "+1 Constitution saving throws. Smite the Graceless: when a creature MISSES an attack roll against you, that creature must succeed a DC 14 DEX save or take 1d4 radiant. Free retaliation damage every time an enemy whiffs against your high AC." }
+    - { slot: "Gloves", item: "Hellrider's Pride", where: "Emerald Grove (Druid Grove) — looted from Zevlor in the Secluded Chamber, OR earned as a quest reward for the Kill Kagha / Investigate Kagha resolution.", why: "When you heal an ally (Lay on Hands counts), that ally gains Blade Ward for 2 turns — resistance to bludgeoning, piercing, and slashing damage. Lay on Hands is FREE in combat too — heal a teammate for any amount, give them Blade Ward, win the round." }
+    - { slot: "Amulet", item: "Periapt of Wound Closure", where: "Rosymorn Monastery Trail — sold by Lady Esther near the Trielta Crags waypoint.", why: "Wound Closure: when downed (0 HP) you automatically stabilize at the start of your turn. Potent Healing: whenever you are healed, you restore the MAXIMUM possible HP from that heal (turn a 1d8+5 cure into a flat 13). Massive on a tank that gets hit a lot." }
+    - { slot: "Ring", item: "Ring of Protection", where: "Tiefling Hideout (Emerald Grove) — quest reward from Mol after completing 'Steal the Sacred Idol'.", why: "+1 AC and +1 to all saving throws. Generic but always good." }
+    - { slot: "Boots", item: "Boots of Stormy Clamour", where: "Underdark — sold by Omeluum at the Myconid Colony / Ebonlake Grotto, after completing 'Help Omeluum Investigate the Parasite'.", why: "Inflicting any condition stacks 2 Reverberation on the target. Wrathful Smite (Frighten), Searing Smite (Burning), Branding Smite (Outlined), Hold Person, Compelled Duel — all proc this. 5 stacks of Reverberation = target falls Prone + 1d4 thunder damage." }
+  act_2:
+    - { slot: "Off-hand (sword-and-board)", item: "Sentinel Shield", where: "Moonrise Towers — sold by Lann Tarv on the main floor.", why: "+2 AC. Heightened Awareness: +3 bonus to Initiative rolls AND advantage on Perception checks. Shield Blow reaction (STR save or Prone). Going first as the tank means you place Bless and Compelled Duel BEFORE the enemy moves — huge value." }
+    - { slot: "Off-hand (sword-and-board, alt)", item: "Justiciar's Greatshield", where: "Gauntlet of Shar — looted from Lyrthindor.", why: "+2 AC. Advantage on Perception. Darkness Cloak bonus action: cast Darkness centered on yourself + auto Hide attempt (1/short rest). Useful if your party doesn't have a Devil's Sight equivalent — otherwise Sentinel Shield is the better generic pick." }
+    - { slot: "Off-hand (sword-and-board, BiS Act 2)", item: "Ketheric's Shield", where: "Mind Flayer Colony — looted from Ketheric Thorm after the second (final) fight in Act 2.", why: "+2 AC. Advantage on DEX saves. Shield Blow reaction (Prone on STR save fail). Arcane Enchantment: +1 Spell Save DC AND +1 Spell Attack rolls — boosts your Smite-spell saves and any spell attack you make. Best Act 2 shield." }
+    - { slot: "Off-hand (sword-and-board, defensive)", item: "Shield of Devotion", where: "Last Light Inn — sold by Quartermaster Talli near the waypoint.", why: "+2 AC. Shield Blow reaction (Prone on STR save fail). Aid action: restores 10 HP and increases max HP by 10 (1/long rest). Grants 1 additional L1 spell slot. The healing/utility shield." }
+    - { slot: "Armor (alt)", item: "Reaper's Embrace", where: "Mind Flayer Colony — looted from Ketheric Thorm during the second (final) Act 2 fight.", why: "Heavy armor (NOT medium). Reduces all incoming damage by 2. Immunity to forced movement (push/pull/Telekinesis/etc). Howl of the Dead bonus action (1/short rest). Strong Act 2 alternative to Adamantine Splint, but you lose the crit-immunity — keep Adamantine on for boss fights, switch to Reaper's for the forced-movement immunity in scripted shove fights." }
+    - { slot: "Ring", item: "Killer's Sweetheart", where: "Gauntlet of Shar — on the ground where the shadow copy is defeated next to the Brazier in the Self-Same Trial.", why: "Executioner: when you kill a creature, your NEXT attack roll is a guaranteed Critical Hit. Refreshes per long rest. Kill a goblin → your next swing crits → Smite that crit at max slot (5d8 doubled = 10d8) for absurd damage. The build's strongest single-attack item." }
+    - { slot: "Off-hand weapon (buff)", item: "Drakethroat Glaive", where: "Moonrise Towers — sold by Roah Moonglow.", why: "Drakethroat Glaive itself is a glaive (two-handed; not your main weapon). Its 1/long rest cast 'Elemental Weapon' lets you imbue ANOTHER weapon with +1 attack/damage and +1d4 elemental. Cast it on your greatsword each long rest for a free upgrade until you find Balduran's Giantslayer in Act 3." }
+    - { slot: "Cloak", item: "Cloak of Protection", where: "Last Light Inn — sold by Quartermaster Talli.", why: "+1 AC and +1 to all saving throws. Stacks with Ring of Protection for cumulative +2/+2." }
+    - { slot: "Boots (alt)", item: "Disintegrating Night Walkers", where: "Grymforge — looted from Nere's body after the Duergar fight (Act 1 endgame, equip from then on).", why: "Misty Step 1/short rest, immunity to Web/Ensnared. Note: technically Act 1 acquisition; listed here because most playthroughs find them while transitioning to Act 2." }
+  act_3:
+    - { slot: "Main hand (BiS)", item: "Balduran's Giantslayer", where: "Wyrm's Rock Fortress → Dragon's Sanctum (Wyrmway) — looted from Ansur's corpse after defeating him.", why: "Legendary +3 greatsword: 2d6+3 slashing PLUS DOUBLED Strength modifier on damage (so STR 20 = +10 dmg per swing instead of +5). Giantslayer: doubled STR-mod damage on every melee hit AND advantage on attacks vs Large/Huge/Gargantuan creatures. Giant Form action: 27 temp HP, +1d6 weapon damage, advantage on STR checks/saves (1/short rest). Topple the Big Folk: extra +2d6 slashing AND Large+ creatures must save vs Prone. The build's endgame weapon." }
+    - { slot: "Helm", item: "Helm of Balduran", where: "Wyrm's Rock Fortress → Dragon's Sanctum (Wyrmway) — on top of a stone altar next to Ansur (same fight as Balduran's Giantslayer).", why: "Crit-IMMUNE. Balduran's Vitality: regenerate 2 HP at the start of each combat turn. Balduran's Favour: +1 AC and +1 to saving throws. Stun immunity (with minor exceptions like Stunning Gaze). The single best tank helm in the game — replaces Adamantine Splint's crit immunity if you've moved to Helldusk Armour." }
+    - { slot: "Armor", item: "Helldusk Armour", where: "House of Hope — looted from Raphael after defeating him in his Boudoir.", why: "AC 21. Fire resistance, immunity to Burning. Reduces all incoming damage by 3. Fly as a bonus action (1/long rest, no concentration). When you succeed on a save vs a spell or ability, the caster is Burned for 3 turns. Grants armor proficiency to ANY class. The build's BiS heavy armor — replaces Adamantine Splint at the cost of crit immunity (covered by Helm of Balduran instead)." }
+    - { slot: "Gloves", item: "Helldusk Gloves", where: "House of Hope — looted from Haarlep in the Boudoir.", why: "Infernal Acuity (+1 spell save DC and +1 to attack rolls). Infernal Touch (weapons deal +1d6 fire on hit). Rays of Fire 1/short rest. +1 STR save. Universal upgrade — pick over Hellrider's Pride once you reach the House of Hope." }
+    - { slot: "Amulet", item: "Amulet of Greater Health", where: "House of Hope — left-most pedestal in the Archive room.", why: "Sets CON to 23 (mod +6). Frees your CON ASI / Resilient pick AND gives +6 to Concentration saves. Wear if you keep losing Concentration on Bless / Branding Smite. If your Concentration is already solid (Aura of Protection +CHA + Resilient CON), swap for Periapt of Wound Closure or Amulet of the Devout." }
+    - { slot: "Boots", item: "Disintegrating Night Walkers (kept)", where: "Carried from Act 1 (Nere drop in Grymforge).", why: "Already wearing — Misty Step 1/short rest, immunity to Web/Ensnared." }
+    - { slot: "Ring", item: "Ring of Protection (kept)", where: "Carried from Act 1 (Mol's reward in the Tiefling Hideout).", why: "Already wearing — +1 AC, +1 saves." }
+    - { slot: "Cloak (alt)", item: "Cloak of Displacement", where: "Wyrm's Crossing — sold by Entharl Danthelon at Danthelon's Dancing Axe.", why: "Attack rolls against you have disadvantage while at full HP. Defensive alternative when you don't need the Cloak of Protection saves." }
+    - { slot: "Amulet (alt)", item: "Amulet of Restoration", where: "Underdark (Act 1: Derryth Bonecloak at the Myconid Colony) OR Act 3 (Counting House — chest titled 'Private Stash' in the eastern room).", why: "Grants Healing Word (L1) and Mass Healing Word (L3) as bonus-action spells (1/long rest each). Bonus-action revives are mandatory in Honor Mode. Wear once you've stabilized your Concentration — replaces Greater Health when you don't need the CON 23." }
+  bis_at_12:
+    main_hand: Balduran's Giantslayer
+    off_hand: "(none — Giantslayer is two-handed; for sword-and-board switch to Adamantine Longsword + Ketheric's Shield or Sentinel Shield)"
+    armor: Helldusk Armour
+    helm: Helm of Balduran
+    gloves: Helldusk Gloves
+    boots: Disintegrating Night Walkers
+    cloak: Cloak of Protection (or Cloak of Displacement for full-HP defense)
+    amulet: Amulet of Greater Health (concentration insurance) OR Periapt of Wound Closure (max-roll healing)
+    ring_1: Ring of Protection
+    ring_2: Killer's Sweetheart (free crit per long rest — Smite that crit at max slot)
