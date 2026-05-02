@@ -15,10 +15,19 @@ REPO="$(cd "$(dirname "$0")/.." && pwd)"
 echo "==> repo:    $REPO"
 echo "==> target:  $HOST:$DEST"
 
-# 1) sync site files
+# 1) cache-bust: stamp index.html with the current epoch so browsers always
+#    fetch fresh styles.css / app.js after every deploy
+VER=$(date +%s)
+TMPDIR=$(mktemp -d)
+cp -r "$REPO/site/." "$TMPDIR/"
+sed -i "s/__VER__/$VER/g" "$TMPDIR/index.html"
+echo "==> cache-bust version: $VER"
+
+# 2) sync site files
 rsync -av --delete \
-  "$REPO/site/" \
+  "$TMPDIR/" \
   "$HOST:$DEST/"
+rm -rf "$TMPDIR"
 
 # 2) install / refresh systemd unit
 scp "$REPO/deploy/$UNIT" "$HOST:/tmp/$UNIT"
